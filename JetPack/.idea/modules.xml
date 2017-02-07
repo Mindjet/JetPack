@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JetGear/JetGear.iml" filepath="$PROJECT_DIR$/JetGear/JetGear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JetImage/JetImage.iml" filepath="$PROJECT_DIR$/JetImage/JetImage.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetPack.iml" filepath="$PROJECT_DIR$/JetPack.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetUtil/JetUtil.iml" filepath="$PROJECT_DIR$/JetUtil/JetUtil.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
