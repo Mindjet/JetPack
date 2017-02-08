@@ -24,7 +24,7 @@ public class ImagePicker {
     public static final int PICK_CROP_PHOTO = 103;
 
     //Double check to ensure that there is only one instance anytime, anywhere.
-    private static ImagePicker getInstance(Context context) {
+    public static ImagePicker with(Context context) {
         if (instance == null) {
             synchronized (ImagePicker.class) {
                 if (instance == null) {
@@ -42,6 +42,10 @@ public class ImagePicker {
         this.context = context;
         if (getImagePath() == null || getImagePath().equals("")) {
             throw new IllegalArgumentException("Image path not found, did you forget to assign the ImagePath ?");
+        } else {
+            File folder = new File(ImagePicker.getImagePath());
+            if (!folder.exists())
+                folder.mkdir();
         }
     }
 
@@ -54,14 +58,14 @@ public class ImagePicker {
         return subject;
     }
 
-    protected void onPicked(File file) {
+    void onPicked(File file) {
         if (subject != null) {
             subject.onNext(file);
             subject.onCompleted();
         }
     }
 
-    private static String getImagePath() {
+    static String getImagePath() {
         return imagePath;
     }
 
