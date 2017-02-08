@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/JetDemo" />
             <option value="$PROJECT_DIR$/JetGear" />
             <option value="$PROJECT_DIR$/JetImage" />
             <option value="$PROJECT_DIR$/JetUtil" />

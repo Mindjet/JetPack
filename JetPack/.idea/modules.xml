@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/JetDemo/JetDemo.iml" filepath="$PROJECT_DIR$/JetDemo/JetDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetGear/JetGear.iml" filepath="$PROJECT_DIR$/JetGear/JetGear.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetImage/JetImage.iml" filepath="$PROJECT_DIR$/JetImage/JetImage.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetPack.iml" filepath="$PROJECT_DIR$/JetPack.iml" />

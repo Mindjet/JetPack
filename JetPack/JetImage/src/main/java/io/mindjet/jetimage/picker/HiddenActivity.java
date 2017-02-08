@@ -61,8 +61,10 @@ public class HiddenActivity extends Activity {
                 handlePickPhoto();
                 break;
             case ImagePicker.TAKE_CROP_PHOTO:
+                handleTakeCropPhoto();
                 break;
             case ImagePicker.PICK_CROP_PHOTO:
+                handlePickCropPhoto();
                 break;
         }
     }
@@ -90,8 +92,10 @@ public class HiddenActivity extends Activity {
     }
 
     private boolean checkPermission() {
-        boolean isWritingStorageGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-        boolean isCameraGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+        boolean isWritingStorageGranted
+                = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        boolean isCameraGranted
+                = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
         if (isWritingStorageGranted && isCameraGranted) {
             return true;
         } else {
@@ -103,7 +107,6 @@ public class HiddenActivity extends Activity {
                 permissions.add(Manifest.permission.CAMERA);
             }
             ActivityCompat.requestPermissions(this, permissions.toArray(new String[]{}), 0);
-            finish();
             return false;
         }
     }
@@ -123,6 +126,15 @@ public class HiddenActivity extends Activity {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            handleIntent();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
@@ -139,6 +151,8 @@ public class HiddenActivity extends Activity {
                     handlePickCropPhotoResult();
                     break;
             }
+        } else {
+            finish();
         }
     }
 

@@ -12,4 +12,5 @@ dependencies {
     compile project(':JetUtil')
     compile project(':JetGear')
     compile project(':JetImage')
+    compile project(':JetDemo')
 }
