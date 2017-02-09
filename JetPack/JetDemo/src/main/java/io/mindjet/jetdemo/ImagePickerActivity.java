@@ -86,7 +86,7 @@ public class ImagePickerActivity extends AppCompatActivity implements View.OnCli
 
     private void takeCropPhoto() {
         ImagePicker.with(this)
-                .requestImage(ImagePicker.TAKE_PHOTO)
+                .requestImage(ImagePicker.TAKE_CROP_PHOTO)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<File>() {
@@ -99,7 +99,7 @@ public class ImagePickerActivity extends AppCompatActivity implements View.OnCli
 
     private void pickCropPhoto() {
         ImagePicker.with(this)
-                .requestImage(ImagePicker.TAKE_PHOTO)
+                .requestImage(ImagePicker.PICK_CROP_PHOTO)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<File>() {

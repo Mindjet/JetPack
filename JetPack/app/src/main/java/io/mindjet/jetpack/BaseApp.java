@@ -3,6 +3,8 @@ package io.mindjet.jetpack;
 import android.app.Application;
 import android.os.Environment;
 
+import com.orhanobut.logger.Logger;
+
 import java.io.File;
 
 import io.mindjet.jetimage.picker.ImagePicker;
@@ -16,8 +18,13 @@ public class BaseApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initLogger();
         makeAppDir();
         ImagePicker.setImagePath(Environment.getExternalStorageDirectory() + "/Jetpack");
+    }
+
+    private void initLogger() {
+        Logger.init().hideThreadInfo().methodCount(1);
     }
 
     /**

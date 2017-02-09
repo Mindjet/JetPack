@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -40,7 +41,9 @@ public class HiddenActivity extends Activity {
 
     public static final String SOURCE = "source";
     private static final String TAG = "ImagePicker";
+    private static final int CROP_PHOTO = 104;
     private Uri uri;
+    private File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +87,17 @@ public class HiddenActivity extends Activity {
     }
 
     private void handleTakeCropPhoto() {
-
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri = createUri());
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        startActivityForResult(intent, ImagePicker.TAKE_CROP_PHOTO);
     }
 
     private void handlePickCropPhoto() {
-
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, ImagePicker.PICK_CROP_PHOTO);
     }
 
     private boolean checkPermission() {
@@ -145,10 +154,13 @@ public class HiddenActivity extends Activity {
                     handlePickPhotoResult(data);
                     break;
                 case ImagePicker.TAKE_CROP_PHOTO:
-                    handleTakeCropPhotoResult();
+                    handleTakeCropPhotoResult(uri);
                     break;
                 case ImagePicker.PICK_CROP_PHOTO:
-                    handlePickCropPhotoResult();
+                    handlePickCropPhotoResult(data.getData());
+                    break;
+                case CROP_PHOTO:
+                    handCropPhotoResult();
                     break;
             }
         } else {
@@ -216,12 +228,34 @@ public class HiddenActivity extends Activity {
         finish();
     }
 
-    private void handleTakeCropPhotoResult() {
-
+    private void handleTakeCropPhotoResult(Uri uri) {
+        launchCropActivity(uri, file = createFile());
     }
 
-    private void handlePickCropPhotoResult() {
+    private void handlePickCropPhotoResult(Uri uri) {
+        launchCropActivity(uri, file = createFile());
+    }
 
+    private void launchCropActivity(Uri uri, File file) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        intent.putExtra("crop", true);
+        intent.putExtra("scale", true);
+        intent.putExtra("scaleUpIfNeeded", true);
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("outputX", 500);
+        intent.putExtra("outputY", 500);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));           //if the output is assigned, the result contains no content.
+        intent.putExtra("return-data", false);
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
+        intent.putExtra("noFaceDetection", false);
+        startActivityForResult(intent, CROP_PHOTO);
+    }
+
+    private void handCropPhotoResult() {
+        ImagePicker.with(this).onPicked(file);
+        finish();
     }
 
 }
