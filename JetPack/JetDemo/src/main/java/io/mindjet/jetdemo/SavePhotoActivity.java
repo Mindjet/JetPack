@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +21,10 @@ import java.util.UUID;
 
 import io.mindjet.jetdemo.databinding.ActivitySavePhotoBinding;
 import io.mindjet.jetutil.file.FileUtil;
+import io.mindjet.jetutil.file.RxFile;
 import io.mindjet.jetutil.toast.Toaster;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 /**
  * Created by Jet on 2/9/17.
@@ -87,11 +92,16 @@ public class SavePhotoActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void gotoDir() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setDataAndType(Uri.fromFile(appDir), "file/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        RxFile.get()
+                .saveBitmap(bitmap, appDir, "rxasdasd")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        Logger.e(s + Looper.myLooper().toString());
+                    }
+                });
+
     }
 
 }

@@ -32,7 +32,7 @@ public class FileUtil {
      *
      * @param context context
      * @param uri     the uri to copy
-     * @param file    the location to save
+     * @param file    the location to saveBitmap
      * @throws IOException
      */
     public static void copyUri2File(Context context, Uri uri, File file) throws IOException {
@@ -53,13 +53,13 @@ public class FileUtil {
      * <p>
      * If want to explicitly assign the extension, please use {@link #savePhoto(Bitmap bm, File file, String name, String ext)}
      *
-     * @param bitmap the bitmap to save
-     * @param folder the folder to save the bitmap
+     * @param bitmap the bitmap to saveBitmap
+     * @param folder the folder to saveBitmap the bitmap
      * @param name   the name of the photo(without extension)
      * @throws IOException
      */
-    public static void savePhoto(Bitmap bitmap, File folder, String name) throws IOException {
-        savePhoto(bitmap, folder, name, EXT_JPG, QUALITY_MIDDLE);
+    public static String savePhoto(Bitmap bitmap, File folder, String name) throws IOException {
+        return savePhoto(bitmap, folder, name, EXT_JPG, QUALITY_MIDDLE);
     }
 
     /**
@@ -67,37 +67,38 @@ public class FileUtil {
      * <p>
      * If want to explicitly assign the quality, please use {@link #savePhoto(Bitmap bm, File file, String name, String ext, int quality)}
      *
-     * @param bitmap the bitmap to save
-     * @param folder the folder to save the bitmap
+     * @param bitmap the bitmap to saveBitmap
+     * @param folder the folder to saveBitmap the bitmap
      * @param name   the name of the photo(without extension)
      * @param ext    the extension of the photo
      * @throws IOException
      */
-    public static void savePhoto(Bitmap bitmap, File folder, String name, @Extension String ext) throws IOException {
-        savePhoto(bitmap, folder, name, ext, QUALITY_MIDDLE);
+    public static String savePhoto(Bitmap bitmap, File folder, String name, @Extension String ext) throws IOException {
+        return savePhoto(bitmap, folder, name, ext, QUALITY_MIDDLE);
     }
 
     /**
      * Save photo with specific name, extension and quality.
      *
-     * @param bitmap  the bitmap to save
-     * @param folder  the folder to save the bitmap
+     * @param bitmap  the bitmap to saveBitmap
+     * @param folder  the folder to saveBitmap the bitmap
      * @param name    the name of the photo(without extension)
      * @param ext     the extension of the photo
      * @param quality the quality of the photo
      * @throws IOException
      */
-    public static void savePhoto(Bitmap bitmap, File folder, String name, @Extension String ext, @Source int quality) throws IOException {
+    public static String savePhoto(Bitmap bitmap, File folder, String name, @Extension String ext, @Source int quality) throws IOException {
         if (!folder.exists()) {
             folder.mkdir();
         }
-        File file = new File(folder, name + "." + ext);
+        File file = new File(folder, name + ext);
         OutputStream os = new FileOutputStream(file);
         if (ext.equals(EXT_JPG))
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, os);
         if (ext.equals(EXT_PNG))
             bitmap.compress(Bitmap.CompressFormat.PNG, quality, os);
         os.close();
+        return file.getAbsolutePath();
     }
 
     @Retention(RetentionPolicy.SOURCE)
