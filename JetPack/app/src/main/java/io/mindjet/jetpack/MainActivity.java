@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import io.mindjet.jetdemo.ImagePickerActivity;
+import io.mindjet.jetdemo.SavePhotoActivity;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initListener() {
         binding.btnImagePicker.setOnClickListener(this);
+        binding.btnSavePhoto.setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_image_picker:
                 startActivity(ImagePickerActivity.intentFor(this));
+                break;
+            case R.id.btn_save_photo:
+                startActivity(SavePhotoActivity.intentFor(this));
                 break;
         }
     }

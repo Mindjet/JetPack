@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+    </data>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,28 +35,28 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_take"
+                android:id="@+id/btn_go_directory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/take_photo" />
+                android:text="@string/goto_directory" />
 
             <Button
-                android:id="@+id/btn_pick"
+                android:id="@+id/btn_save_default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/pick_photo" />
+                android:text="@string/save_photo_default" />
 
             <Button
-                android:id="@+id/btn_take_crop"
+                android:id="@+id/btn_save_high_quality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/take_crop_photo" />
+                android:text="@string/save_photo_high_quality" />
 
             <Button
-                android:id="@+id/btn_pick_crop"
+                android:id="@+id/btn_save_low_quality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/pick_crop_photo" />
+                android:text="@string/save_photo_low_quality" />
 
         </LinearLayout>
 

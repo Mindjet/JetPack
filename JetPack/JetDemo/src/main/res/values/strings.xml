@@ -4,4 +4,8 @@
     <string name="pick_photo">Pick Photo</string>
     <string name="take_crop_photo">Take&amp;Crop Photo</string>
     <string name="pick_crop_photo">Pick&amp;Crop Photo</string>
+    <string name="save_photo_default">Save Photo by Default</string>
+    <string name="save_photo_high_quality">Save Photo by High Quality</string>
+    <string name="save_photo_low_quality">Save Photo by Low Quality</string>
+    <string name="goto_directory">Go to Directory</string>
 </resources>

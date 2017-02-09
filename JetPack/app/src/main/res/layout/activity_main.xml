@@ -21,7 +21,13 @@
             android:id="@+id/btn_image_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Image Picker" />
+            android:text="@string/image_picker" />
+
+        <Button
+            android:id="@+id/btn_save_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/photo_save" />
 
     </LinearLayout>
 

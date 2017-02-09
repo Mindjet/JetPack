@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jetpack</string>
+    <string name="image_picker">Image Picker</string>
+    <string name="photo_save">Photo Saver</string>
 </resources>

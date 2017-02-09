@@ -49,7 +49,7 @@ public class FileUtil {
     }
 
     /**
-     * Save photo with specific name, default extension and default quality.
+     * Save photo with specific name, default extension(png) and default quality(middle).
      * <p>
      * If want to explicitly assign the extension, please use {@link #savePhoto(Bitmap bm, File file, String name, String ext)}
      *
@@ -63,7 +63,7 @@ public class FileUtil {
     }
 
     /**
-     * Save photo with specific name, specific extension and default quality.
+     * Save photo with specific name, specific extension and default quality(middle).
      * <p>
      * If want to explicitly assign the quality, please use {@link #savePhoto(Bitmap bm, File file, String name, String ext, int quality)}
      *
@@ -99,7 +99,6 @@ public class FileUtil {
             bitmap.compress(Bitmap.CompressFormat.PNG, quality, os);
         os.close();
     }
-
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({QUALITY_LOW, QUALITY_MIDDLE, QUALITY_HIGH})
