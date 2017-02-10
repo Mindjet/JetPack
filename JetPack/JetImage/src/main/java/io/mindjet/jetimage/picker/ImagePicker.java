@@ -2,10 +2,7 @@ package io.mindjet.jetimage.picker;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Looper;
 import android.support.annotation.IntDef;
-
-import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.lang.annotation.Retention;

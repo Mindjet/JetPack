@@ -8,7 +8,6 @@ import com.orhanobut.logger.Logger;
 import java.io.File;
 import java.io.IOException;
 
-import rx.schedulers.Schedulers;
 import rx.subjects.ReplaySubject;
 
 /**
@@ -17,7 +16,7 @@ import rx.subjects.ReplaySubject;
 
 public class RxFile {
 
-    private static RxFile rxFile;
+    private volatile static RxFile rxFile;
 
     public static RxFile get() {
         if (rxFile == null) {
@@ -32,9 +31,8 @@ public class RxFile {
 
     private ReplaySubject<String> bitmapSubject;
 
-    public ReplaySubject<String> saveBitmap(Bitmap bitmap, File folder, String name) {
+    public ReplaySubject<String> saveBitmap(final Bitmap bitmap, final File folder, final String name) {
         bitmapSubject = ReplaySubject.create();
-        bitmapSubject.subscribeOn(Schedulers.io());
         try {
             String path = FileUtil.savePhoto(bitmap, folder, name);
             onSuccess(path);

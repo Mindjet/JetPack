@@ -12,7 +12,10 @@
             android:name=".ImagePickerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SavePhotoActivity"
+            android:name=".ImageSaverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ImageLoaderActivity"
             android:screenOrientation="portrait" />
     </application>
 

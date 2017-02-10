@@ -19,31 +19,32 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
-import io.mindjet.jetdemo.databinding.ActivitySavePhotoBinding;
+import io.mindjet.jetdemo.databinding.ActivityPhotoSaverBinding;
 import io.mindjet.jetutil.file.FileUtil;
 import io.mindjet.jetutil.file.RxFile;
 import io.mindjet.jetutil.toast.Toaster;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Jet on 2/9/17.
  */
 
-public class SavePhotoActivity extends AppCompatActivity implements View.OnClickListener {
+public class ImageSaverActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ActivitySavePhotoBinding binding;
+    private ActivityPhotoSaverBinding binding;
     private File appDir;
     private Bitmap bitmap;
 
     public static Intent intentFor(Context context) {
-        return new Intent(context, SavePhotoActivity.class);
+        return new Intent(context, ImageSaverActivity.class);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_save_photo);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_photo_saver);
         beforeInitView();
         initListener();
         initData();
@@ -92,15 +93,6 @@ public class SavePhotoActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void gotoDir() {
-        RxFile.get()
-                .saveBitmap(bitmap, appDir, "rxasdasd")
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        Logger.e(s + Looper.myLooper().toString());
-                    }
-                });
 
     }
 
