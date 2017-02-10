@@ -1,31 +1,26 @@
-package io.mindjet.jetdemo;
+package io.mindjet.jetdemo.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
+import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityPhotoSaverBinding;
 import io.mindjet.jetutil.file.FileUtil;
-import io.mindjet.jetutil.file.RxFile;
 import io.mindjet.jetutil.toast.Toaster;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Jet on 2/9/17.
@@ -93,7 +88,11 @@ public class ImageSaverActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void gotoDir() {
-
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setDataAndType(Uri.fromFile(appDir), "*/*");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

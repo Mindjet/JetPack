@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import io.mindjet.jetdemo.ImageLoaderActivity;
-import io.mindjet.jetdemo.ImagePickerActivity;
-import io.mindjet.jetdemo.ImageSaverActivity;
+import io.mindjet.jetdemo.activity.ImageLoaderActivity;
+import io.mindjet.jetdemo.activity.ImagePickerActivity;
+import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

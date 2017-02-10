@@ -15,9 +15,13 @@ import io.mindjet.jetimage.picker.ImagePicker;
 
 public class BaseApp extends Application {
 
+    private static BaseApp baseApp;
+    private File appDir;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        baseApp = this;
         initLogger();
         makeAppDir();
         ImagePicker.setImagePath(Environment.getExternalStorageDirectory() + "/Jetpack");
@@ -31,9 +35,17 @@ public class BaseApp extends Application {
      * Make a directory for this application.
      */
     private void makeAppDir() {
-        File appDir = new File(Environment.getExternalStorageDirectory() + "/Jetpack");
+        appDir = new File(Environment.getExternalStorageDirectory() + "/Jetpack");
         if (!appDir.exists())
             appDir.mkdir();
+    }
+
+    public File getAppDir() {
+        return appDir;
+    }
+
+    public static BaseApp me() {
+        return baseApp;
     }
 
 }

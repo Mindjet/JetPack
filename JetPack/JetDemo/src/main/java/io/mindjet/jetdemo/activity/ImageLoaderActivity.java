@@ -1,4 +1,4 @@
-package io.mindjet.jetdemo;
+package io.mindjet.jetdemo.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityImageLoaderBinding;
 import io.mindjet.jetimage.loader.ImageLoader;
 

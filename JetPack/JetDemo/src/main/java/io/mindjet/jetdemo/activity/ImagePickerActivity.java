@@ -1,4 +1,4 @@
-package io.mindjet.jetdemo;
+package io.mindjet.jetdemo.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,11 +6,11 @@ import android.databinding.DataBindingUtil;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import java.io.File;
 
+import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityImagePickerBinding;
 import io.mindjet.jetimage.picker.ImagePicker;
 import rx.android.schedulers.AndroidSchedulers;

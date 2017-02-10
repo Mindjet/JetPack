@@ -1,0 +1,31 @@
+package io.mindjet.jetgear.databinding;
+
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import io.mindjet.jetgear.BR;
+
+/**
+ * Created by Jet on 2/10/17.
+ */
+
+public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.ViewHolder {
+
+    private ViewDataBinding binding;
+
+    public BaseViewHolder(View itemView) {
+        super(itemView);
+    }
+
+    public BaseViewHolder(ViewDataBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
+    }
+
+    public void bind(Object o) {
+        binding.setVariable(BR.data, o);
+        binding.executePendingBindings();
+    }
+
+}

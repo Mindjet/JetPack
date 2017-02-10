@@ -9,13 +9,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ImagePickerActivity"
+            android:name=".activity.ImagePickerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ImageSaverActivity"
+            android:name=".activity.ImageSaverActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ImageLoaderActivity"
+            android:name=".activity.ImageLoaderActivity"
             android:screenOrientation="portrait" />
     </application>
 
