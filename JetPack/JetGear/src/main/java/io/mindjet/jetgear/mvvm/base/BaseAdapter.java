@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import io.mindjet.jetgear.BR;
-
 /**
  * Created by Jet on 2/10/17.
  */
@@ -29,11 +27,17 @@ public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerVie
 
     @Override
     public void onBindViewHolder(BaseViewHolder<V> holder, int position) {
-        holder.getBinding().setVariable(BR.data, holder.getViewModel());
+        onBindVH(holder, position);
         holder.getBinding().executePendingBindings();
-        afterBindViewHolder();
     }
 
-    public abstract void afterBindViewHolder();
+    public abstract void onBindVH(BaseViewHolder<V> holder, int position);
+
+    @Override
+    public int getItemViewType(int position) {
+        return getItemLayoutId(position);
+    }
+
+    public abstract int getItemLayoutId(int position);
 
 }

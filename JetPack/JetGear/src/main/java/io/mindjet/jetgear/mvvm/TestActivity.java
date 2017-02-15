@@ -9,8 +9,10 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ActivityTestBinding;
-import io.mindjet.jetgear.databinding.ItemTestBinding;
+import io.mindjet.jetgear.mvvm.adapter.ListAdapter;
 import io.mindjet.jetgear.mvvm.base.BaseActivity;
+import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.TextViewModel;
 
 /**
  * Created by Mindjet on 2017/2/15.
@@ -19,7 +21,7 @@ import io.mindjet.jetgear.mvvm.base.BaseActivity;
 public class TestActivity extends BaseActivity {
 
     private ActivityTestBinding binding;
-    private ListAdapter<String, ItemTestBinding> listAdapter;
+    private ListAdapter listAdapter;
 
     public static Intent intentFor(Context context) {
         return new Intent(context, TestActivity.class);
@@ -40,13 +42,11 @@ public class TestActivity extends BaseActivity {
     }
 
     private void initData() {
-        listAdapter.add("asddsa");
-        listAdapter.add("asddsa");
-        listAdapter.add("asddsa");
-        listAdapter.add("asddsa");
-        listAdapter.add("asddsa");
-        listAdapter.add("asddsa");
-        listAdapter.add("asddsa");
+        listAdapter.add(new TextViewModel("asddas"));
+        listAdapter.add(new ImageTextViewModel());
+        listAdapter.add(new ImageTextViewModel());
+        listAdapter.add(new TextViewModel("asddas"));
+        listAdapter.add(new ImageTextViewModel());
     }
 
 }

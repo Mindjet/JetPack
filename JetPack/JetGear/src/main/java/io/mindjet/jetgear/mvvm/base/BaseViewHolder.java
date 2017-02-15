@@ -33,7 +33,12 @@ public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.View
         return viewModel;
     }
 
+    public void setViewModel(BaseViewModel<V> viewModel) {
+        this.viewModel = viewModel;
+    }
+
     public ViewDataBinding getBinding() {
         return binding;
     }
+
 }

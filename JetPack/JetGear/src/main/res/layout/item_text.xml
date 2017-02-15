@@ -3,7 +3,9 @@
 
     <data>
 
-        <import type="java.lang.String" />
+        <variable
+            name="data"
+            type="io.mindjet.jetgear.mvvm.viewmodel.TextViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name" />
+            android:text="@{data.text}" />
 
     </LinearLayout>
 

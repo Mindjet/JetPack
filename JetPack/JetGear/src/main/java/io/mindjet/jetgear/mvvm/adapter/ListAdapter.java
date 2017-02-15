@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.mvvm;
+package io.mindjet.jetgear.mvvm.adapter;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
@@ -11,12 +11,14 @@ import java.util.List;
 import java.util.ListIterator;
 
 import io.mindjet.jetgear.mvvm.base.BaseAdapter;
+import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
+import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 
 /**
  * Created by Jet on 2/15/17.
  */
 
-public class ListAdapter<T, V extends ViewDataBinding> extends BaseAdapter<V> implements List<T> {
+public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> extends BaseAdapter<V> implements List<T> {
 
     private List<T> list;
 
@@ -26,8 +28,14 @@ public class ListAdapter<T, V extends ViewDataBinding> extends BaseAdapter<V> im
     }
 
     @Override
-    public void afterBindViewHolder() {
-        
+    public void onBindVH(BaseViewHolder<V> holder, int position) {
+        holder.setViewModel(get(position));
+        holder.bind(holder.getViewModel());
+    }
+
+    @Override
+    public int getItemLayoutId(int position) {
+        return get(position).getItemLayoutId();
     }
 
     @Override
