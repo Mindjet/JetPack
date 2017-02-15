@@ -35,6 +35,12 @@
             android:layout_height="wrap_content"
             android:text="@string/image_loader" />
 
+        <Button
+            android:id="@+id/btn_databinding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data binding" />
+
     </LinearLayout>
 
 </layout>

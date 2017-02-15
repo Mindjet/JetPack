@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.databinding;
+package io.mindjet.jetgear.mvvm;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import io.mindjet.jetgear.databinding.base.BaseAdapter;
+import io.mindjet.jetgear.mvvm.base.BaseAdapter;
 
 /**
  * Created by Jet on 2/15/17.

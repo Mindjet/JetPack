@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.databinding.base;
+package io.mindjet.jetgear.mvvm.base;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
