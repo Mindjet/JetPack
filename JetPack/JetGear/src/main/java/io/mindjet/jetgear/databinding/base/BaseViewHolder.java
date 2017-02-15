@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.databinding;
+package io.mindjet.jetgear.databinding.base;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +13,7 @@ import io.mindjet.jetgear.BR;
 public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.ViewHolder {
 
     private ViewDataBinding binding;
+    private BaseViewModel<V> viewModel;
 
     public BaseViewHolder(View itemView) {
         super(itemView);
@@ -28,4 +29,11 @@ public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.View
         binding.executePendingBindings();
     }
 
+    public BaseViewModel<V> getViewModel() {
+        return viewModel;
+    }
+
+    public ViewDataBinding getBinding() {
+        return binding;
+    }
 }

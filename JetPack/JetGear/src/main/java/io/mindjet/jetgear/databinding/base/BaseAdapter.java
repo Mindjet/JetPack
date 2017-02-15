@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.databinding;
+package io.mindjet.jetgear.databinding.base;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -6,6 +6,8 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import io.mindjet.jetgear.BR;
 
 /**
  * Created by Jet on 2/10/17.
@@ -27,7 +29,11 @@ public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerVie
 
     @Override
     public void onBindViewHolder(BaseViewHolder<V> holder, int position) {
-
+        holder.getBinding().setVariable(BR.data, holder.getViewModel());
+        holder.getBinding().executePendingBindings();
+        afterBindViewHolder();
     }
+
+    public abstract void afterBindViewHolder();
 
 }
