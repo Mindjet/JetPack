@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/JetImage/JetImage.iml" filepath="$PROJECT_DIR$/JetImage/JetImage.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetPack.iml" filepath="$PROJECT_DIR$/JetPack.iml" />
       <module fileurl="file://$PROJECT_DIR$/JetUtil/JetUtil.iml" filepath="$PROJECT_DIR$/JetUtil/JetUtil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JetWidget/JetWidget.iml" filepath="$PROJECT_DIR$/JetWidget/JetWidget.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

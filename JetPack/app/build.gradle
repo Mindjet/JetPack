@@ -12,5 +12,8 @@ dependencies {
     compile project(':JetUtil')
     compile project(':JetGear')
     compile project(':JetImage')
-    compile project(':JetDemo')
+    compile(project(':JetDemo')){
+        exclude module: ':JetUtil'
+        exclude module: ':JetImage'
+    }
 }

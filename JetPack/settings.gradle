@@ -1,1 +1,1 @@
-include ':JetGear', ':JetUtil', ':app', ':JetImage', ':JetDemo'
+include ':JetGear', ':JetUtil', ':app', ':JetImage', ':JetDemo', ':JetWidget'
