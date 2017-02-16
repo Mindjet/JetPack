@@ -10,7 +10,7 @@ import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 
 public class ImageTextViewModel extends BaseViewModel<ItemImageTextBinding> {
 
-    private String imageUrl = "https://avatars0.githubusercontent.com/u/17674741?v=3&u=d885cca444cf1881b81076563f49ca4751c675f9&s=400";
+    private String imageUrl = "https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg";
     private String title = "Mindjet";
     private String content = "Get credit for all your work by showing the number of contributions to private repositories on your profile without any repository or organization information. Learn how we count contributions.";
 

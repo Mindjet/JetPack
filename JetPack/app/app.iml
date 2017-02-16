@@ -159,7 +159,6 @@
     <orderEntry type="module" module-name="JetUtil" exported="" />
     <orderEntry type="module" module-name="JetImage" exported="" />
     <orderEntry type="module" module-name="JetDemo" exported="" />
-    <orderEntry type="library" exported="" name="android-android-25" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-25.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.2.6" level="project" />
@@ -171,10 +170,10 @@
     <orderEntry type="library" exported="" name="support-core-ui-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-media-compat-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-25.1.0" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-25.1.0" level="project" />
-    <orderEntry type="library" exported="" name="glide-3.7.0" level="project" />
-    <orderEntry type="library" exported="" name="support-core-utils-25.1.0" level="project" />
-    <orderEntry type="library" exported="" name="glide-transformations-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="logger-1.15" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-25.1.0" level="project" />
+    <orderEntry type="library" exported="" name="support-core-utils-25.1.0" level="project" />
+    <orderEntry type="library" exported="" name="glide-3.7.0" level="project" />
+    <orderEntry type="library" exported="" name="glide-transformations-2.0.1" level="project" />
   </component>
 </module>

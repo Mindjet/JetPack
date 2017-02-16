@@ -1,9 +1,12 @@
 package io.mindjet.jetimage.loader;
 
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import io.mindjet.jetimage.R;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import jp.wasabeef.glide.transformations.CropSquareTransformation;
@@ -60,6 +63,22 @@ public class ImageLoader {
                 .into(imageView);
     }
 
+    public static void loadWithRadiusPlaceHolder(ImageView imageView, String url, int radius, @DrawableRes int placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .bitmapTransform(new RoundedCornersTransformation(imageView.getContext(), radius, 0))
+                .placeholder(placeHolder == 0 ? R.drawable.ic_launcher : placeHolder)
+                .into(imageView);
+    }
+
+    public static void loadWithRadiusPlaceHolder(ImageView imageView, String url, int radius, Drawable placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .bitmapTransform(new RoundedCornersTransformation(imageView.getContext(), radius, 0))
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_launcher) : placeHolder)
+                .into(imageView);
+    }
+
     /**
      * Load image and display it in circle framework.
      *
@@ -73,6 +92,22 @@ public class ImageLoader {
                 .into(imageView);
     }
 
+    public static void loadCircleWithPlaceHolder(ImageView imageView, String url, @DrawableRes int placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .bitmapTransform(new CropCircleTransformation(imageView.getContext()))
+                .placeholder(placeHolder == 0 ? R.drawable.ic_launcher : placeHolder)
+                .into(imageView);
+    }
+
+    public static void loadCircleWithPlaceHolder(ImageView imageView, String url, Drawable placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .bitmapTransform(new CropCircleTransformation(imageView.getContext()))
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_launcher) : placeHolder)
+                .into(imageView);
+    }
+
     /**
      * Load image and display it in square framework.
      *
@@ -83,6 +118,27 @@ public class ImageLoader {
         Glide.with(imageView.getContext())
                 .load(url)
                 .bitmapTransform(new CropSquareTransformation(imageView.getContext()))
+                .into(imageView);
+    }
+
+    /**
+     * Load image with place holder.
+     *
+     * @param imageView   the ImageView
+     * @param url         the target url
+     * @param placeHolder place holder resource
+     */
+    public static void loadWithPlaceHolder(ImageView imageView, String url, @DrawableRes int placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .placeholder(placeHolder == 0 ? R.drawable.ic_launcher : placeHolder)
+                .into(imageView);
+    }
+
+    public static void loadWithPlaceHolder(ImageView imageView, String url, Drawable placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_launcher) : placeHolder)
                 .into(imageView);
     }
 

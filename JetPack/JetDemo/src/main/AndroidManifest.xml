@@ -10,12 +10,19 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.ImagePickerActivity"
+            android:label="JetImage"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ImageSaverActivity"
+            android:label="JetUtil"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ImageLoaderActivity"
+            android:label="JetImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DataBindingActivity"
+            android:label="JetGear"
             android:screenOrientation="portrait" />
     </application>
 

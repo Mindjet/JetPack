@@ -10,9 +10,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile project(':JetUtil')
-    compile project(':JetGear')
     compile project(':JetImage')
     compile(project(':JetDemo')){
+        exclude module: ':JetUtil'
+        exclude module: ':JetImage'
+    }
+    compile(project(':JetGear')){
         exclude module: ':JetUtil'
         exclude module: ':JetImage'
     }

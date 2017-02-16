@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import io.mindjet.jetdemo.activity.DataBindingActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
-import io.mindjet.jetgear.mvvm.TestActivity;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(ImageLoaderActivity.intentFor(this));
                 break;
             case R.id.btn_databinding:
-                startActivity(TestActivity.intentFor(this));
+                startActivity(DataBindingActivity.intentFor(this));
                 break;
         }
     }
