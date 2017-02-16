@@ -20,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="10dp">
 
@@ -27,12 +28,12 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginRight="10dp"
-                app:placeHolder="@{@drawable/ic_launcher}"
-                app:circle="@{data.imageUrl}" />
+                app:circle="@{data.imageUrl}"
+                app:placeHolder="@{@drawable/ic_launcher}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -49,7 +50,6 @@
                     android:text="@{data.content}" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

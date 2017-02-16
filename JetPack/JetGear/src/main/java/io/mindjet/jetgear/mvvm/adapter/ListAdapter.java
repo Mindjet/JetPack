@@ -3,6 +3,8 @@ package io.mindjet.jetgear.mvvm.adapter;
 import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -161,5 +163,15 @@ public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> ext
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
         return list.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        return false;
     }
 }

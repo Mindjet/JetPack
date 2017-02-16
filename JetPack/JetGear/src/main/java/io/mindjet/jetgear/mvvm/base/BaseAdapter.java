@@ -6,12 +6,13 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 /**
  * Created by Jet on 2/10/17.
  */
 
-public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerView.Adapter<BaseViewHolder<V>> {
+public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerView.Adapter<BaseViewHolder<V>> implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private LayoutInflater inflater;
 
