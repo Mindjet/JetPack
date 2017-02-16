@@ -67,7 +67,7 @@ public class ImageLoader {
         Glide.with(imageView.getContext())
                 .load(url)
                 .bitmapTransform(new RoundedCornersTransformation(imageView.getContext(), radius, 0))
-                .placeholder(placeHolder == 0 ? R.drawable.ic_launcher : placeHolder)
+                .placeholder(placeHolder == 0 ? R.drawable.ic_placeholder : placeHolder)
                 .into(imageView);
     }
 
@@ -75,7 +75,7 @@ public class ImageLoader {
         Glide.with(imageView.getContext())
                 .load(url)
                 .bitmapTransform(new RoundedCornersTransformation(imageView.getContext(), radius, 0))
-                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_launcher) : placeHolder)
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder) : placeHolder)
                 .into(imageView);
     }
 
@@ -96,7 +96,7 @@ public class ImageLoader {
         Glide.with(imageView.getContext())
                 .load(url)
                 .bitmapTransform(new CropCircleTransformation(imageView.getContext()))
-                .placeholder(placeHolder == 0 ? R.drawable.ic_launcher : placeHolder)
+                .placeholder(placeHolder == 0 ? R.drawable.ic_placeholder : placeHolder)
                 .into(imageView);
     }
 
@@ -104,7 +104,7 @@ public class ImageLoader {
         Glide.with(imageView.getContext())
                 .load(url)
                 .bitmapTransform(new CropCircleTransformation(imageView.getContext()))
-                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_launcher) : placeHolder)
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder) : placeHolder)
                 .into(imageView);
     }
 
@@ -131,14 +131,14 @@ public class ImageLoader {
     public static void loadWithPlaceHolder(ImageView imageView, String url, @DrawableRes int placeHolder) {
         Glide.with(imageView.getContext())
                 .load(url)
-                .placeholder(placeHolder == 0 ? R.drawable.ic_launcher : placeHolder)
+                .placeholder(placeHolder == 0 ? R.drawable.ic_placeholder : placeHolder)
                 .into(imageView);
     }
 
     public static void loadWithPlaceHolder(ImageView imageView, String url, Drawable placeHolder) {
         Glide.with(imageView.getContext())
                 .load(url)
-                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_launcher) : placeHolder)
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder) : placeHolder)
                 .into(imageView);
     }
 
