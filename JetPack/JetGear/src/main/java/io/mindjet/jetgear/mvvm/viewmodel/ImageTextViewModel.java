@@ -26,6 +26,18 @@ public class ImageTextViewModel extends BaseViewModel<ItemImageTextBinding> {
         return content;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     @Override
     public int getItemLayoutId() {
         return R.layout.item_image_text;

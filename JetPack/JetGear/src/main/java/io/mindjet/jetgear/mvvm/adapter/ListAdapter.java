@@ -20,7 +20,7 @@ import io.mindjet.jetgear.mvvm.base.BaseViewModel;
  * Created by Jet on 2/15/17.
  */
 
-public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> extends BaseAdapter<V> implements List<T> {
+public class ListAdapter<T extends BaseViewModel<V>, V extends ViewDataBinding> extends BaseAdapter<V> implements List<T> {
 
     private List<T> list;
 
@@ -167,7 +167,7 @@ public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> ext
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        
+
     }
 
     @Override

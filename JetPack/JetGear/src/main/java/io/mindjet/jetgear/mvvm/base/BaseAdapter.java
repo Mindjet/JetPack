@@ -41,4 +41,7 @@ public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerVie
 
     public abstract int getItemLayoutId(int position);
 
+    public LayoutInflater getInflater() {
+        return inflater;
+    }
 }

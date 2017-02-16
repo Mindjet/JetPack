@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityDataBindingBinding;
 import io.mindjet.jetgear.mvvm.adapter.ListAdapter;
+import io.mindjet.jetgear.mvvm.adapter.LoadMoreAdapter;
 import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.TextViewModel;
 
@@ -20,7 +21,7 @@ import io.mindjet.jetgear.mvvm.viewmodel.TextViewModel;
 public class DataBindingActivity extends BaseDemoActivity {
 
     private ActivityDataBindingBinding binding;
-    private ListAdapter adapter;
+    private LoadMoreAdapter adapter;
 
     public static Intent intentFor(Context context) {
         return new Intent(context, DataBindingActivity.class);
@@ -40,23 +41,12 @@ public class DataBindingActivity extends BaseDemoActivity {
     public void initView() {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         binding.recyclerView.setBackground(getResources().getDrawable(R.color.rcv_gray_light));
-        adapter = new ListAdapter(this);
+        adapter = new LoadMoreAdapter(this);
         binding.recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void initData() {
-        adapter.add(new TextViewModel("asdasd"));
-        adapter.add(new ImageTextViewModel());
-        adapter.add(new TextViewModel("asdasd"));
-        adapter.add(new TextViewModel("asdasd"));
-        adapter.add(new ImageTextViewModel());
-        adapter.add(new ImageTextViewModel());
-        adapter.add(new TextViewModel("asdasd"));
-        adapter.add(new ImageTextViewModel());
-        adapter.add(new TextViewModel("asdasd"));
-        adapter.add(new TextViewModel("asdasd"));
-        adapter.add(new ImageTextViewModel());
-        adapter.add(new ImageTextViewModel());
+
     }
 }

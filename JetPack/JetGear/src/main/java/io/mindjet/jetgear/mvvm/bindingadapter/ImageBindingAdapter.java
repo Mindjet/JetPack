@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.bindingadapter;
+package io.mindjet.jetgear.mvvm.bindingadapter;
 
 import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
