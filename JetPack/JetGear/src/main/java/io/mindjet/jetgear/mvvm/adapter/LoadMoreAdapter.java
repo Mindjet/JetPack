@@ -32,7 +32,6 @@ import rx.schedulers.Schedulers;
 
 public class LoadMoreAdapter<T extends BaseViewModel<V>, V extends ViewDataBinding> extends ListAdapter<T, V> implements LoadMoreListener {
 
-
     private JLogger jLogger = JLogger.get(getClass().getSimpleName());
     private boolean loadMore = true;
     private ItemProgressBinding progressBinding;
@@ -40,7 +39,7 @@ public class LoadMoreAdapter<T extends BaseViewModel<V>, V extends ViewDataBindi
     private Retrofit retrofit;
     private GithubService service;
     private int page = 1;
-    private int perPage = 3;
+    private int perPage = 5;
 
     public LoadMoreAdapter(Context context) {
         super(context);
@@ -96,6 +95,10 @@ public class LoadMoreAdapter<T extends BaseViewModel<V>, V extends ViewDataBindi
         loadMore = false;
     }
 
+    public void finishLoadMore() {
+        progressBinding.getRoot().setVisibility(View.GONE);
+    }
+
     @Override
     public void LoadMore() {
         onLoadMore();
@@ -114,9 +117,18 @@ public class LoadMoreAdapter<T extends BaseViewModel<V>, V extends ViewDataBindi
                 .subscribe(new Action1<List<Follower>>() {
                     @Override
                     public void call(List<Follower> followers) {
-                        addAll((Collection<? extends T>) m2vm(followers));
-                        page++;
-                        notifyDataSetChanged();
+                        if (followers.size() == 0) {
+                            finishLoadMore();
+                        } else {
+                            addAll((Collection<? extends T>) m2vm(followers));
+                            page++;
+                            notifyDataSetChanged();
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        jLogger.e(throwable);
                     }
                 });
     }

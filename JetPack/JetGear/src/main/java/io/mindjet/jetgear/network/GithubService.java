@@ -14,7 +14,7 @@ import rx.Observable;
 public interface GithubService {
 
     //https://api.github.com/users/JakeWharton/followers\?page\=5
-    @GET("/users/JakeWharton/followers")
+    @GET("/users/Mindjet/followers")
     Observable<List<Follower>> follower(@Query("page") int page, @Query("per_page") int perPage);
 
 }
