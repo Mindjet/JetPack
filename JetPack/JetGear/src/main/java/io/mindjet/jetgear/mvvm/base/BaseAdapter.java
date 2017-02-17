@@ -9,14 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.mvvm.listener.RcvItemClickListener;
-import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetutil.logger.JLogger;
 
 /**
  * Created by Jet on 2/10/17.
  */
 
-public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerView.Adapter<BaseViewHolder> implements RcvItemClickListener, View.OnClickListener, View.OnLongClickListener {
+public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerView.Adapter<BaseViewHolder<V>> implements RcvItemClickListener, View.OnClickListener, View.OnLongClickListener {
 
     private LayoutInflater inflater;
     private JLogger jLogger = JLogger.get(getClass().getSimpleName());
@@ -26,21 +25,21 @@ public abstract class BaseAdapter<V extends ViewDataBinding> extends RecyclerVie
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewDataBinding binding = DataBindingUtil.inflate(inflater, viewType, parent, false);
+    public BaseViewHolder<V> onCreateViewHolder(ViewGroup parent, int viewType) {
+        V binding = DataBindingUtil.inflate(inflater, viewType, parent, false);
         binding.getRoot().setOnClickListener(this);
         binding.getRoot().setOnLongClickListener(this);
-        return new BaseViewHolder<ViewInterface<V>>(binding);
+        return new BaseViewHolder<V>(binding);
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder<V> holder, int position) {
         onBindVH(holder, position);
         holder.itemView.setTag(holder);
         holder.getBinding().executePendingBindings();
     }
 
-    public abstract void onBindVH(BaseViewHolder holder, int position);
+    public abstract void onBindVH(BaseViewHolder<V> holder, int position);
 
     @Override
     public int getItemViewType(int position) {

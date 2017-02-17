@@ -1,5 +1,7 @@
 package io.mindjet.jetgear.mvvm.viewmodel;
 
+import android.view.ViewGroup;
+
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ItemTextBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
@@ -25,4 +27,10 @@ public class TextViewModel extends BaseViewModel<ViewInterface<ItemTextBinding>>
     public int getLayoutId() {
         return R.layout.item_text;
     }
+
+    @Override
+    public void onViewAttached(ViewGroup container) {
+
+    }
+
 }

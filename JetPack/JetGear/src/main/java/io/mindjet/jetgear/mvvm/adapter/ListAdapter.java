@@ -28,7 +28,7 @@ public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> ext
     }
 
     @Override
-    public void onBindVH(BaseViewHolder holder, int position) {
+    public void onBindVH(BaseViewHolder<V> holder, int position) {
         holder.setViewModel(get(position));
         holder.bind(holder.getViewModel());
     }

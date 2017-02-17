@@ -11,16 +11,16 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
  * Created by Jet on 2/10/17.
  */
 
-public class BaseViewHolder<V extends ViewInterface> extends RecyclerView.ViewHolder {
+public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.ViewHolder {
 
-    private ViewDataBinding binding;
-    private BaseViewModel<V> viewModel;
+    private V binding;
+    private BaseViewModel<ViewInterface<V>> viewModel;
 
     public BaseViewHolder(View itemView) {
         super(itemView);
     }
 
-    public BaseViewHolder(ViewDataBinding binding) {
+    public BaseViewHolder(V binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
@@ -30,15 +30,15 @@ public class BaseViewHolder<V extends ViewInterface> extends RecyclerView.ViewHo
         binding.executePendingBindings();
     }
 
-    public BaseViewModel<V> getViewModel() {
+    public BaseViewModel<ViewInterface<V>> getViewModel() {
         return viewModel;
     }
 
-    public void setViewModel(BaseViewModel<V> viewModel) {
+    public void setViewModel(BaseViewModel<ViewInterface<V>> viewModel) {
         this.viewModel = viewModel;
     }
 
-    public ViewDataBinding getBinding() {
+    public V getBinding() {
         return binding;
     }
 

@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityDataBindingBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**
@@ -37,8 +37,8 @@ public class DataBindingActivity extends BaseDemoActivity implements ActivityInt
 
     @Override
     public void initView() {
-        ImageTextViewModel vm = new ImageTextViewModel();
-        ViewModelBinder.bind(binding.llyContainer, vm);
+        RecyclerViewModel recyclerViewModel = new RecyclerViewModel(this);
+        ViewModelBinder.bind(binding.llyContainer, recyclerViewModel);
     }
 
     @Override

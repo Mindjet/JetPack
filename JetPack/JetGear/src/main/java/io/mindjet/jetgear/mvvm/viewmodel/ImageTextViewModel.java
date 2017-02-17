@@ -49,6 +49,6 @@ public class ImageTextViewModel extends BaseViewModel<ViewInterface<ItemImageTex
 
     @Override
     public void onViewAttached(ViewGroup container) {
-        getSelfView().getBinding().ivAvatar.setVisibility(View.GONE);
+
     }
 }

@@ -1,5 +1,7 @@
 package io.mindjet.jetgear.mvvm.base;
 
+import android.content.Context;
+import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 import android.view.ViewGroup;
 
@@ -11,7 +13,7 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
  * Created by Jet on 2/15/17.
  */
 
-public abstract class BaseViewModel<V extends ViewInterface> implements ILayoutId {
+public abstract class BaseViewModel<V extends ViewInterface> extends BaseObservable implements ILayoutId {
 
     private V selfView;
 
@@ -43,15 +45,17 @@ public abstract class BaseViewModel<V extends ViewInterface> implements ILayoutI
      *
      * @param container the container contains the ViewModel.
      */
-    public void onViewAttached(ViewGroup container) {
-
-    }
+    public abstract void onViewAttached(ViewGroup container);
 
     /**
      * Return the view who represents the ViewModel and maintains the binding to the corresponding resource layout file.
      */
     public V getSelfView() {
         return selfView;
+    }
+
+    public Context getContext() {
+        return getSelfView().getContext();
     }
 
 }
