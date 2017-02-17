@@ -5,12 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import io.mindjet.jetgear.BR;
+import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 /**
  * Created by Jet on 2/10/17.
  */
 
-public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.ViewHolder {
+public class BaseViewHolder<V extends ViewInterface> extends RecyclerView.ViewHolder {
 
     private ViewDataBinding binding;
     private BaseViewModel<V> viewModel;

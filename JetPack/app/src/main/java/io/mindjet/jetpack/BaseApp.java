@@ -3,10 +3,9 @@ package io.mindjet.jetpack;
 import android.app.Application;
 import android.os.Environment;
 
-import com.orhanobut.logger.Logger;
-
 import java.io.File;
 
+import io.mindjet.jetgear.network.ServiceGen;
 import io.mindjet.jetimage.picker.ImagePicker;
 
 /**
@@ -22,26 +21,19 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         baseApp = this;
-        initLogger();
+        BaseEnv.init(this);
+        ServiceGen.init(BuildConfig.BASE_URL);
         makeAppDir();
-        ImagePicker.setImagePath(Environment.getExternalStorageDirectory() + "/Jetpack");
-    }
-
-    private void initLogger() {
-        Logger.init().hideThreadInfo().methodCount(1);
+        ImagePicker.setImagePath(Environment.getExternalStorageDirectory() + "/" + BuildConfig.DATA_PATH);
     }
 
     /**
      * Make a directory for this application.
      */
     private void makeAppDir() {
-        appDir = new File(Environment.getExternalStorageDirectory() + "/Jetpack");
+        appDir = new File(Environment.getExternalStorageDirectory() + "/" + BuildConfig.DATA_PATH);
         if (!appDir.exists())
             appDir.mkdir();
-    }
-
-    public File getAppDir() {
-        return appDir;
     }
 
     public static BaseApp me() {

@@ -6,6 +6,6 @@ package io.mindjet.jetgear.mvvm;
 
 public interface ILayoutId {
 
-    int getItemLayoutId();
+    int getLayoutId();
 
 }

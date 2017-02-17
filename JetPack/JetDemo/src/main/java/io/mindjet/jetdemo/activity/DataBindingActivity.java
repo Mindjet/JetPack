@@ -1,27 +1,25 @@
 package io.mindjet.jetdemo.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityDataBindingBinding;
-import io.mindjet.jetgear.mvvm.adapter.ListAdapter;
-import io.mindjet.jetgear.mvvm.adapter.LoadMoreAdapter;
+import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.TextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**
  * Created by Jet on 2/16/17.
  */
 
-public class DataBindingActivity extends BaseDemoActivity {
+public class DataBindingActivity extends BaseDemoActivity implements ActivityInterface<ActivityDataBindingBinding> {
 
     private ActivityDataBindingBinding binding;
-    private LoadMoreAdapter adapter;
 
     public static Intent intentFor(Context context) {
         return new Intent(context, DataBindingActivity.class);
@@ -39,14 +37,27 @@ public class DataBindingActivity extends BaseDemoActivity {
 
     @Override
     public void initView() {
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        binding.recyclerView.setBackground(getResources().getDrawable(R.color.rcv_gray_light));
-        adapter = new LoadMoreAdapter(this);
-        binding.recyclerView.setAdapter(adapter);
+        ImageTextViewModel vm = new ImageTextViewModel();
+        ViewModelBinder.bind(binding.llyContainer, vm);
     }
 
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public ActivityDataBindingBinding getBinding() {
+        return binding;
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 }

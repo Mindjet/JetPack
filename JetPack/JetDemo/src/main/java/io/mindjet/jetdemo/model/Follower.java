@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.model;
+package io.mindjet.jetdemo.model;
 
 import com.google.gson.annotations.SerializedName;
 

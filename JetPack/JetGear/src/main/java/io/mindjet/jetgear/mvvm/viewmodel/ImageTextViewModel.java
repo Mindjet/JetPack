@@ -1,14 +1,18 @@
 package io.mindjet.jetgear.mvvm.viewmodel;
 
+import android.view.View;
+import android.view.ViewGroup;
+
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
+import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 /**
  * Created by Mindjet on 2017/2/15.
  */
 
-public class ImageTextViewModel extends BaseViewModel<ItemImageTextBinding> {
+public class ImageTextViewModel extends BaseViewModel<ViewInterface<ItemImageTextBinding>> {
 
     private String imageUrl = "https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg";
     private String title = "Mindjet";
@@ -39,7 +43,12 @@ public class ImageTextViewModel extends BaseViewModel<ItemImageTextBinding> {
     }
 
     @Override
-    public int getItemLayoutId() {
+    public int getLayoutId() {
         return R.layout.item_image_text;
+    }
+
+    @Override
+    public void onViewAttached(ViewGroup container) {
+        getSelfView().getBinding().ivAvatar.setVisibility(View.GONE);
     }
 }

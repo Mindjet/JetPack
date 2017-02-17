@@ -19,14 +19,18 @@ public class JLogger {
         return new JLogger(TAG);
     }
 
-    public void e(Object o) {
-        Log.e(tag(), o.toString());
-    }
-
     private String tag() {
         Throwable t = new Throwable();
         String method = t.getStackTrace()[2].getMethodName();
         return TAG + "#" + method;
+    }
+
+    public void e(Object o) {
+        Log.e(tag(), o.toString());
+    }
+
+    public void i(Object o) {
+        Log.i(tag(), o.toString());
     }
 
 }

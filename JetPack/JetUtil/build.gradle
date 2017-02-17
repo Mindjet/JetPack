@@ -27,5 +27,4 @@ dependencies {
     compile 'com.orhanobut:logger:1.15'
     compile 'io.reactivex:rxjava:1.2.6'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
 }
