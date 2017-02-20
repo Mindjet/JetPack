@@ -35,6 +35,20 @@ public class ImageLoader {
         }
     }
 
+    public static void load(ImageView imageView, String url, @DrawableRes int placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .placeholder(placeHolder == 0 ? R.drawable.ic_placeholder : placeHolder)
+                .into(imageView);
+    }
+
+    public static void load(ImageView imageView, String url, Drawable placeHolder) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .placeholder(placeHolder == null ? imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder) : placeHolder)
+                .into(imageView);
+    }
+
     /**
      * Load image with blur filter.
      *

@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityDataBindingBinding;
-import io.mindjet.jetdemo.viewmodel.GithubFollowersViewModel;
+import io.mindjet.jetdemo.viewmodel.GithubFollowerListViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
@@ -37,7 +37,7 @@ public class DataBindingActivity extends BaseDemoActivity implements ActivityInt
 
     @Override
     public void initView() {
-        GithubFollowersViewModel vm = new GithubFollowersViewModel(this);
+        GithubFollowerListViewModel vm = new GithubFollowerListViewModel(this);
         ViewModelBinder.bind(binding.llyContainer, vm);
     }
 

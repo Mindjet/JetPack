@@ -13,7 +13,6 @@ import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.listener.LoadMoreListener;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
-import jp.wasabeef.recyclerview.animators.FlipInTopXAnimator;
 
 /**
  * Created by Jet on 2/17/17.
@@ -34,7 +33,6 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
         return R.layout.include_recycler_view;
     }
 
-
     @Override
     public void onViewAttached(View view) {
         recyclerView = getSelfView().getBinding().recyclerView;
@@ -42,11 +40,10 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
     }
 
     /**
-     * Initialize the RecyclerView with a specific LayoutManager.
+     * Initialize the RecyclerView with a specific LayoutManager, this method can be overridden to change the LayoutManager.
      */
     protected void initRecyclerView() {
         getRecyclerView().setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        getRecyclerView().setItemAnimator(new FlipInTopXAnimator());
     }
 
     @Override

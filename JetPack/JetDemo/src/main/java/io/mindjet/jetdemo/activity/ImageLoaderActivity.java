@@ -22,7 +22,7 @@ public class ImageLoaderActivity extends AppCompatActivity {
     }
 
     private ActivityImageLoaderBinding binding;
-    private String url = "https://avatars0.githubusercontent.com/u/17674741?v=3&u=d885cca444cf1881b81076563f49ca4751c675f9&s=400";
+    private String url = "https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,10 +32,10 @@ public class ImageLoaderActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        ImageLoader.load(binding.ivOrigin, url);
+        ImageLoader.load(binding.ivOrigin, url, 0);
         ImageLoader.loadWithBlur(binding.ivBlur, url, 20);
-        ImageLoader.loadWithRadius(binding.ivRadius, url, 20);
-        ImageLoader.loadCircle(binding.ivCircle, url);
+        ImageLoader.loadWithRadiusPlaceHolder(binding.ivRadius, url, 20, 0);
+        ImageLoader.loadCircleWithPlaceHolder(binding.ivCircle, url, 0);
     }
 
 }

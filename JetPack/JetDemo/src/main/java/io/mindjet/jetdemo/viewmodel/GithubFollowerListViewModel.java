@@ -1,14 +1,15 @@
 package io.mindjet.jetdemo.viewmodel;
 
 import android.content.Context;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
-import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.network.ServiceGen;
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,19 +20,25 @@ import rx.schedulers.Schedulers;
  * Created by Jet on 2/20/17.
  */
 
-public class GithubFollowersViewModel extends RecyclerViewModel<ItemImageTextBinding> {
+public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageTextBinding> {
 
     private GithubService service;
     private int page = 1;
 
-    public GithubFollowersViewModel(Context context) {
+    public GithubFollowerListViewModel(Context context) {
         super(context);
         service = ServiceGen.create(GithubService.class);
     }
 
     @Override
+    protected void initRecyclerView() {
+        getRecyclerView().setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        getRecyclerView().setBackground(getContext().getResources().getDrawable(R.color.rcv_gray_light));
+    }
+
+    @Override
     public void onLoadMore() {
-        service.follower("zhougch5", page, 3)
+        service.follower("JakeWharton", page, 3)
                 .throttleLast(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -42,10 +49,7 @@ public class GithubFollowersViewModel extends RecyclerViewModel<ItemImageTextBin
                             getAdapter().finishLoadMore(false);
                         } else {
                             for (Follower follower : followers) {
-                                ImageTextViewModel vm = new ImageTextViewModel();
-                                vm.setImageUrl(follower.avatarUrl);
-                                vm.setTitle(follower.name);
-                                vm.setContent(follower.htmlUrl);
+                                GithubFollowerViewModel vm = new GithubFollowerViewModel(follower);
                                 getAdapter().add(vm);
                             }
                             getAdapter().updateAndContinue();
