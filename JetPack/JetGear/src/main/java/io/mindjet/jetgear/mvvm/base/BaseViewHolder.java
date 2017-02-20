@@ -30,14 +30,6 @@ public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.View
         binding.executePendingBindings();
     }
 
-    public BaseViewModel<ViewInterface<V>> getViewModel() {
-        return viewModel;
-    }
-
-    public void setViewModel(BaseViewModel<ViewInterface<V>> viewModel) {
-        this.viewModel = viewModel;
-    }
-
     public V getBinding() {
         return binding;
     }

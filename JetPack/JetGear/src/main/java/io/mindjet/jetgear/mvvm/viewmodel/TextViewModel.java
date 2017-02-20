@@ -1,5 +1,6 @@
 package io.mindjet.jetgear.mvvm.viewmodel;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
@@ -29,7 +30,7 @@ public class TextViewModel extends BaseViewModel<ViewInterface<ItemTextBinding>>
     }
 
     @Override
-    public void onViewAttached(ViewGroup container) {
+    public void onViewAttached(View view) {
 
     }
 

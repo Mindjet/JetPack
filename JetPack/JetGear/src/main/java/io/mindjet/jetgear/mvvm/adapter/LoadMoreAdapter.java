@@ -2,26 +2,24 @@ package io.mindjet.jetgear.mvvm.adapter;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
-import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ItemProgressBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
-import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.listener.LoadMoreListener;
-import io.mindjet.jetutil.logger.JLogger;
+import io.mindjet.jetutil.task.Task;
 
 /**
  * Created by Jet on 2/16/17.
  */
 
-public abstract class LoadMoreAdapter<T extends BaseViewModel, V extends ViewDataBinding> extends ListAdapter<T, V> implements LoadMoreListener {
+public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends ListAdapter<T, V> {
 
-    private JLogger jLogger = JLogger.get(getClass().getSimpleName());
     private boolean loadMore = true;
     private ItemProgressBinding progressBinding;
+    public LoadMoreListener loadMoreListener;
 
     public LoadMoreAdapter(Context context) {
         super(context);
@@ -42,12 +40,12 @@ public abstract class LoadMoreAdapter<T extends BaseViewModel, V extends ViewDat
     }
 
     @Override
-    public void onBindVH(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder<V> holder, int position) {
         if (loadMore && position == size()) {
             holder.getBinding().getRoot().setVisibility(View.VISIBLE);
-            onLoadMore();
+            loadMore();
         } else {
-            super.onBindVH(holder, position);
+            super.onBindViewHolder(holder, position);
         }
     }
 
@@ -72,16 +70,32 @@ public abstract class LoadMoreAdapter<T extends BaseViewModel, V extends ViewDat
         if (lastPage) loadMore = false;
     }
 
-    @Override
-    public void LoadMore() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                onLoadMore();
-            }
-        }, 500);
+    /**
+     * This method is used to refresh the new-added items and continue loading more (Basically it triggers the method {@link #onBindViewHolder(BaseViewHolder, int)}).
+     */
+    public void updateAndContinue() {
+        notifyItemInserted(size());
     }
 
-    public abstract void onLoadMore();
+    private void loadMore() {
+        if (loadMoreListener != null) {
+            Task.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    loadMoreListener.onLoadMore();
+                }
+            }, 500);
+        }
+    }
+
+    @Override
+    public void onItemClick(ViewDataBinding binding, int position) {
+        //TODO do something to response item click.
+    }
+
+    @Override
+    public void onItemLongClick(ViewDataBinding binding, int position) {
+        //TODO do something to response item long click.
+    }
 
 }

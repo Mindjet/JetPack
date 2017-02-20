@@ -1,7 +1,8 @@
 package io.mindjet.jetgear.mvvm.viewmodel;
 
 import android.view.View;
-import android.view.ViewGroup;
+
+import java.util.UUID;
 
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
@@ -16,7 +17,7 @@ public class ImageTextViewModel extends BaseViewModel<ViewInterface<ItemImageTex
 
     private String imageUrl = "https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg";
     private String title = "Mindjet";
-    private String content = "Get credit for all your work by showing the number of contributions to private repositories on your profile without any repository or organization information. Learn how we count contributions.";
+    private String content = UUID.randomUUID().toString();
 
     public String getImageUrl() {
         return imageUrl;
@@ -48,7 +49,7 @@ public class ImageTextViewModel extends BaseViewModel<ViewInterface<ItemImageTex
     }
 
     @Override
-    public void onViewAttached(ViewGroup container) {
+    public void onViewAttached(View view) {
 
     }
 }

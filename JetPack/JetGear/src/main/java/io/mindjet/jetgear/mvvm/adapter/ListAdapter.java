@@ -11,31 +11,18 @@ import java.util.List;
 import java.util.ListIterator;
 
 import io.mindjet.jetgear.mvvm.base.BaseAdapter;
-import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
-import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 
 /**
  * Created by Jet on 2/15/17.
  */
 
-public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> extends BaseAdapter<V> implements List<T> {
+public abstract class ListAdapter<T, V extends ViewDataBinding> extends BaseAdapter<T, V> {
 
     private List<T> list;
 
     public ListAdapter(Context context) {
         super(context);
         list = new ArrayList<>();
-    }
-
-    @Override
-    public void onBindVH(BaseViewHolder<V> holder, int position) {
-        holder.setViewModel(get(position));
-        holder.bind(holder.getViewModel());
-    }
-
-    @Override
-    public int getItemLayoutId(int position) {
-        return get(position).getLayoutId();
     }
 
     @Override
@@ -77,8 +64,8 @@ public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> ext
     }
 
     @Override
-    public boolean add(T t) {
-        return list.add(t);
+    public boolean add(T vm) {
+        return list.add(vm);
     }
 
     @Override
@@ -163,13 +150,4 @@ public class ListAdapter<T extends BaseViewModel, V extends ViewDataBinding> ext
         return list.subList(fromIndex, toIndex);
     }
 
-    @Override
-    public void onItemClick(ViewDataBinding binding, int position) {
-        //TODO do something to response item click.
-    }
-
-    @Override
-    public void onItemLongClick(ViewDataBinding binding, int position) {
-        //TODO do something to response item long click.
-    }
 }

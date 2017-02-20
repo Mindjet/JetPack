@@ -5,5 +5,5 @@ package io.mindjet.jetgear.mvvm.listener;
  */
 
 public interface LoadMoreListener {
-    void LoadMore();
+    void onLoadMore();
 }
