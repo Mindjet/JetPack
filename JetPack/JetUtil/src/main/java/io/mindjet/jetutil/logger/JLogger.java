@@ -25,6 +25,10 @@ public class JLogger {
         return TAG + "#" + method;
     }
 
+    public void json(Object o){
+
+    }
+
     public void e(Object o) {
         Log.e(tag(), o.toString());
     }

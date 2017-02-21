@@ -31,7 +31,7 @@ public class HeaderActivity extends BaseDemoActivity {
     public void initView() {
         HeaderViewModel headerViewModel = new HeaderViewModel.Builder()
                 .background(R.color.white)
-                .leftViewModel(new HeaderItemViewModel.BackItemViewModel(this).icon(R.drawable.ic_drawer))
+                .leftViewModel(new HeaderItemViewModel.BackItemViewModel(this))
                 .centerViewModel(new HeaderItemViewModel.TitleItemViewModel("HEADER TEST"))
                 .build();
         ViewModelBinder.bind(binding.llyContainer, headerViewModel);

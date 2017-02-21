@@ -22,7 +22,7 @@ public class BaseApp extends Application {
         super.onCreate();
         baseApp = this;
         BaseEnv.init(this);
-        ServiceGen.init(BuildConfig.BASE_URL);
+        ServiceGen.init(BuildConfig.BASE_URL, BuildConfig.BUILD_TYPE);
         makeAppDir();
         ImagePicker.setImagePath(Environment.getExternalStorageDirectory() + "/" + BuildConfig.DATA_PATH);
     }
