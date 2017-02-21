@@ -11,7 +11,14 @@ import android.view.View;
 public class BaseBindingAdapter {
 
     @BindingAdapter("app:elevation")
-    public static void elevation(View view, boolean elevation) {
+    public static void elevation(View view, float elevation) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view.setElevation(elevation);
+        }
+    }
+
+    @BindingAdapter("app:elevation")
+    public static void elevationBoolean(View view, boolean elevation) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             view.setElevation(5f);
         }

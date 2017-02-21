@@ -33,8 +33,8 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
         return R.layout.include_header;
     }
 
-    public boolean getWithElevation() {
-        return builder.withElevation;
+    public float getElevation() {
+        return builder.withElevation ? getContext().getResources().getInteger(R.integer.common_elevation) : 0f;
     }
 
     public HeaderItemViewModel getLeftViewModel() {

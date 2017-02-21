@@ -13,7 +13,7 @@
         android:layout_height="55dp"
         android:background="@{data.background}"
         android:gravity="center_vertical"
-        app:elevation="@{data.withElevation}">
+        app:elevation="@{data.elevation}">
 
         <LinearLayout
             android:id="@+id/lly_left"

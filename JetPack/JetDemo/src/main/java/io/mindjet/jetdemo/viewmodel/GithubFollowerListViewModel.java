@@ -12,6 +12,7 @@ import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
 import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.network.ServiceGen;
+import io.mindjet.jetutil.toast.Toaster;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -55,6 +56,12 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
                             getAdapter().updateAndContinue();
                             page++;
                         }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        getAdapter().finishLoadMore(true);
+                        Toaster.toast(getContext(), throwable.getMessage());
                     }
                 });
     }
