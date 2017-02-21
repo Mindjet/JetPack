@@ -26,11 +26,6 @@ public class DataBindingActivity extends BaseDemoActivity implements ActivityInt
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void beforeInitView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
     }

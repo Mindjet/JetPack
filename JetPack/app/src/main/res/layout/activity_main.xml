@@ -39,7 +39,13 @@
             android:id="@+id/btn_databinding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="data binding" />
+            android:text="@string/data_binding" />
+
+        <Button
+            android:id="@+id/btn_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/header_text" />
 
     </LinearLayout>
 

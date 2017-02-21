@@ -23,6 +23,10 @@
             android:name=".activity.DataBindingActivity"
             android:label="JetGear"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HeaderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

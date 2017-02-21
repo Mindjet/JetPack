@@ -38,7 +38,7 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
 
     @Override
     public void onLoadMore() {
-        service.follower("JakeWharton", page, 3)
+        service.follower("JakeWharton", page, 10)
                 .throttleLast(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

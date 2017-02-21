@@ -16,7 +16,7 @@
         android:clickable="true"
         android:onClick="@{data.clickListener}"
         android:orientation="horizontal"
-        app:elevation="@{5f}">
+        app:elevation="@{true}">
 
         <ImageView
             android:layout_width="65dp"

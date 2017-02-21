@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.io.File;
@@ -26,7 +25,7 @@ import io.mindjet.jetutil.toast.Toaster;
  * Created by Jet on 2/9/17.
  */
 
-public class ImageSaverActivity extends AppCompatActivity implements View.OnClickListener {
+public class ImageSaverActivity extends BaseDemoActivity implements View.OnClickListener {
 
     private ActivityPhotoSaverBinding binding;
     private File appDir;
@@ -37,15 +36,8 @@ public class ImageSaverActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void beforeInitView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_photo_saver);
-        beforeInitView();
-        initListener();
-        initData();
-    }
-
-    private void beforeInitView() {
         try {
             InputStream is = getResources().getAssets().open("icon.png");
             bitmap = BitmapFactory.decodeStream(is);
@@ -54,14 +46,16 @@ public class ImageSaverActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void initListener() {
+    @Override
+    public void initView() {
         binding.btnGoDirectory.setOnClickListener(this);
         binding.btnSaveDefault.setOnClickListener(this);
         binding.btnSaveLowQuality.setOnClickListener(this);
         binding.btnSaveHighQuality.setOnClickListener(this);
     }
 
-    private void initData() {
+    @Override
+    public void initData() {
         appDir = new File(Environment.getExternalStorageDirectory() + "/Jetpack");
     }
 

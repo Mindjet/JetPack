@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import io.mindjet.jetdemo.activity.DataBindingActivity;
+import io.mindjet.jetdemo.activity.HeaderActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnImageSaver.setOnClickListener(this);
         binding.btnImageLoader.setOnClickListener(this);
         binding.btnDatabinding.setOnClickListener(this);
+        binding.btnHeader.setOnClickListener(this);
     }
 
     @Override
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_databinding:
                 startActivity(DataBindingActivity.intentFor(this));
+                break;
+            case R.id.btn_header:
+                startActivity(HeaderActivity.intentFor(this));
                 break;
         }
     }

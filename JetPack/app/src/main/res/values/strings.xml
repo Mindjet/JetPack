@@ -4,4 +4,6 @@
     <string name="image_picker">Image Picker</string>
     <string name="image_saver">Image Saver</string>
     <string name="image_loader">Image Loader</string>
+    <string name="data_binding">Data Binding</string>
+    <string name="header_text">Header Text</string>
 </resources>

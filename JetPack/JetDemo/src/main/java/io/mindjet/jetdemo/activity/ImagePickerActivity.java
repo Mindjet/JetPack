@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.io.File;
@@ -17,7 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-public class ImagePickerActivity extends AppCompatActivity implements View.OnClickListener {
+public class ImagePickerActivity extends BaseDemoActivity implements View.OnClickListener {
 
     private ActivityImagePickerBinding binding;
 
@@ -26,21 +24,20 @@ public class ImagePickerActivity extends AppCompatActivity implements View.OnCli
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void beforeInitView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_picker);
-        initListener();
-        initData();
     }
 
-    private void initListener() {
+    @Override
+    public void initView() {
         binding.btnTake.setOnClickListener(this);
         binding.btnPick.setOnClickListener(this);
         binding.btnTakeCrop.setOnClickListener(this);
         binding.btnPickCrop.setOnClickListener(this);
     }
 
-    private void initData() {
+    @Override
+    public void initData() {
 
     }
 
