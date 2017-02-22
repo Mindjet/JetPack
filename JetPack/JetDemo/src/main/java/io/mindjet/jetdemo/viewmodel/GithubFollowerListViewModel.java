@@ -65,4 +65,5 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
                     }
                 });
     }
+
 }

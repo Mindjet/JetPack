@@ -9,6 +9,8 @@ JetPack
 	|- app
 	|
 	|- JetGear
+	|	|- MVVM Framework
+	|	|_ Service generator for Retrofit
 	|
 	|- JetImage
 	|	|- ImageLoader
@@ -17,11 +19,13 @@ JetPack
 	|- JetUtil
 	|	|- File
 	|	|- Manager
-	|	|_ Toast
+	|	|- Toast
+	|	|_ Logger
 	|
 	|- JetDemo
 	|
 	|_ JetNote
+		|_ Update Log
 	
 ```
 

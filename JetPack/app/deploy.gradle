@@ -17,8 +17,18 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        jetpack_dev {
+            storeFile file("jetpack_dev.jks")
+            storePassword "111111"
+            keyAlias "Mindjet"
+            keyPassword "111111"
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.jetpack_dev
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

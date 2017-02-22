@@ -46,6 +46,12 @@ public class JLogger {
         }
     }
 
+    /**
+     * Affected by the log-max-length-mechanism, to avoid losing log information, content out of length needs to be cut into sections.
+     *
+     * @param content content.
+     * @return list of sections from the origin content.
+     */
     private List<String> toSections(String content) {
         List<String> sections = new ArrayList<>();
         if (content.length() > LOG_LENGTH) {
@@ -61,6 +67,12 @@ public class JLogger {
         return sections;
     }
 
+    /**
+     * If a string a JsonObject or JsonArray, make it pretty. Otherwise, return itself.
+     *
+     * @param json the target string
+     * @return the origin string if the input is neither JsonObject nor JsonArray, the pretty json if it is one of them.
+     */
     private String prettyFormat(String json) {
         String output;
         try {
