@@ -1,6 +1,5 @@
 package io.mindjet.jetgear.mvvm.viewmodel;
 
-import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,13 +19,8 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<ViewInterface<IncludeRecyclerViewBinding>> implements LoadMoreListener {
 
-    private Context context;
     private ViewModelAdapter<V> adapter;
     private RecyclerView recyclerView;
-
-    public RecyclerViewModel(Context context) {
-        this.context = context;
-    }
 
     @Override
     public int getLayoutId() {
@@ -43,7 +37,7 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
      * Initialize the RecyclerView with a specific LayoutManager, this method can be overridden to change the LayoutManager.
      */
     protected void initRecyclerView() {
-        getRecyclerView().setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        getRecyclerView().setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
     @Override
@@ -57,7 +51,7 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
 
     public ViewModelAdapter<V> getAdapter() {
         if (adapter == null) {
-            adapter = new ViewModelAdapter<>(context);
+            adapter = new ViewModelAdapter<>(getContext());
             adapter.setLoadMoreListener(this);
         }
         return adapter;

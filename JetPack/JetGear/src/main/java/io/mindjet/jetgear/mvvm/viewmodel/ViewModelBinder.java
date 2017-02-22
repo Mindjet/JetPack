@@ -1,5 +1,6 @@
 package io.mindjet.jetgear.mvvm.viewmodel;
 
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
+import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewinterface.AdapterInterface;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterfaceGen;
@@ -34,10 +36,27 @@ public class ViewModelBinder {
 
     /**
      * This method is used to bind ViewModel to the ViewHolder, when the method {@link android.support.v7.widget.RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)} is called.
+     *
+     * @param adapter    the target adapter contains ViewModel.
+     * @param viewModel  the target ViewModel to be bound.
+     * @param viewHolder the corresponding ViewHolder.
      */
-    public static <V extends ViewDataBinding> void bind(ViewModelAdapter<V> adapter, BaseViewModel viewModel, BaseViewHolder<V> viewHolder) {
+    public static <V extends ViewDataBinding> void bind(ViewModelAdapter<V> adapter, BaseViewModel<AdapterInterface<V>> viewModel, BaseViewHolder<V> viewHolder) {
         AdapterInterface<V> adapterInterface = ViewInterfaceGen.adapterInterface(adapter, viewHolder);
         viewModel.onAttach(adapterInterface);
+    }
+
+    /**
+     * This method is used to bind ViewModel to Activity, and use ViewModel's layout as Activity's contentView.
+     *
+     * @param activity  the activity to be bound to.
+     * @param viewModel the ViewModel to be bound.
+     * @param <V>       the binding type.
+     */
+    public static <V extends ViewDataBinding> void bind(final Activity activity, BaseViewModel<ActivityInterface<V>> viewModel) {
+        final V binding = DataBindingUtil.setContentView(activity, viewModel.getLayoutId());
+        ActivityInterface<V> activityInterface = ViewInterfaceGen.activityInterface(activity, binding);
+        viewModel.onAttach(activityInterface);
     }
 
 

@@ -32,7 +32,7 @@ public class DataBindingActivity extends BaseDemoActivity implements ActivityInt
 
     @Override
     public void initView() {
-        GithubFollowerListViewModel vm = new GithubFollowerListViewModel(this);
+        GithubFollowerListViewModel vm = new GithubFollowerListViewModel();
         ViewModelBinder.bind(binding.llyContainer, vm);
     }
 

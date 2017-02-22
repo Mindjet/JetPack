@@ -8,6 +8,8 @@ import android.view.View;
 
 import io.mindjet.jetgear.BR;
 import io.mindjet.jetgear.mvvm.ILayoutId;
+import io.mindjet.jetgear.mvvm.listener.LifeCycleListener;
+import io.mindjet.jetgear.mvvm.listener.ViewAttachedListener;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetutil.logger.JLogger;
 
@@ -15,10 +17,11 @@ import io.mindjet.jetutil.logger.JLogger;
  * Created by Jet on 2/15/17.
  */
 
-public abstract class BaseViewModel<V extends ViewInterface> extends BaseObservable implements ILayoutId {
+public abstract class BaseViewModel<V extends ViewInterface> extends BaseObservable implements ILayoutId, LifeCycleListener {
 
     protected JLogger jLogger = JLogger.get(getClass().getSimpleName());
     private V selfView;
+    private ViewAttachedListener viewAttachedListener;
 
     /**
      * This method is called after the view has been attached to the container.
@@ -29,7 +32,8 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
     public void onAttach(V selfView) {
         this.selfView = selfView;
         attachData(selfView.getBinding());
-        onViewAttached(selfView.getBinding().getRoot());
+        onViewAttached();                                       //notify anything listens to it.
+        onViewAttached(selfView.getBinding().getRoot());        //notify the ViewModel itself.
     }
 
     /**
@@ -44,11 +48,19 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
     }
 
     /**
-     * This method is called after the ViewModel has been bound to the container.
+     * This method is called after the ViewModel has been bound to the View.
      *
      * @param view the View represents the ViewModel.
      */
     public abstract void onViewAttached(View view);
+
+    /**
+     * This method is called after the ViewModel has been bound to the View.
+     * Different from {@link #onViewAttached(View)}, this method is to inform anything listens to this ViewModel.
+     */
+    private void onViewAttached() {
+        if (viewAttachedListener != null) viewAttachedListener.onViewAttached(this);
+    }
 
     /**
      * Return the view who represents the ViewModel and maintains the binding to the corresponding resource layout file.
@@ -57,8 +69,32 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
         return selfView;
     }
 
+    /**
+     * Basically, the listener is to inform the Activity/Fragment that this ViewModel has been attached.
+     *
+     * @param viewAttachedListener callback when the ViewModel is attached to the view.
+     */
+    public void setViewAttachedListener(ViewAttachedListener viewAttachedListener) {
+        this.viewAttachedListener = viewAttachedListener;
+    }
+
     public Context getContext() {
         return getSelfView().getContext();
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onStop() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 
 }

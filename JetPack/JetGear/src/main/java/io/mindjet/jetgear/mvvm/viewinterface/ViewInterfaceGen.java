@@ -1,5 +1,6 @@
 package io.mindjet.jetgear.mvvm.viewinterface;
 
+import android.app.Activity;
 import android.content.Context;
 import android.databinding.ViewDataBinding;
 
@@ -34,12 +35,12 @@ public class ViewInterfaceGen {
     }
 
     /**
-     * Generate a AdapterInterface with ViewModelAdapter and ViewHolder.
+     * Generate an AdapterInterface with ViewModelAdapter and ViewHolder.
      *
      * @param adapter
      * @param viewHolder
      * @param <V>
-     * @return a AdapterInterface with a ViewModelAdapter, BaseViewHolder, context and binding.
+     * @return an AdapterInterface with a ViewModelAdapter, BaseViewHolder, context and binding.
      */
     public static <V extends ViewDataBinding> AdapterInterface<V> adapterInterface(final ViewModelAdapter<V> adapter, final BaseViewHolder<V> viewHolder) {
         return new AdapterInterface<V>() {
@@ -61,6 +62,33 @@ public class ViewInterfaceGen {
             @Override
             public V getBinding() {
                 return viewHolder.getBinding();
+            }
+        };
+    }
+
+    /**
+     * Generate an ActivityInterface with given activity and binding.
+     *
+     * @param activity
+     * @param binding
+     * @param <V>
+     * @return
+     */
+    public static <V extends ViewDataBinding> ActivityInterface<V> activityInterface(final Activity activity, final V binding) {
+        return new ActivityInterface<V>() {
+            @Override
+            public Activity getActivity() {
+                return activity;
+            }
+
+            @Override
+            public Context getContext() {
+                return activity;
+            }
+
+            @Override
+            public V getBinding() {
+                return binding;
             }
         };
     }

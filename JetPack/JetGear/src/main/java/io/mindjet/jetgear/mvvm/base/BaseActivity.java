@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import io.mindjet.jetutil.logger.JLogger;
 import io.mindjet.jetutil.manager.AppManager;
 
 /**
@@ -11,6 +12,8 @@ import io.mindjet.jetutil.manager.AppManager;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+    public JLogger jLogger = JLogger.get(getClass().getSimpleName());
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

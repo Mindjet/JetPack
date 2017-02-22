@@ -10,6 +10,7 @@ import io.mindjet.jetdemo.activity.HeaderActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
+import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnImageLoader.setOnClickListener(this);
         binding.btnDatabinding.setOnClickListener(this);
         binding.btnHeader.setOnClickListener(this);
+        binding.btnViewmodelActivity.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_header:
                 startActivity(HeaderActivity.intentFor(this));
+                break;
+            case R.id.btn_viewmodel_activity:
+                startActivity(ViewModelActivityDemo.intentFor(this));
                 break;
         }
     }

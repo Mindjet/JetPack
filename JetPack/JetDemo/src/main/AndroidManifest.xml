@@ -9,24 +9,29 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.ImagePickerActivity"
-            android:label="JetImage"
+            android:label="JetImage - Picker"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ImageSaverActivity"
-            android:label="JetUtil"
+            android:label="JetUtil - ImageSaver"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ImageLoaderActivity"
-            android:label="JetImage"
+            android:label="JetImage - Loader"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DataBindingActivity"
-            android:label="JetGear"
+            android:label="JetGear - DataBinding"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.HeaderActivity"
+            android:label="JetGear - HeaderViewModel"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activity.ViewModelActivityDemo"
+            android:label="JetGear - ViewModelActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

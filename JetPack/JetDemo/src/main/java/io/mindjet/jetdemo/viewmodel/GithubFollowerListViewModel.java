@@ -1,6 +1,5 @@
 package io.mindjet.jetdemo.viewmodel;
 
-import android.content.Context;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import java.util.List;
@@ -13,6 +12,7 @@ import io.mindjet.jetgear.databinding.ItemImageTextBinding;
 import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.network.ServiceGen;
 import io.mindjet.jetutil.toast.Toaster;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -25,9 +25,9 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
 
     private GithubService service;
     private int page = 1;
+    private Subscription followerSub;
 
-    public GithubFollowerListViewModel(Context context) {
-        super(context);
+    public GithubFollowerListViewModel() {
         service = ServiceGen.create(GithubService.class);
     }
 
@@ -39,7 +39,7 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
 
     @Override
     public void onLoadMore() {
-        service.follower("JakeWharton", page, 10)
+        followerSub = service.follower("JakeWharton", page, 10)
                 .throttleLast(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -66,4 +66,8 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
                 });
     }
 
+    @Override
+    public void onDestroy() {
+        followerSub.unsubscribe();
+    }
 }
