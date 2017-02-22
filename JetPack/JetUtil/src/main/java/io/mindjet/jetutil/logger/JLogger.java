@@ -3,6 +3,13 @@ package io.mindjet.jetutil.logger;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Jet on 2/16/17.
  */
@@ -10,6 +17,8 @@ import android.util.Log;
 public class JLogger {
 
     private String TAG;
+    private int JSON_INDENT = 4;
+    private int LOG_LENGTH = 2048;
 
     private JLogger(String TAG) {
         this.TAG = TAG;
@@ -25,16 +34,47 @@ public class JLogger {
         return TAG + "#" + method;
     }
 
-    public void json(Object o){
-
-    }
-
     public void e(Object o) {
-        Log.e(tag(), o.toString());
+        for (String s : toSections(prettyFormat(o.toString()))) {
+            Log.e(tag(), s);
+        }
     }
 
     public void i(Object o) {
-        Log.i(tag(), o.toString());
+        for (String s : toSections(prettyFormat(o.toString()))) {
+            Log.i(tag(), s);
+        }
+    }
+
+    private List<String> toSections(String content) {
+        List<String> sections = new ArrayList<>();
+        if (content.length() > LOG_LENGTH) {
+            for (int i = 0; i < content.length(); i += LOG_LENGTH) {
+                if (i + LOG_LENGTH < content.length())
+                    sections.add(content.substring(i, i + LOG_LENGTH));
+                else
+                    sections.add(content.substring(i, content.length()));
+            }
+        } else {
+            sections.add(content);
+        }
+        return sections;
+    }
+
+    private String prettyFormat(String json) {
+        String output;
+        try {
+            if (json.startsWith("{\"") && json.endsWith("}")) {
+                return "JsonObject: \n" + new JSONObject(json).toString(JSON_INDENT);
+            } else if (json.startsWith("[{\"") && json.endsWith("}]")) {
+                return "JsonArray: \n" + new JSONArray(json).toString(JSON_INDENT);
+            } else {
+                output = json;
+            }
+        } catch (JSONException e) {
+            output = json;
+        }
+        return output;
     }
 
 }

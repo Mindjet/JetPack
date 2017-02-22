@@ -82,10 +82,9 @@ public class JLoggerInterceptor implements Interceptor {
         jLogger.i("Content-Type: " + responseBody.contentType());
 
         //print response body.
-        Buffer buffer;
         BufferedSource source = responseBody.source();
         source.request(Long.MAX_VALUE);
-        buffer = source.buffer();
+        Buffer buffer = source.buffer();
 
         Charset charset = Charset.forName("UTF-8");
         MediaType contentType = responseBody.contentType();
@@ -93,8 +92,9 @@ public class JLoggerInterceptor implements Interceptor {
             charset = contentType.charset(charset);
         }
 
+
         jLogger.i("");
-        jLogger.i(buffer.readString(charset));
+        jLogger.i(buffer.clone().readString(charset));
         jLogger.i("<-- END " + request.method() + " (" + buffer.size() + "-byte body)");
         return response;
     }
