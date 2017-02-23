@@ -53,6 +53,12 @@
             android:layout_height="wrap_content"
             android:text="@string/viewmodel_activity" />
 
+        <Button
+            android:id="@+id/btn_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pretty_banner" />
+
     </LinearLayout>
 
 </layout>

@@ -46,6 +46,12 @@ public class JLogger {
         }
     }
 
+    public void w(Object o) {
+        for (String s : toSections(prettyFormat(o.toString()))) {
+            Log.w(tag(), s);
+        }
+    }
+
     /**
      * Affected by the log-max-length-mechanism, to avoid losing log information, content out of length needs to be cut into sections.
      *

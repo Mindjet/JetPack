@@ -32,6 +32,10 @@
             android:name=".activity.ViewModelActivityDemo"
             android:label="JetGear - ViewModelActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BannerActivity"
+            android:label="JetWidget - Banner"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

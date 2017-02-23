@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import io.mindjet.jetdemo.activity.BannerActivity;
 import io.mindjet.jetdemo.activity.DataBindingActivity;
 import io.mindjet.jetdemo.activity.HeaderActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnDatabinding.setOnClickListener(this);
         binding.btnHeader.setOnClickListener(this);
         binding.btnViewmodelActivity.setOnClickListener(this);
+        binding.btnBanner.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_viewmodel_activity:
                 startActivity(ViewModelActivityDemo.intentFor(this));
+                break;
+            case R.id.btn_banner:
+                startActivity(BannerActivity.intentFor(this));
                 break;
         }
     }

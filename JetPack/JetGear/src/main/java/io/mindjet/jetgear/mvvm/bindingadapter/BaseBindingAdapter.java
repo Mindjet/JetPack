@@ -7,12 +7,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
+import io.mindjet.jetutil.logger.JLogger;
 
 /**
  * Created by Jet on 2/20/17.
  */
 
 public class BaseBindingAdapter {
+
+    private static JLogger jLogger = JLogger.get(BaseBindingAdapter.class.getSimpleName());
+
+    @BindingAdapter("app:layout_height")
+    public static void height(View view, int height) {
+        if (height <= 0) {
+            jLogger.w("invalid height");
+            view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        } else {
+            view.getLayoutParams().height = height;
+        }
+    }
 
     @BindingAdapter("app:elevation")
     public static void elevation(View view, float elevation) {
