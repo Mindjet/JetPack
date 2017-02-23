@@ -87,7 +87,7 @@ public class BannerViewModel extends BaseViewModel<ViewInterface<IncludeBannerBi
      */
     private void initTikTok() {
         if (builder.interval != 0)
-            tiktokSub = Observable.interval(2000, TimeUnit.MILLISECONDS)
+            tiktokSub = Observable.interval(builder.interval, TimeUnit.MILLISECONDS)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<Long>() {

@@ -157,6 +157,7 @@
     <orderEntry type="module" module-name="JetWidget" exported="" />
     <orderEntry type="module" module-name="JetUtil" exported="" />
     <orderEntry type="module" module-name="JetImage" exported="" />
+    <orderEntry type="library" exported="" name="android-android-25" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="rxandroid-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-compat-25.1.0" level="project" />
