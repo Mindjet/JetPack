@@ -22,9 +22,9 @@ public abstract class DrawerLayoutViewModel<V extends ViewInterface<IncludeDrawe
     public void onViewAttached(View view) {
         drawerLayout = getSelfView().getBinding().drawerLayout;
         drawerLayout.addDrawerListener(this);
-        initHeader(getSelfView().getBinding().llyHeader);
+        initHeader(getSelfView().getBinding().llyContainer);
         initDrawer(getSelfView().getBinding().llyDrawer);
-        initContent(getSelfView().getBinding().llyContent);
+        initContent(getSelfView().getBinding().llyContainer);
     }
 
     public abstract void initHeader(ViewGroup container);

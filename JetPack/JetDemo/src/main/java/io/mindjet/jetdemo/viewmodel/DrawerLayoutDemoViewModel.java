@@ -6,6 +6,7 @@ import io.mindjet.jetdemo.R;
 import io.mindjet.jetgear.databinding.IncludeDrawerLayoutBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.TextViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerLayoutViewModel;
@@ -34,7 +35,6 @@ public class DrawerLayoutDemoViewModel extends DrawerLayoutViewModel<ActivityInt
                         }))
                 .centerViewModel(new HeaderItemViewModel.TitleItemViewModel("Drawer Layout"))
                 .background(R.color.white)
-                .withElevation(true)
                 .build();
         ViewModelBinder.bind(container, headerViewModel);
     }
