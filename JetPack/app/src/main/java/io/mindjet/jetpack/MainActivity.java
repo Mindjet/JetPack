@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
-import io.mindjet.jetdemo.activity.DataBindingActivity;
+import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.HeaderActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnImagePicker.setOnClickListener(this);
         binding.btnImageSaver.setOnClickListener(this);
         binding.btnImageLoader.setOnClickListener(this);
-        binding.btnDatabinding.setOnClickListener(this);
         binding.btnHeader.setOnClickListener(this);
         binding.btnViewmodelActivity.setOnClickListener(this);
         binding.btnBanner.setOnClickListener(this);
+        binding.btnDrawerLayout.setOnClickListener(this);
     }
 
     @Override
@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_image_loader:
                 startActivity(ImageLoaderActivity.intentFor(this));
                 break;
-            case R.id.btn_databinding:
-                startActivity(DataBindingActivity.intentFor(this));
-                break;
             case R.id.btn_header:
                 startActivity(HeaderActivity.intentFor(this));
                 break;
@@ -58,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_banner:
                 startActivity(BannerActivity.intentFor(this));
+                break;
+            case R.id.btn_drawer_layout:
+                startActivity(DrawerLayoutActivity.intentFor(this));
                 break;
         }
     }

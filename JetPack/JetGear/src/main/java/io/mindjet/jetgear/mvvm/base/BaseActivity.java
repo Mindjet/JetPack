@@ -1,8 +1,8 @@
 package io.mindjet.jetgear.mvvm.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import io.mindjet.jetutil.logger.JLogger;
 import io.mindjet.jetutil.manager.AppManager;
@@ -11,7 +11,7 @@ import io.mindjet.jetutil.manager.AppManager;
  * Created by Jet on 2/15/17.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends Activity {
 
     public JLogger jLogger = JLogger.get(getClass().getSimpleName());
 

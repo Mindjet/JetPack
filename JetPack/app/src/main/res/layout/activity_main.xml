@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data>
-
-        <variable
-            name="as"
-            type="java.lang.String" />
-    </data>
+    <data />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -36,12 +31,6 @@
             android:text="@string/image_loader" />
 
         <Button
-            android:id="@+id/btn_databinding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/data_binding" />
-
-        <Button
             android:id="@+id/btn_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pretty_banner" />
+
+        <Button
+            android:id="@+id/btn_drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/drawer_layout" />
 
     </LinearLayout>
 

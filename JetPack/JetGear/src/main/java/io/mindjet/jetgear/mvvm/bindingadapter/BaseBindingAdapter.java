@@ -27,6 +27,16 @@ public class BaseBindingAdapter {
         }
     }
 
+    @BindingAdapter("app:layout_width")
+    public static void width(View view, int width) {
+        if (width <= 0) {
+            jLogger.w("invalid width");
+            view.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        } else {
+            view.getLayoutParams().width = width;
+        }
+    }
+
     @BindingAdapter("app:elevation")
     public static void elevation(View view, float elevation) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

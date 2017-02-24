@@ -20,10 +20,6 @@
             android:label="JetImage - Loader"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.DataBindingActivity"
-            android:label="JetGear - DataBinding"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.HeaderActivity"
             android:label="JetGear - HeaderViewModel"
             android:screenOrientation="portrait"
@@ -34,6 +30,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.BannerActivity"
+            android:label="JetWidget - Banner"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DrawerLayoutActivity"
             android:label="JetWidget - Banner"
             android:screenOrientation="portrait" />
     </application>
