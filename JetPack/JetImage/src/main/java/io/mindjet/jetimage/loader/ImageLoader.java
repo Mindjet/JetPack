@@ -49,6 +49,18 @@ public class ImageLoader {
                 .into(imageView);
     }
 
+    public static void loadSrc(ImageView imageView, @DrawableRes int src) {
+        Glide.with(imageView.getContext())
+                .load(src)
+                .into(imageView);
+    }
+
+    public static void loadSrc(ImageView imageView, Drawable drawable) {
+        Glide.with(imageView.getContext())
+                .load(drawable)
+                .into(imageView);
+    }
+
     /**
      * Load image with blur filter.
      *

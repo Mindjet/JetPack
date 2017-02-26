@@ -46,7 +46,7 @@ public class BaseBindingAdapter {
 
     @BindingAdapter("app:elevation")
     public static void elevationBoolean(View view, boolean elevation) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && elevation) {
             view.setElevation(view.getContext().getResources().getInteger(R.integer.common_elevation));
         }
     }

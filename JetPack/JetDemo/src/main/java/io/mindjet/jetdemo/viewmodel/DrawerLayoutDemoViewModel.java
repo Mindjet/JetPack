@@ -5,10 +5,8 @@ import android.view.ViewGroup;
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetgear.databinding.IncludeDrawerLayoutBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.TextViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
+import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerItemViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
@@ -34,7 +32,7 @@ public class DrawerLayoutDemoViewModel extends DrawerLayoutViewModel<ActivityInt
                             }
                         }))
                 .centerViewModel(new HeaderItemViewModel.TitleItemViewModel("Drawer Layout"))
-                .background(R.color.white)
+                .background(R.color.colorPrimary)
                 .build();
         ViewModelBinder.bind(container, headerViewModel);
     }
@@ -42,12 +40,10 @@ public class DrawerLayoutDemoViewModel extends DrawerLayoutViewModel<ActivityInt
     @Override
     public void initDrawer(ViewGroup container) {
         DrawerViewModel drawerViewModel = new DrawerViewModel.Builder()
-                .item(new ImageTextViewModel())
-                .item(new TextViewModel("asdasdas"))
-                .item(new ImageTextViewModel())
-                .item(new TextViewModel("asdasdas"))
-                .item(new ImageTextViewModel())
-                .item(new TextViewModel("asdasdas"))
+                .item(new DrawerItemViewModel().content("Inbox").icon(R.drawable.ic_inbox))
+                .item(new DrawerItemViewModel().content("Starred").icon(R.drawable.ic_starred))
+                .item(new DrawerItemViewModel().content("Sent mails").icon(R.drawable.ic_sent))
+                .item(new DrawerItemViewModel().content("Draft").icon(R.drawable.ic_draft))
                 .background(R.color.white)
                 .width(R.dimen.drawer_width_normal)
                 .build();

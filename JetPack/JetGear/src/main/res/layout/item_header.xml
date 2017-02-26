@@ -14,7 +14,8 @@
         android:background="@drawable/ripple_borderless"
         android:clickable="@{data.clickable}"
         android:onClick="@{data.clickListener}"
-        android:padding="10dp">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <ImageView
             android:layout_width="wrap_content"

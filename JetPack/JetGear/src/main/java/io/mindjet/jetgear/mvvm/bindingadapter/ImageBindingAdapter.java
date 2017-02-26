@@ -28,6 +28,16 @@ public class ImageBindingAdapter {
         ImageLoader.loadWithPlaceHolder(imageView, url, placeHolder);
     }
 
+    @BindingAdapter("app:src")
+    public static void ImageSrc(ImageView imageView, @DrawableRes int src) {
+        ImageLoader.loadSrc(imageView, src);
+    }
+
+    @BindingAdapter("app:src")
+    public static void ImageSrc(ImageView imageView, Drawable drawable) {
+        ImageLoader.loadSrc(imageView, drawable);
+    }
+
     @BindingAdapter("app:circle")
     public static void ImageCircle(ImageView imageView, String url) {
         ImageLoader.loadCircle(imageView, url);
