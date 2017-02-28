@@ -5,14 +5,14 @@ import android.content.Intent;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.viewmodel.NativeDrawerLayoutDemoViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.ViewModelActivity;
+import io.mindjet.jetgear.mvvm.viewmodel.activity.ViewModelCompatActivity;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerHeaderViewModel;
 
 /**
  * Created by Jet on 2/28/17.
  */
 
-public class NativeDrawerLayoutActivity extends ViewModelActivity<NativeDrawerLayoutDemoViewModel> {
+public class NativeDrawerLayoutActivity extends ViewModelCompatActivity<NativeDrawerLayoutDemoViewModel> {
 
     public static Intent intentFor(Context context) {
         return new Intent(context, NativeDrawerLayoutActivity.class);

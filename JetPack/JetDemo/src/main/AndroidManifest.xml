@@ -29,10 +29,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DrawerLayoutActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle" />
         <activity
             android:name=".activity.NativeDrawerLayoutActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle" />
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@ import java.util.Stack;
  * Created by Jet on 2/7/17.
  */
 
-public class AppManager {
+public class ActivityManager {
 
     private static Stack<Activity> activityStack = new Stack<>();
 

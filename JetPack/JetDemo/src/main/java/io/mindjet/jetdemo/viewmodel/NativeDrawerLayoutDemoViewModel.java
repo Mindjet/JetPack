@@ -44,6 +44,7 @@ public class NativeDrawerLayoutDemoViewModel extends NativeDrawerLayoutViewModel
                             }
                         }))
                 .centerViewModel(new HeaderItemViewModel.TitleItemViewModel("Native Drawer Layout"))
+                .withElevation(true)
                 .background(R.color.colorPrimary)
                 .build();
         ViewModelBinder.bind(container, headerViewModel);

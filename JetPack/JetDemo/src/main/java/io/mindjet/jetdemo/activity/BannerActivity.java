@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.mindjet.jetgear.mvvm.viewmodel.BannerViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.ViewModelActivity;
+import io.mindjet.jetgear.mvvm.viewmodel.activity.ViewModelActivity;
 import io.mindjet.jetutil.task.Task;
 
 /**

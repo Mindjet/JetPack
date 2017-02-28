@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.mvvm.viewmodel;
+package io.mindjet.jetgear.mvvm.viewmodel.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import io.mindjet.jetgear.mvvm.base.BaseActivity;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.listener.ViewAttachedListener;
+import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**
  * Created by Jet on 2/22/17.

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import io.mindjet.jetdemo.viewmodel.GithubFollowerListViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.ViewModelActivity;
+import io.mindjet.jetgear.mvvm.viewmodel.activity.ViewModelActivity;
 
 /**
  * Created by Jet on 2/22/17.
