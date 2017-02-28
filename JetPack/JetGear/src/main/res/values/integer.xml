@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="common_elevation">5</integer>
+    <integer name="common_elevation">10</integer>
 </resources>

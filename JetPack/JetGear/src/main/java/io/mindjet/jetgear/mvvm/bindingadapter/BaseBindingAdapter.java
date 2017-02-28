@@ -58,4 +58,27 @@ public class BaseBindingAdapter {
         }
     }
 
+    @BindingAdapter("android:visibility")
+    public static void setVisibility(View view, int visibility) {
+        switch (visibility) {
+            case 0:
+                view.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                view.setVisibility(View.INVISIBLE);
+                break;
+            case 8:
+                view.setVisibility(View.GONE);
+                break;
+            default:
+                view.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    @BindingAdapter("android:visibility")
+    public static void setVisibilityBoolean(View view, boolean visibility) {
+        view.setVisibility(visibility ? View.VISIBLE : View.GONE);
+    }
+
 }

@@ -23,6 +23,11 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
         this.builder = builder;
     }
 
+    @BindingAdapter("app:vm")
+    public static void attachViewModel(ViewGroup container, HeaderItemViewModel viewModel) {
+        if (viewModel != null) ViewModelBinder.bind(container, viewModel);
+    }
+
     @Override
     public void onViewAttached(View view) {
 
@@ -53,11 +58,16 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
         return getContext().getResources().getColor(builder.background);
     }
 
+    public boolean isSink() {
+        return builder.sink;
+    }
+
     public static class Builder {
         @ColorRes
-        public int background = R.color.colorPrimary;
-        public HeaderItemViewModel leftViewModel, centerViewModel, rightViewModel;
-        public boolean withElevation = true;
+        private int background = R.color.colorPrimary;
+        private HeaderItemViewModel leftViewModel, centerViewModel, rightViewModel;
+        private boolean withElevation = true;
+        private boolean sink = false;
 
         public Builder background(@ColorRes int background) {
             this.background = background;
@@ -84,15 +94,22 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
             return this;
         }
 
+        /**
+         * If you want to expand the whole view to the status bar, you need to set it true.
+         * Meanwhile you are supposed to use a theme called <i>AppTheme.NoTitle</i> to style the activity.
+         *
+         * @param sink whether to expend the view to the status bar or not.
+         * @return Builder
+         */
+        public Builder sink(boolean sink) {
+            this.sink = sink;
+            return this;
+        }
+
         public HeaderViewModel build() {
             return new HeaderViewModel(this);
         }
 
-    }
-
-    @BindingAdapter("app:vm")
-    public static void attachViewModel(ViewGroup container, HeaderItemViewModel viewModel) {
-        if (viewModel != null) ViewModelBinder.bind(container, viewModel);
     }
 
 }
