@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetgear.databinding.IncludeDrawerLayoutBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
+import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerItemViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerLayoutViewModel;
@@ -52,7 +54,13 @@ public class DrawerLayoutDemoViewModel extends DrawerLayoutViewModel<ActivityInt
 
     @Override
     public void initContent(ViewGroup container) {
-
+        RecyclerViewModel recyclerViewModel = new RecyclerViewModel();
+        ViewModelBinder.bind(container, recyclerViewModel);
+        recyclerViewModel.getAdapter().disableLoadMore();
+        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
     }
 
 }

@@ -45,10 +45,20 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
 
     }
 
+    /**
+     * If you call this method, please ensure that the RecyclerViewModel has been bound to the View. Otherwise, {@link NullPointerException} will be thrown.
+     *
+     * @return RecyclerView
+     */
     public RecyclerView getRecyclerView() {
         return recyclerView;
     }
 
+    /**
+     * If you call this method, please ensure that the RecyclerViewModel has been bound to the View. Otherwise, {@link NullPointerException} will be thrown.
+     *
+     * @return ViewModelAdapter
+     */
     public ViewModelAdapter<V> getAdapter() {
         if (adapter == null) {
             adapter = new ViewModelAdapter<>(getContext());

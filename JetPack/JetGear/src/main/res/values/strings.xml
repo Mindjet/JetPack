@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">JetGear</string>
+    <string name="inbox">Inbox</string>
+    <string name="starred">starred</string>
+    <string name="sent_mails">sent mails</string>
+    <string name="draft">draft</string>
 </resources>

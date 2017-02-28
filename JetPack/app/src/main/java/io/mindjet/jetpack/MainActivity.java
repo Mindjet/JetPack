@@ -7,10 +7,10 @@ import android.view.View;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
 import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
-import io.mindjet.jetdemo.activity.HeaderActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
+import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
 
@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnImagePicker.setOnClickListener(this);
         binding.btnImageSaver.setOnClickListener(this);
         binding.btnImageLoader.setOnClickListener(this);
-        binding.btnHeader.setOnClickListener(this);
         binding.btnViewmodelActivity.setOnClickListener(this);
         binding.btnBanner.setOnClickListener(this);
         binding.btnDrawerLayout.setOnClickListener(this);
+        binding.btnNativeDrawerLayout.setOnClickListener(this);
     }
 
     @Override
@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_image_loader:
                 startActivity(ImageLoaderActivity.intentFor(this));
                 break;
-            case R.id.btn_header:
-                startActivity(HeaderActivity.intentFor(this));
-                break;
             case R.id.btn_viewmodel_activity:
                 startActivity(ViewModelActivityDemo.intentFor(this));
                 break;
@@ -58,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_drawer_layout:
                 startActivity(DrawerLayoutActivity.intentFor(this));
+                break;
+            case R.id.btn_native_drawer_layout:
+                startActivity(NativeDrawerLayoutActivity.intentFor(this));
                 break;
         }
     }

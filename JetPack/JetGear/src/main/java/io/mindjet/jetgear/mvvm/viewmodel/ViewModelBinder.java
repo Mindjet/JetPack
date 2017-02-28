@@ -35,6 +35,20 @@ public class ViewModelBinder {
     }
 
     /**
+     * This method is used to simply inflate the layout but attach the ViewModel to the container according to the parameter <i>attachToParent</i>.
+     *
+     * @param container      the container to contains the ViewModel.
+     * @param viewModel      he target ViewModel.
+     * @param attachToParent whether attach to container or not.
+     * @param <V>            the binding type(extending ViewDataBinding) of the ViewModel.
+     */
+    public static <V extends ViewDataBinding> void bind(ViewGroup container, BaseViewModel<ViewInterface<V>> viewModel, boolean attachToParent) {
+        V binding = DataBindingUtil.inflate(LayoutInflater.from(container.getContext()), viewModel.getLayoutId(), container, attachToParent);
+        ViewInterface<V> viewInterface = ViewInterfaceGen.viewInterface(binding);
+        viewModel.onAttach(viewInterface);
+    }
+
+    /**
      * This method is used to bind ViewModel to the ViewHolder, when the method {@link android.support.v7.widget.RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)} is called.
      *
      * @param adapter    the target adapter contains ViewModel.

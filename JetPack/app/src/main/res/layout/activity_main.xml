@@ -31,12 +31,6 @@
             android:text="@string/image_loader" />
 
         <Button
-            android:id="@+id/btn_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/header_text" />
-
-        <Button
             android:id="@+id/btn_viewmodel_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/drawer_layout" />
+
+        <Button
+            android:id="@+id/btn_native_drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/native_drawer_layout" />
 
     </LinearLayout>
 

@@ -9,4 +9,5 @@
     <string name="viewmodel_activity">ViewModel Activity</string>
     <string name="pretty_banner">Pretty Banner</string>
     <string name="drawer_layout">Drawer Layout</string>
+    <string name="native_drawer_layout">Native Drawer Layout</string>
 </resources>

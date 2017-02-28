@@ -199,10 +199,11 @@
     <orderEntry type="module" module-name="JetUtil" exported="" />
     <orderEntry type="module" module-name="JetImage" exported="" />
     <orderEntry type="module" module-name="JetDemo" exported="" />
-    <orderEntry type="library" exported="" name="android-android-25" level="project" />
     <orderEntry type="library" exported="" name="okio-1.9.0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.6.1" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-animators-2.2.5" level="project" />
+    <orderEntry type="library" exported="" name="design-25.1.1" level="project" />
+    <orderEntry type="library" exported="" name="transition-25.1.1" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.2.6" level="project" />
     <orderEntry type="library" exported="" name="adapter-rxjava-2.0.2" level="project" />
     <orderEntry type="library" exported="" name="retrofit-2.1.0" level="project" />
