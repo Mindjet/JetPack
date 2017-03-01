@@ -1,4 +1,4 @@
-package io.mindjet.jetutil.toast;
+package io.mindjet.jetutil.hint;
 
 import android.content.Context;
 import android.widget.Toast;

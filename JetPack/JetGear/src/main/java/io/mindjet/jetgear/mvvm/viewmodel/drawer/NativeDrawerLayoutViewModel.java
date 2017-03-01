@@ -16,7 +16,7 @@ import io.mindjet.jetgear.databinding.IncludeNativeDrawerLayoutBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
-import io.mindjet.jetutil.toast.Toaster;
+import io.mindjet.jetutil.hint.Toaster;
 
 /**
  * Created by Jet on 2/28/17.

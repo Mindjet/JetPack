@@ -6,9 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.io.File;
@@ -19,7 +17,7 @@ import java.util.UUID;
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityPhotoSaverBinding;
 import io.mindjet.jetutil.file.FileUtil;
-import io.mindjet.jetutil.toast.Toaster;
+import io.mindjet.jetutil.hint.Toaster;
 
 /**
  * Created by Jet on 2/9/17.

@@ -46,4 +46,10 @@ public abstract class ViewModelActivity<T extends BaseViewModel> extends BaseAct
             viewModel.onDestroy();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (viewModel != null) {
+            viewModel.onBackPressed();
+        }
+    }
 }

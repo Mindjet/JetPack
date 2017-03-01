@@ -35,6 +35,10 @@
             android:name=".activity.NativeDrawerLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
+        <activity
+            android:name=".activity.CoordinatorLayoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle" />
     </application>
 
 </manifest>

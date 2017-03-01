@@ -1,5 +1,6 @@
 package io.mindjet.jetgear.mvvm.viewmodel.drawer;
 
+import android.support.annotation.ColorRes;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -16,6 +17,8 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 public abstract class DrawerLayoutViewModel<V extends ViewInterface<IncludeDrawerLayoutBinding>> extends BaseViewModel<V> implements DrawerLayout.DrawerListener {
 
+    @ColorRes
+    private int background = R.color.white;
     private DrawerLayout drawerLayout;
 
     @Override
@@ -32,6 +35,15 @@ public abstract class DrawerLayoutViewModel<V extends ViewInterface<IncludeDrawe
     public abstract void initDrawer(ViewGroup container);
 
     public abstract void initContent(ViewGroup container);
+
+    public void changeBackground(@ColorRes int background) {
+        this.background = background;
+        notifyChange();
+    }
+
+    public int getBackground() {
+        return getContext().getResources().getColor(background);
+    }
 
     @Override
     public int getLayoutId() {

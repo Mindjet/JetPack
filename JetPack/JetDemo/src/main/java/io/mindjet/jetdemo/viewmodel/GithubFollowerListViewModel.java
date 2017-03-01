@@ -11,7 +11,7 @@ import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
 import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
 import io.mindjet.jetgear.network.ServiceGen;
-import io.mindjet.jetutil.toast.Toaster;
+import io.mindjet.jetutil.hint.Toaster;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;

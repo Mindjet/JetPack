@@ -8,7 +8,7 @@ import io.mindjet.jetdemo.databinding.ItemGithubFollowerBinding;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
-import io.mindjet.jetutil.toast.Toaster;
+import io.mindjet.jetutil.hint.Toaster;
 
 /**
  * Created by Jet on 2/20/17.

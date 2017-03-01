@@ -53,6 +53,7 @@ public class NativeDrawerLayoutDemoViewModel extends NativeDrawerLayoutViewModel
 
     @Override
     public void initContent(ViewGroup container) {
-
+        
     }
+
 }

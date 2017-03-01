@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
+import io.mindjet.jetdemo.activity.CoordinatorLayoutActivity;
 import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnBanner.setOnClickListener(this);
         binding.btnDrawerLayout.setOnClickListener(this);
         binding.btnNativeDrawerLayout.setOnClickListener(this);
+        binding.btnCoordinatorLayout.setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_native_drawer_layout:
                 startActivity(NativeDrawerLayoutActivity.intentFor(this));
+                break;
+            case R.id.btn_coordinator_layout:
+                startActivity(CoordinatorLayoutActivity.intentFor(this));
                 break;
         }
     }

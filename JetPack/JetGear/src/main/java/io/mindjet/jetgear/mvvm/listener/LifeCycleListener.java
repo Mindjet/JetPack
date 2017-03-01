@@ -12,4 +12,6 @@ public interface LifeCycleListener {
 
     void onResume();
 
+    void onBackPressed();
+
 }
