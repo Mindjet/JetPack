@@ -48,8 +48,8 @@ public abstract class ViewModelActivity<T extends BaseViewModel> extends BaseAct
 
     @Override
     public void onBackPressed() {
-        if (viewModel != null) {
-            viewModel.onBackPressed();
-        }
+        boolean consumed = false;
+        if (viewModel != null) consumed = viewModel.onBackPressed();
+        if (!consumed) super.onBackPressed();
     }
 }

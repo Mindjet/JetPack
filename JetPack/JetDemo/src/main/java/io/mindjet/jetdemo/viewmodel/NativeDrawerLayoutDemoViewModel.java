@@ -53,7 +53,15 @@ public class NativeDrawerLayoutDemoViewModel extends NativeDrawerLayoutViewModel
 
     @Override
     public void initContent(ViewGroup container) {
-        
+
     }
 
+    @Override
+    public boolean onBackPressed() {
+        if (isDrawerOpen()) {
+            closeDrawer();
+            return true;
+        }
+        return false;
+    }
 }

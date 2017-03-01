@@ -2,11 +2,8 @@ package io.mindjet.jetgear.mvvm.viewmodel;
 
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ItemTabBinding;

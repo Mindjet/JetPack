@@ -3,6 +3,7 @@ package io.mindjet.jetdemo.activity;
 import android.content.Context;
 import android.content.Intent;
 
+import io.mindjet.jetdemo.viewmodel.CoordinatorLayoutDemoViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.activity.ViewModelActivity;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorLayoutViewModel;
 
@@ -18,7 +19,7 @@ public class CoordinatorLayoutActivity extends ViewModelActivity<CoordinatorLayo
 
     @Override
     public CoordinatorLayoutViewModel giveMeViewModel() {
-        return new CoordinatorLayoutViewModel();
+        return new CoordinatorLayoutDemoViewModel();
     }
 
     @Override

@@ -24,7 +24,7 @@ public class HeaderItemViewModel extends BaseViewModel<ViewInterface<ItemHeaderB
     @ColorRes
     private int textColor = R.color.colorPrimary;
     @DimenRes
-    private int textSize = R.dimen.common_text_size;
+    private int textSize = R.dimen.header_text_size;
     private String text;
     private IHeaderItemCallback callback;
     private boolean clickable = true;
@@ -103,6 +103,7 @@ public class HeaderItemViewModel extends BaseViewModel<ViewInterface<ItemHeaderB
         public TitleItemViewModel(String title) {
             text(title);
             textColor(R.color.white);
+            textSize(R.dimen.header_text_size_large);
             clickable(false);
         }
 

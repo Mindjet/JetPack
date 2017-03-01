@@ -71,4 +71,12 @@ public class DrawerLayoutDemoViewModel extends DrawerLayoutViewModel<ActivityInt
         recyclerViewModel.getAdapter().add(new ImageTextViewModel());
     }
 
+    @Override
+    public boolean onBackPressed() {
+        if (isDrawerOpen()) {
+            closeDrawer();
+            return true;
+        }
+        return false;
+    }
 }

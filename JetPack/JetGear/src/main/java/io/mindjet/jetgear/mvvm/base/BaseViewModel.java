@@ -98,7 +98,7 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
     }
 
     @Override
-    public void onBackPressed() {
-        
+    public boolean onBackPressed() {
+        return false;
     }
 }

@@ -81,8 +81,12 @@ public abstract class NativeDrawerLayoutViewModel<V extends ViewInterface<Includ
         drawerLayout.openDrawer(GravityCompat.START, true);
     }
 
+    public boolean isDrawerOpen() {
+        return drawerLayout.isDrawerOpen(getSelfView().getBinding().navigationView);
+    }
+
     public void toggleDrawer() {
-        if (drawerLayout.isDrawerOpen(getSelfView().getBinding().navigationView)) {
+        if (isDrawerOpen()) {
             closeDrawer();
         } else {
             openDrawer();

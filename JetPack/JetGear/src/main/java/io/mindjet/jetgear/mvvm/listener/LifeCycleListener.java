@@ -12,6 +12,11 @@ public interface LifeCycleListener {
 
     void onResume();
 
-    void onBackPressed();
+    /**
+     * @return Whether the event is consumed or not.
+     * <p>
+     * If the event has been consumed, please return true, so that the default callback will not be invoked.
+     */
+    boolean onBackPressed();
 
 }

@@ -58,8 +58,12 @@ public abstract class DrawerLayoutViewModel<V extends ViewInterface<IncludeDrawe
         drawerLayout.openDrawer(GravityCompat.START, true);
     }
 
+    public boolean isDrawerOpen() {
+        return drawerLayout.isDrawerOpen(getSelfView().getBinding().llyDrawer);
+    }
+
     public void toggleDrawer() {
-        if (drawerLayout.isDrawerOpen(getSelfView().getBinding().llyDrawer)) {
+        if (isDrawerOpen()) {
             closeDrawer();
         } else {
             openDrawer();

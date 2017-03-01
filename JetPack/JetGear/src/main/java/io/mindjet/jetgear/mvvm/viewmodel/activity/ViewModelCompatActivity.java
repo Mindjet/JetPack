@@ -45,4 +45,11 @@ public abstract class ViewModelCompatActivity<T extends BaseViewModel> extends B
         if (viewModel != null)
             viewModel.onDestroy();
     }
+
+    @Override
+    public void onBackPressed() {
+        boolean consumed = false;
+        if (viewModel != null) consumed = viewModel.onBackPressed();
+        if (!consumed) super.onBackPressed();
+    }
 }

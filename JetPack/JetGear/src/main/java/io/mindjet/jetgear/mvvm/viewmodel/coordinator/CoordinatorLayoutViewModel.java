@@ -1,38 +1,40 @@
 package io.mindjet.jetgear.mvvm.viewmodel.coordinator;
 
-import android.support.design.widget.NavigationView;
+import android.support.annotation.ColorRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.IncludeCoordinatorLayoutBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
-import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
-import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.header.IHeaderItemCallback;
+import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 /**
  * Created by Jet on 3/1/17.
  */
 
-public class CoordinatorLayoutViewModel extends BaseViewModel<ActivityInterface<IncludeCoordinatorLayoutBinding>> {
+public abstract class CoordinatorLayoutViewModel<V extends ViewInterface<IncludeCoordinatorLayoutBinding>> extends BaseViewModel<V> implements TabLayout.OnTabSelectedListener {
 
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+    @ColorRes
+    private int fabColor = R.color.colorAccent;
+
+    private FloatingActionButton fab;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     public void onViewAttached(View view) {
-        drawerLayout = getSelfView().getBinding().drawerLayout;
-        navigationView = getSelfView().getBinding().navigationView;
+        fab = getSelfView().getBinding().fab;
+        viewPager = getSelfView().getBinding().viewPager;
+        tabLayout = getSelfView().getBinding().tabLayout;
+        tabLayout.addOnTabSelectedListener(this);
         initHeader(getSelfView().getBinding().flyHeader);
-        initTab(getSelfView().getBinding().tabLayout);
-        initViewPager(getSelfView().getBinding().viewPager);
+        initTab(tabLayout);
+        initViewPager(viewPager);
+        initFab(fab);
     }
 
     @Override
@@ -40,44 +42,62 @@ public class CoordinatorLayoutViewModel extends BaseViewModel<ActivityInterface<
         return R.layout.include_coordinator_layout;
     }
 
-    private void initHeader(ViewGroup container) {
-        HeaderViewModel headerViewModel = new HeaderViewModel.Builder()
-                .leftViewModel(new HeaderItemViewModel()
-                        .icon(R.drawable.ic_drawer)
-                        .callback(new IHeaderItemCallback() {
-                            @Override
-                            public void call() {
-                                toggleDrawer();
-                            }
-                        }))
-                .withElevation(false)
-                .centerViewModel(new HeaderItemViewModel.TitleItemViewModel("Coordinator Layout"))
-                .build();
-        ViewModelBinder.bind(container, headerViewModel);
+    public abstract void initHeader(ViewGroup container);
+
+    public abstract void initTab(TabLayout tabLayout);
+
+    public abstract void initViewPager(ViewPager viewPager);
+
+    public ViewPager getViewPager() {
+        return viewPager;
     }
 
-    public void initTab(TabLayout tabLayout) {
-
+    public TabLayout getTabLayout() {
+        return tabLayout;
     }
 
-    private void initViewPager(ViewPager viewPager) {
+    public abstract void initFab(FloatingActionButton fab);
 
+    public void hideFab() {
+        fab.hide();
     }
 
-    public void toggleDrawer() {
-        if (drawerLayout.isDrawerOpen(navigationView)) {
-            drawerLayout.closeDrawers();
-        } else {
-            drawerLayout.openDrawer(GravityCompat.START, true);
-        }
+    public void showFab() {
+        fab.show();
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(navigationView)) {
-            drawerLayout.closeDrawers();
-        } else {
-            getSelfView().getActivity().finish();
-        }
+    public void onTabSelected(TabLayout.Tab tab) {
+
     }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
+
+    /**
+     * Callback of the floating action button.
+     */
+    public View.OnClickListener getFabClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fabAction();
+            }
+        };
+    }
+
+    protected abstract void fabAction();
+
+    public void changeFabcolor(@ColorRes int color) {
+        this.fabColor = color;
+        notifyChange();
+    }
+
 }

@@ -28,10 +28,11 @@ public class ViewModelBinder {
      * @param viewModel the target ViewModel.
      * @param <V>       the binding type(extending ViewDataBinding) of the ViewModel.
      */
-    public static <V extends ViewDataBinding> void bind(ViewGroup container, BaseViewModel<ViewInterface<V>> viewModel) {
+    public static <V extends ViewDataBinding> V bind(ViewGroup container, BaseViewModel<ViewInterface<V>> viewModel) {
         V binding = DataBindingUtil.inflate(LayoutInflater.from(container.getContext()), viewModel.getLayoutId(), container, true);
         ViewInterface<V> viewInterface = ViewInterfaceGen.viewInterface(binding);
         viewModel.onAttach(viewInterface);
+        return binding;
     }
 
     /**
