@@ -25,6 +25,10 @@
     <dimen name="tab_item_image_width">30dp</dimen>
     <dimen name="tab_item_image_height">30dp</dimen>
 
+    <!--Coordinator Layout-->
+    <dimen name="collapse_layout_height">200dp</dimen>
+    <dimen name="collapse_layout_height_large">300dp</dimen>
+
     <dimen name="avatar_width">60dp</dimen>
     <dimen name="avatar_height">60dp</dimen>
 

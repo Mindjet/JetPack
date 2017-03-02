@@ -1,6 +1,7 @@
 package io.mindjet.jetpack;
 
 import android.content.Context;
+import android.os.Build;
 
 import io.mindjet.jetutil.logger.JLogger;
 
@@ -18,6 +19,7 @@ public class BaseEnv {
         jLogger.i("APPLICATION ID: " + BuildConfig.APPLICATION_ID);
         jLogger.i("BUILD TYPE: " + BuildConfig.BUILD_TYPE);
         jLogger.i("PRODUCT FLAVOR: " + BuildConfig.FLAVOR);
+        jLogger.i("SYSTEM API: API " + Build.VERSION.SDK_INT);
         jLogger.i("VERSION CODE: " + BuildConfig.VERSION_CODE);
         jLogger.i("VERSION NAME: " + BuildConfig.VERSION_NAME);
         jLogger.i("BASE URL: " + BuildConfig.BASE_URL);

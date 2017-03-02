@@ -18,7 +18,7 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
  * Created by Jet on 3/2/17.
  */
 
-public abstract class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInterface<IncludeSwipeRecyclerViewBinding>> extends BaseViewModel<V> implements LoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInterface<IncludeSwipeRecyclerViewBinding>> extends BaseViewModel<V> implements LoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout swipeLayout;
     private RecyclerView recyclerView;
@@ -55,7 +55,9 @@ public abstract class SwipeRecyclerViewModel<S extends ViewDataBinding, V extend
         return viewModelAdapter;
     }
 
-    protected abstract void afterViewAttached();
+    protected void afterViewAttached() {
+
+    }
 
     @Override
     public int getLayoutId() {
@@ -78,4 +80,13 @@ public abstract class SwipeRecyclerViewModel<S extends ViewDataBinding, V extend
         swipeLayout.setProgressBackgroundColorSchemeResource(background);
     }
 
+    @Override
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onLoadMore() {
+
+    }
 }

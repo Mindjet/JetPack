@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
+import io.mindjet.jetdemo.activity.CoordinatorCollapseLayoutActivity;
 import io.mindjet.jetdemo.activity.CoordinatorLayoutActivity;
 import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.drawer_layout);
         textResList.add(R.string.native_drawer_layout);
         textResList.add(R.string.coordinator_layout);
+        textResList.add(R.string.coordinator_collapse_layout);
         textResList.add(R.string.swipe_view);
 
         intentList.add(ImagePickerActivity.intentFor(this));
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(DrawerLayoutActivity.intentFor(this));
         intentList.add(NativeDrawerLayoutActivity.intentFor(this));
         intentList.add(CoordinatorLayoutActivity.intentFor(this));
+        intentList.add(CoordinatorCollapseLayoutActivity.intentFor(this));
         intentList.add(SwipeLayoutActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {

@@ -40,6 +40,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
         <activity
+            android:name=".activity.CoordinatorCollapseLayoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle" />
+        <activity
             android:name=".activity.SwipeLayoutActivity"
             android:label="JetGear - SwipeLayout"
             android:screenOrientation="portrait" />
