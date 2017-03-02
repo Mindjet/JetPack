@@ -6,6 +6,8 @@ import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import io.mindjet.jetgear.R;
 import io.mindjet.jetutil.logger.JLogger;
 
@@ -18,8 +20,12 @@ public class BaseBindingAdapter {
     private static JLogger jLogger = JLogger.get(BaseBindingAdapter.class.getSimpleName());
 
     @BindingAdapter("app:layout_height")
-    public static void height(View view, int height) {
-        if (height <= 0) {
+    public static void height(View view, int height) {      //height=0 => MATCH_PARENT, height=-1 => WRAP_CONTENT
+        if (height == -1) {
+            view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        } else if (height == 0) {
+            view.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+        } else if (height < -1) {
             jLogger.w("invalid height");
             view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
         } else {
@@ -29,7 +35,11 @@ public class BaseBindingAdapter {
 
     @BindingAdapter("app:layout_width")
     public static void width(View view, int width) {
-        if (width <= 0) {
+        if (width == -1) {
+            view.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        } else if (width == 0) {
+            view.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+        } else if (width < -1) {
             jLogger.w("invalid width");
             view.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
         } else {
@@ -41,6 +51,8 @@ public class BaseBindingAdapter {
     public static void elevation(View view, float elevation) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             view.setElevation(elevation);
+        } else {
+            jLogger.w("Sorry, the system version of the device is under API21, elevation will take no effect.");
         }
     }
 
@@ -48,7 +60,16 @@ public class BaseBindingAdapter {
     public static void elevationBoolean(View view, boolean elevation) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && elevation) {
             view.setElevation(view.getContext().getResources().getInteger(R.integer.common_elevation));
+        } else {
+            jLogger.w("Sorry, the system version of the device is under API 21, elevation will take no effect.");
         }
+    }
+
+    @BindingAdapter("app:margin")
+    public static void margin(View view, List<Integer> margins) {
+        ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(view.getLayoutParams());
+        lp.setMargins(margins.get(0), margins.get(1), margins.get(2), margins.get(3));
+        view.setLayoutParams(lp);
     }
 
     @BindingAdapter("app:enable_changeAnim")

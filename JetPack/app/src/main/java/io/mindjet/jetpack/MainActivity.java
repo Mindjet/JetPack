@@ -1,9 +1,12 @@
 package io.mindjet.jetpack;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
 import io.mindjet.jetdemo.activity.CoordinatorLayoutActivity;
@@ -14,11 +17,20 @@ import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.SwipeLayoutActivity;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
+import io.mindjet.jetgear.databinding.ItemButtonBinding;
+import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
+import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
+import rx.functions.Action0;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+
+    private List<Integer> textResList = new ArrayList<>();
+    private List<Intent> intentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,51 +40,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initData() {
-        binding.setData(this);
-//        binding.btnImagePicker.setOnClickListener(this);
-//        binding.btnImageSaver.setOnClickListener(this);
-//        binding.btnImageLoader.setOnClickListener(this);
-//        binding.btnViewmodelActivity.setOnClickListener(this);
-//        binding.btnBanner.setOnClickListener(this);
-//        binding.btnDrawerLayout.setOnClickListener(this);
-//        binding.btnNativeDrawerLayout.setOnClickListener(this);
-//        binding.btnCoordinatorLayout.setOnClickListener(this);
-    }
+        RecyclerViewModel<ItemButtonBinding> recyclerViewModel = new RecyclerViewModel<>();
+        ViewModelBinder.bind(binding.llyContainer, recyclerViewModel);
+        ViewModelAdapter<ItemButtonBinding> adapter = recyclerViewModel.getAdapter();
+        adapter.disableLoadMore();
 
-    public View.OnClickListener getClickListener() {
-        return this;
-    }
+        textResList.add(R.string.image_picker);
+        textResList.add(R.string.image_saver);
+        textResList.add(R.string.image_loader);
+        textResList.add(R.string.viewmodel_activity);
+        textResList.add(R.string.pretty_banner);
+        textResList.add(R.string.drawer_layout);
+        textResList.add(R.string.native_drawer_layout);
+        textResList.add(R.string.coordinator_layout);
+        textResList.add(R.string.swipe_view);
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_image_picker:
-                startActivity(ImagePickerActivity.intentFor(this));
-                break;
-            case R.id.btn_image_saver:
-                startActivity(ImageSaverActivity.intentFor(this));
-                break;
-            case R.id.btn_image_loader:
-                startActivity(ImageLoaderActivity.intentFor(this));
-                break;
-            case R.id.btn_viewmodel_activity:
-                startActivity(ViewModelActivityDemo.intentFor(this));
-                break;
-            case R.id.btn_banner:
-                startActivity(BannerActivity.intentFor(this));
-                break;
-            case R.id.btn_drawer_layout:
-                startActivity(DrawerLayoutActivity.intentFor(this));
-                break;
-            case R.id.btn_native_drawer_layout:
-                startActivity(NativeDrawerLayoutActivity.intentFor(this));
-                break;
-            case R.id.btn_coordinator_layout:
-                startActivity(CoordinatorLayoutActivity.intentFor(this));
-                break;
-            case R.id.btn_swipe_view:
-                startActivity(SwipeLayoutActivity.intentFor(this));
-                break;
+        intentList.add(ImagePickerActivity.intentFor(this));
+        intentList.add(ImageSaverActivity.intentFor(this));
+        intentList.add(ImageLoaderActivity.intentFor(this));
+        intentList.add(ViewModelActivityDemo.intentFor(this));
+        intentList.add(BannerActivity.intentFor(this));
+        intentList.add(DrawerLayoutActivity.intentFor(this));
+        intentList.add(NativeDrawerLayoutActivity.intentFor(this));
+        intentList.add(CoordinatorLayoutActivity.intentFor(this));
+        intentList.add(SwipeLayoutActivity.intentFor(this));
+
+        for (int i = 0; i < textResList.size(); i++) {
+            final Intent intent = intentList.get(i);
+            adapter.add(new ButtonViewModel.Builder()
+                    .simpleButton(textResList.get(i), new Action0() {
+                        @Override
+                        public void call() {
+                            startActivity(intent);
+                        }
+                    }).build());
         }
+
+        adapter.notifyDataSetChanged();
+
     }
+
 }

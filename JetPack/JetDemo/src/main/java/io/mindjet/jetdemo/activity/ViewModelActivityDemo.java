@@ -23,7 +23,7 @@ public class ViewModelActivityDemo extends ViewModelActivity<GithubFollowerListV
 
     @Override
     public void onViewAttached(GithubFollowerListViewModel viewModel) {
-        jLogger.e("YEP, the callback is invoked");
+
     }
 
 }
