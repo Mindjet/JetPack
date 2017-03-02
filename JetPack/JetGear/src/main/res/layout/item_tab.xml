@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetgear.mvvm.viewmodel.TabViewModel" />
+            type="io.mindjet.jetgear.mvvm.viewmodel.item.TabViewModel" />
 
         <import type="android.view.View" />
     </data>

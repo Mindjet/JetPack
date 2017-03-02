@@ -3,13 +3,14 @@ package io.mindjet.jetdemo.viewmodel;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.databinding.IncludeCoordinatorLayoutBinding;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.ImageTextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
@@ -50,8 +51,9 @@ public class CoordinatorLayoutDemoViewModel extends CoordinatorLayoutViewModel<A
 
     @Override
     public void initFab(FloatingActionButton fab) {
-        fab.setImageResource(io.mindjet.jetgear.R.drawable.ic_starred);
-        fab.setSize(FloatingActionButton.SIZE_NORMAL);
+        fab.setVisibility(View.GONE);
+//        fab.setImageResource(io.mindjet.jetgear.R.drawable.ic_starred);
+//        fab.setSize(FloatingActionButton.SIZE_NORMAL);
     }
 
     @Override

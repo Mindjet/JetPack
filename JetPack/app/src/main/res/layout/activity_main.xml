@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data />
+    <data>
+
+        <variable
+            name="data"
+            type="io.mindjet.jetpack.MainActivity" />
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -16,49 +21,64 @@
             android:id="@+id/btn_image_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/image_picker" />
 
         <Button
             android:id="@+id/btn_image_saver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/image_saver" />
 
         <Button
             android:id="@+id/btn_image_loader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/image_loader" />
 
         <Button
             android:id="@+id/btn_viewmodel_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/viewmodel_activity" />
 
         <Button
             android:id="@+id/btn_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/pretty_banner" />
 
         <Button
             android:id="@+id/btn_drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/drawer_layout" />
 
         <Button
             android:id="@+id/btn_native_drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/native_drawer_layout" />
 
         <Button
             android:id="@+id/btn_coordinator_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
             android:text="@string/coordinator_layout" />
+
+        <Button
+            android:id="@+id/btn_swipe_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{data.clickListener}"
+            android:text="@string/swipe_view" />
 
     </LinearLayout>
 

@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.mvvm.viewmodel;
+package io.mindjet.jetgear.mvvm.viewmodel.item;
 
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
@@ -9,6 +9,7 @@ import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.ItemTabBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
+import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetimage.loader.ImageLoader;
 
 /**

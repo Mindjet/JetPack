@@ -11,4 +11,5 @@
     <string name="drawer_layout">Drawer Layout</string>
     <string name="native_drawer_layout">Native Drawer Layout</string>
     <string name="coordinator_layout">Coordinator Layout</string>
+    <string name="swipe_view">Swipe View</string>
 </resources>

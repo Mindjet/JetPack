@@ -9,7 +9,7 @@ import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
-import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetgear.network.ServiceGen;
 import io.mindjet.jetutil.hint.Toaster;
 import rx.Subscription;

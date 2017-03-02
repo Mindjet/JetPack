@@ -12,7 +12,7 @@ import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.IncludeDrawerBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.RecyclerViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**

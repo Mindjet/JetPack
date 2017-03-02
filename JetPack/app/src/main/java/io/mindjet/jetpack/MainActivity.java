@@ -12,6 +12,7 @@ import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
+import io.mindjet.jetdemo.activity.SwipeLayoutActivity;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
 import io.mindjet.jetpack.databinding.ActivityMainBinding;
 
@@ -23,18 +24,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        initListener();
+        initData();
     }
 
-    private void initListener() {
-        binding.btnImagePicker.setOnClickListener(this);
-        binding.btnImageSaver.setOnClickListener(this);
-        binding.btnImageLoader.setOnClickListener(this);
-        binding.btnViewmodelActivity.setOnClickListener(this);
-        binding.btnBanner.setOnClickListener(this);
-        binding.btnDrawerLayout.setOnClickListener(this);
-        binding.btnNativeDrawerLayout.setOnClickListener(this);
-        binding.btnCoordinatorLayout.setOnClickListener(this);
+    private void initData() {
+        binding.setData(this);
+//        binding.btnImagePicker.setOnClickListener(this);
+//        binding.btnImageSaver.setOnClickListener(this);
+//        binding.btnImageLoader.setOnClickListener(this);
+//        binding.btnViewmodelActivity.setOnClickListener(this);
+//        binding.btnBanner.setOnClickListener(this);
+//        binding.btnDrawerLayout.setOnClickListener(this);
+//        binding.btnNativeDrawerLayout.setOnClickListener(this);
+//        binding.btnCoordinatorLayout.setOnClickListener(this);
+    }
+
+    public View.OnClickListener getClickListener() {
+        return this;
     }
 
     @Override
@@ -63,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_coordinator_layout:
                 startActivity(CoordinatorLayoutActivity.intentFor(this));
+                break;
+            case R.id.btn_swipe_view:
+                startActivity(SwipeLayoutActivity.intentFor(this));
                 break;
         }
     }

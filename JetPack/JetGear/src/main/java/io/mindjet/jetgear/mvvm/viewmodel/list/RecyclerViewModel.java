@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.mvvm.viewmodel;
+package io.mindjet.jetgear.mvvm.viewmodel.list;
 
 import android.databinding.BindingAdapter;
 import android.databinding.ViewDataBinding;

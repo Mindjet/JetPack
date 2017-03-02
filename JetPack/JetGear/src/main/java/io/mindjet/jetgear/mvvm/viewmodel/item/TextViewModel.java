@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.mvvm.viewmodel;
+package io.mindjet.jetgear.mvvm.viewmodel.item;
 
 import android.view.View;
 import android.view.ViewGroup;

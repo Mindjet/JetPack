@@ -39,6 +39,10 @@
             android:name=".activity.CoordinatorLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
+        <activity
+            android:name=".activity.SwipeLayoutActivity"
+            android:label="JetGear - SwipeLayout"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
