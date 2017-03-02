@@ -1,6 +1,8 @@
 # JetPack
 A library including utils and components for Android rapid development.
 
+See [Update Log](JetPack/JetNote/update-log.markdown).
+
 ## Source Tree
 
 ```
@@ -10,7 +12,7 @@ JetPack
 	|
 	|- JetGear
 	|	|- MVVM Framework
-	|	|_ Service generator for Retrofit
+	|	|_ Service of Retrofit
 	|
 	|- JetImage
 	|	|- ImageLoader
@@ -29,8 +31,11 @@ JetPack
 	
 ```
 
-## Support Libraries
-- [RxJava]()
-- [Glide]()
-- [RecyclerView]()
-- [Glide-transformations]()
+## Dependencies
+- RxJava
+- RxAndroid
+- Glide
+- Glide-transformations
+- Retrofit
+- RecyclerView-Animators
+- PercentLayout

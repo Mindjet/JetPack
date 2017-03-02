@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--This style is used to hide status bar and title, whether the Activity extends the AppCompatActivity or Activity-->
+    <!--But it only takes effect on API 19 and later versions-->
     <style name="AppTheme.NoTitle" parent="AppTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

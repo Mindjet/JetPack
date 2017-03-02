@@ -1,9 +1,6 @@
 package io.mindjet.jetutil.file;
 
 import android.graphics.Bitmap;
-import android.os.Looper;
-
-import com.orhanobut.logger.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +33,6 @@ public class RxFile {
         try {
             String path = FileUtil.savePhoto(bitmap, folder, name);
             onSuccess(path);
-            Logger.e(Looper.myLooper().toString());
         } catch (IOException e) {
             e.printStackTrace();
             onFail(e);
