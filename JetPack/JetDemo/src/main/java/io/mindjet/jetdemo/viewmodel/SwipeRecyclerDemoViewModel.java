@@ -39,7 +39,6 @@ public class SwipeRecyclerDemoViewModel extends SwipeRecyclerViewModel<ItemImage
     protected void afterViewAttached() {
         getAdapter().disableLoadMore();
         changePbColor(R.color.colorPrimary, R.color.colorAccent);
-        changePbBackground(R.color.chocolate);
         getSwipeLayout().setSize(SwipeRefreshLayout.DEFAULT);
     }
 }

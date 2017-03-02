@@ -6,15 +6,16 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import io.mindjet.jetdemo.R;
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.databinding.IncludeCoordinatorLayoutBinding;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextViewModel;
 import io.mindjet.jetutil.hint.Toaster;
 
 /**
@@ -34,7 +35,8 @@ public class CoordinatorLayoutDemoViewModel extends CoordinatorLayoutViewModel<A
 
     @Override
     public void initTab(TabLayout tabLayout) {
-
+        setTabTextColors(R.color.white, R.color.colorAccent);
+        setIndicatorColor(R.color.colorAccent);
     }
 
     @Override
@@ -52,8 +54,6 @@ public class CoordinatorLayoutDemoViewModel extends CoordinatorLayoutViewModel<A
     @Override
     public void initFab(FloatingActionButton fab) {
         fab.setVisibility(View.GONE);
-//        fab.setImageResource(io.mindjet.jetgear.R.drawable.ic_starred);
-//        fab.setSize(FloatingActionButton.SIZE_NORMAL);
     }
 
     @Override

@@ -18,9 +18,6 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 public abstract class CoordinatorLayoutViewModel<V extends ViewInterface<IncludeCoordinatorLayoutBinding>> extends BaseViewModel<V> implements TabLayout.OnTabSelectedListener {
 
-    @ColorRes
-    private int fabColor = R.color.colorAccent;
-
     private FloatingActionButton fab;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -56,7 +53,7 @@ public abstract class CoordinatorLayoutViewModel<V extends ViewInterface<Include
         return tabLayout;
     }
 
-    public abstract void initFab(FloatingActionButton fab);
+    protected abstract void initFab(FloatingActionButton fab);
 
     public void hideFab() {
         fab.hide();
@@ -64,6 +61,18 @@ public abstract class CoordinatorLayoutViewModel<V extends ViewInterface<Include
 
     public void showFab() {
         fab.show();
+    }
+
+    protected void setTabTextColors(@ColorRes int normalColor, @ColorRes int selectedColor) {
+        tabLayout.setTabTextColors(getContext().getResources().getColor(normalColor), getContext().getResources().getColor(selectedColor));
+    }
+
+    protected void setTabBackground(@ColorRes int background) {
+        tabLayout.setBackgroundColor(getContext().getResources().getColor(background));
+    }
+
+    protected void setIndicatorColor(@ColorRes int indicatorColor) {
+        tabLayout.setSelectedTabIndicatorColor(getContext().getResources().getColor(indicatorColor));
     }
 
     @Override
@@ -94,10 +103,5 @@ public abstract class CoordinatorLayoutViewModel<V extends ViewInterface<Include
     }
 
     protected abstract void fabAction();
-
-    public void changeFabcolor(@ColorRes int color) {
-        this.fabColor = color;
-        notifyChange();
-    }
 
 }
