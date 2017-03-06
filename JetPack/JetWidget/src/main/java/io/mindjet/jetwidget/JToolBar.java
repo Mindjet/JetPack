@@ -57,6 +57,8 @@ public class JToolBar extends Toolbar {
         AppCompatImageButton navIcon = (AppCompatImageButton) getChildAt(1);
         Toolbar.LayoutParams lp = (LayoutParams) navIcon.getLayoutParams();
         lp.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
+        lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
         navIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         navIcon.setLayoutParams(lp);
     }

@@ -12,6 +12,7 @@ import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapsingImageViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.item.TextCardViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetutil.hint.Toaster;
 import io.mindjet.jetwidget.JToolBar;
@@ -54,14 +55,15 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     protected void initContent(ViewGroup container) {
         RecyclerViewModel recyclerViewModel = new RecyclerViewModel();
         ViewModelBinder.bind(container, recyclerViewModel);
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
+        recyclerViewModel.getAdapter().disableLoadMore();
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new TextCardViewModel());
     }
 
     @Override
