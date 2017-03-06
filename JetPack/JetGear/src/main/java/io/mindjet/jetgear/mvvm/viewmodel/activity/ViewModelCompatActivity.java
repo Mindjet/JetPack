@@ -2,6 +2,7 @@ package io.mindjet.jetgear.mvvm.viewmodel.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Menu;
 
 import io.mindjet.jetgear.mvvm.base.BaseCompatActivity;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
@@ -20,7 +21,7 @@ public abstract class ViewModelCompatActivity<T extends BaseViewModel> extends B
         super.onCreate(savedInstanceState);
         viewModel = giveMeViewModel();
         viewModel.setViewAttachedListener(this);
-        ViewModelBinder.bind(this, viewModel);
+        ViewModelBinder.bindCompat(this, viewModel);
     }
 
     public abstract T giveMeViewModel();
@@ -51,5 +52,10 @@ public abstract class ViewModelCompatActivity<T extends BaseViewModel> extends B
         boolean consumed = false;
         if (viewModel != null) consumed = viewModel.onBackPressed();
         if (!consumed) super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return viewModel != null && viewModel.onCreateOptionMenu(menu);
     }
 }

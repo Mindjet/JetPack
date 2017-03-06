@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.View;
 
 import io.mindjet.jetgear.BR;
@@ -99,6 +100,11 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
 
     @Override
     public boolean onBackPressed() {
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionMenu(Menu menu) {
         return false;
     }
 }

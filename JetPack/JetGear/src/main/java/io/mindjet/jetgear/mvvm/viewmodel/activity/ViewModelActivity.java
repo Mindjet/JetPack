@@ -2,6 +2,7 @@ package io.mindjet.jetgear.mvvm.viewmodel.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Menu;
 
 import io.mindjet.jetgear.mvvm.base.BaseActivity;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
@@ -44,6 +45,11 @@ public abstract class ViewModelActivity<T extends BaseViewModel> extends BaseAct
         super.onDestroy();
         if (viewModel != null)
             viewModel.onDestroy();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return viewModel != null && viewModel.onCreateOptionMenu(menu);
     }
 
     @Override

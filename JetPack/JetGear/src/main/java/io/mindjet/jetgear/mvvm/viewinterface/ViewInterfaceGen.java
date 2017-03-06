@@ -3,6 +3,7 @@ package io.mindjet.jetgear.mvvm.viewinterface;
 import android.app.Activity;
 import android.content.Context;
 import android.databinding.ViewDataBinding;
+import android.support.v7.app.AppCompatActivity;
 
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
@@ -78,6 +79,33 @@ public class ViewInterfaceGen {
         return new ActivityInterface<V>() {
             @Override
             public Activity getActivity() {
+                return activity;
+            }
+
+            @Override
+            public Context getContext() {
+                return activity;
+            }
+
+            @Override
+            public V getBinding() {
+                return binding;
+            }
+        };
+    }
+
+    /**
+     * Generate an ActivityCompatInterface with given activity and binding.
+     *
+     * @param activity
+     * @param binding
+     * @param <V>
+     * @return
+     */
+    public static <V extends ViewDataBinding> ActivityCompatInterface<V> activityCompatInterface(final AppCompatActivity activity, final V binding) {
+        return new ActivityCompatInterface<V>() {
+            @Override
+            public AppCompatActivity getActivity() {
                 return activity;
             }
 

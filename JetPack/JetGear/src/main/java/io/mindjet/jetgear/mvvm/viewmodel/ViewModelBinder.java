@@ -3,6 +3,7 @@ package io.mindjet.jetgear.mvvm.viewmodel;
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
+import io.mindjet.jetgear.mvvm.viewinterface.ActivityCompatInterface;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewinterface.AdapterInterface;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
@@ -74,5 +76,17 @@ public class ViewModelBinder {
         viewModel.onAttach(activityInterface);
     }
 
+    /**
+     * This method is used to bind ViewModel to AppCompatActivity, and use ViewModel's layout as Activity's contentView.
+     *
+     * @param activity  the activity to be bound to.
+     * @param viewModel the ViewModel to be bound.
+     * @param <V>       the binding type.
+     */
+    public static <V extends ViewDataBinding> void bindCompat(final AppCompatActivity activity, BaseViewModel<ActivityCompatInterface<V>> viewModel) {
+        final V binding = DataBindingUtil.setContentView(activity, viewModel.getLayoutId());
+        ActivityCompatInterface<V> activityCompatInterface = ViewInterfaceGen.activityCompatInterface(activity, binding);
+        viewModel.onAttach(activityCompatInterface);
+    }
 
 }
