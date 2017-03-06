@@ -23,6 +23,7 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
 
     @Override
     public void onViewAttached(View view) {
+        getSelfView().getBinding().appBarLayout.addOnOffsetChangedListener(this);
         afterViewAttached();
         initCollapsingToolbar(getSelfView().getBinding().collapsingToolBar);
         initCollapsingContent(getSelfView().getBinding().collapsingContent);
@@ -49,15 +50,6 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
 
     protected abstract void onNavIconClick(View view);
 
-    protected void setNavIcon(@DrawableRes int icon) {
-        setNavIcon(getContext().getResources().getDrawable(icon));
-    }
-
-    protected void setNavIcon(Drawable drawable) {
-        getToolbar().setNavigationIcon(drawable);
-        getToolbar().setPadding(getToolbar().getPaddingLeft(), getToolbar().getPaddingTop(), getToolbar().getPaddingRight(), getToolbar().getPaddingBottom());
-    }
-
     protected Toolbar getToolbar() {
         return getSelfView().getBinding().toolbar;
     }
@@ -68,7 +60,7 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-        jLogger.e(verticalOffset);
+//        jLogger.e(verticalOffset);
     }
 
     protected View.OnClickListener getNavIconListener() {

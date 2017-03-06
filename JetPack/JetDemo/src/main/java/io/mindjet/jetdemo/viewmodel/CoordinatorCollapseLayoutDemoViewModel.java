@@ -46,6 +46,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     @Override
     protected void initToolbar(JToolBar toolbar) {
         toolbar.setNavIcon(R.drawable.ic_drawer);
+//        toolbar.setClickable(true);
         toolbar.setNavigationOnClickListener(getNavIconListener());
     }
 

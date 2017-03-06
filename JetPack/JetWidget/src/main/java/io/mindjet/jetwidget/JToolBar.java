@@ -5,9 +5,9 @@ import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -54,15 +54,11 @@ public class JToolBar extends Toolbar {
      */
     public void setNavIcon(@DrawableRes int icon) {
         setNavigationIcon(icon);
-        AppCompatTextView tv = (AppCompatTextView) getChildAt(0);
-        tv.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int height = tv.getMeasuredHeight();
-        AppCompatImageButton btn = (AppCompatImageButton) getChildAt(1);
-        int paddingRight = getResources().getDimensionPixelOffset(R.dimen.common_gap);
-        btn.setLayoutParams(new Toolbar.LayoutParams(height, height));
-        btn.setPadding(0, 0, paddingRight, 0);
-        btn.setBackgroundDrawable(getContext().getResources().getDrawable(R.drawable.ripple_borderless));
-        btn.setScaleType(ImageView.ScaleType.CENTER);
+        AppCompatImageButton navIcon = (AppCompatImageButton) getChildAt(1);
+        Toolbar.LayoutParams lp = (LayoutParams) navIcon.getLayoutParams();
+        lp.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
+        navIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        navIcon.setLayoutParams(lp);
     }
 
     private int getStatusBarHeight() {

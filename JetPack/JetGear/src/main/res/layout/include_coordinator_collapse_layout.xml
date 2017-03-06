@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/collapse_layout_height"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -35,7 +36,7 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:contentInsetStartWithNavigation="0dp"
+                    android:background="@drawable/ripple_borderless"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/Theme.AppCompat.Light"
                     app:titleTextColor="@color/white" />

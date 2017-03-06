@@ -52,7 +52,7 @@ public class BaseBindingAdapter {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             view.setElevation(elevation);
         } else {
-            jLogger.w("Sorry, the system version of the device is under API21, elevation will take no effect.");
+            jLogger.w("Sorry, the system version of the device is under API 21, elevation will take no effect.");
         }
     }
 
