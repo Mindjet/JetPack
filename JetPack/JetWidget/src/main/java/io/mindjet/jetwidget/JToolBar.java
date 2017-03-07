@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -48,7 +47,7 @@ public class JToolBar extends Toolbar {
     }
 
     /**
-     * Note that to use this method rather than {@link Toolbar#setNavigationIcon(int)}, as this method will set the icon centered vertically.
+     * Note that to use this method rather than {@link Toolbar#setNavigationIcon(int)}, as this method will expand the click area.
      *
      * @param icon the navigation icon.
      */
@@ -56,7 +55,6 @@ public class JToolBar extends Toolbar {
         setNavigationIcon(icon);
         AppCompatImageButton navIcon = (AppCompatImageButton) getChildAt(1);
         Toolbar.LayoutParams lp = (LayoutParams) navIcon.getLayoutParams();
-        lp.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
         lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
         lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
         navIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);

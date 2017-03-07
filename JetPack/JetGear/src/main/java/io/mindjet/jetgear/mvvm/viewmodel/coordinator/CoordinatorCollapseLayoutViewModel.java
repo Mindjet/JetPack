@@ -46,8 +46,6 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
 
     protected abstract void initFab(FloatingActionButton fab);
 
-    public abstract boolean createOptionMenu(Menu menu);
-
     protected abstract void afterViewAttached();
 
     protected abstract void onNavIconClick(View view);

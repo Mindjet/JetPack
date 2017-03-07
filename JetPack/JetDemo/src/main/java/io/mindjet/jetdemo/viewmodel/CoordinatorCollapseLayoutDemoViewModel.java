@@ -4,7 +4,9 @@ import android.content.res.ColorStateList;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,7 +25,7 @@ import io.mindjet.jetwidget.JToolBar;
  * Created by Jet on 3/6/17.
  */
 
-public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseLayoutViewModel<ActivityCompatInterface<IncludeCoordinatorCollapseLayoutBinding>> {
+public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseLayoutViewModel<ActivityCompatInterface<IncludeCoordinatorCollapseLayoutBinding>> implements Toolbar.OnMenuItemClickListener {
 
     @Override
     protected void afterViewAttached() {
@@ -50,6 +52,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     protected void initToolbar(JToolBar toolbar) {
         toolbar.setNavIcon(R.drawable.ic_left_arrow);
         toolbar.setNavigationOnClickListener(getNavIconListener());
+        toolbar.setOnMenuItemClickListener(this);
     }
 
     @Override
@@ -81,8 +84,9 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     }
 
     @Override
-    public boolean createOptionMenu(Menu menu) {
-        return false;
+    public boolean onCreateOptionMenu(Menu menu) {
+        getSelfView().getCompatActivity().getMenuInflater().inflate(R.menu.menu_option, menu);
+        return true;
     }
 
     @Override
@@ -90,4 +94,9 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
         getSelfView().getCompatActivity().finish();
     }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        Toaster.toast(getContext(), item.getTitle().toString() + "item clicked");
+        return true;
+    }
 }
