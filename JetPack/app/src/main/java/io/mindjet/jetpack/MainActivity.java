@@ -18,6 +18,7 @@ import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.SwipeLayoutActivity;
+import io.mindjet.jetdemo.activity.TransitionActivity1;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
 import io.mindjet.jetgear.databinding.ItemButtonBinding;
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.coordinator_collapse_layout);
         textResList.add(R.string.swipe_view);
         textResList.add(R.string.circular_reveal);
+        textResList.add(R.string.transition_activity);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(CoordinatorCollapseLayoutActivity.intentFor(this));
         intentList.add(SwipeLayoutActivity.intentFor(this));
         intentList.add(CircularRevealActivity.intentFor(this));
+        intentList.add(TransitionActivity1.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);

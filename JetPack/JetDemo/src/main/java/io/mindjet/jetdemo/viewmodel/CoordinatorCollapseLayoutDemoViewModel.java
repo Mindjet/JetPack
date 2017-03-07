@@ -62,7 +62,6 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
         recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
         recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
         recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
     }
 
     @Override

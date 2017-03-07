@@ -14,4 +14,5 @@
     <string name="coordinator_collapse_layout">Coordinator Collapse Layout</string>
     <string name="swipe_view">Swipe View</string>
     <string name="circular_reveal">Circular Reveal</string>
+    <string name="transition_activity">Transition Activity</string>
 </resources>

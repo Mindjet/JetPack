@@ -51,6 +51,8 @@
             android:name=".activity.CircularRevealActivity"
             android:label="Circular Reveal"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.TransitionActivity2" />
+        <activity android:name=".activity.TransitionActivity1" />
     </application>
 
 </manifest>
