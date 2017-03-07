@@ -1,6 +1,7 @@
 package io.mindjet.jetdemo.viewmodel;
 
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,8 @@ import io.mindjet.jetgear.mvvm.viewinterface.ActivityCompatInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapsingImageViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.item.TextCardViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextCardViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
-import io.mindjet.jetutil.hint.Toaster;
 import io.mindjet.jetwidget.JToolBar;
 
 /**
@@ -25,7 +24,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
 
     @Override
     protected void afterViewAttached() {
-        getSelfView().getActivity().setSupportActionBar(getSelfView().getBinding().toolbar);
+        getSelfView().getCompatActivity().setSupportActionBar(getSelfView().getBinding().toolbar);
     }
 
     @Override
@@ -46,8 +45,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
 
     @Override
     protected void initToolbar(JToolBar toolbar) {
-        toolbar.setNavIcon(R.drawable.ic_drawer);
-//        toolbar.setClickable(true);
+        toolbar.setNavIcon(R.drawable.ic_left_arrow);
         toolbar.setNavigationOnClickListener(getNavIconListener());
     }
 
@@ -55,15 +53,16 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     protected void initContent(ViewGroup container) {
         RecyclerViewModel recyclerViewModel = new RecyclerViewModel();
         ViewModelBinder.bind(container, recyclerViewModel);
+        recyclerViewModel.getRecyclerView().setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewModel.getAdapter().disableLoadMore();
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
-        recyclerViewModel.getAdapter().add(new TextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
     }
 
     @Override
@@ -73,7 +72,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
 
     @Override
     protected void onNavIconClick(View view) {
-        Toaster.toast(getContext(), "Nav icon clicked!");
+        getSelfView().getCompatActivity().finish();
     }
 
 }

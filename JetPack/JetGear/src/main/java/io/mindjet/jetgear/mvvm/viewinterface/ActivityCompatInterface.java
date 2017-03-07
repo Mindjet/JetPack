@@ -9,6 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 
 public interface ActivityCompatInterface<V extends ViewDataBinding> extends ViewInterface<V> {
 
-    AppCompatActivity getActivity();
+    AppCompatActivity getCompatActivity();
 
 }

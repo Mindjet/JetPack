@@ -105,7 +105,7 @@ public class ViewInterfaceGen {
     public static <V extends ViewDataBinding> ActivityCompatInterface<V> activityCompatInterface(final AppCompatActivity activity, final V binding) {
         return new ActivityCompatInterface<V>() {
             @Override
-            public AppCompatActivity getActivity() {
+            public AppCompatActivity getCompatActivity() {
                 return activity;
             }
 
