@@ -10,11 +10,11 @@ import io.mindjet.jetutil.logger.JLogger;
  * Created by Jet on 3/2/17.
  */
 
-public class ViewUtil extends View {
+public class ColorUtil extends View {
 
-    private static JLogger jLogger = JLogger.get("ViewUtil");
+    private static JLogger jLogger = JLogger.get("ColorUtil");
 
-    public ViewUtil(Context context) {
+    public ColorUtil(Context context) {
         super(context);
     }
 

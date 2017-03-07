@@ -10,6 +10,7 @@ import io.mindjet.jetgear.databinding.IncludeHeaderBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
+import io.mindjet.jetutil.version.VersionUtil;
 
 /**
  * Created by Jet on 2/21/17.
@@ -59,7 +60,8 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
     }
 
     public boolean isSink() {
-        return builder.sink;
+        //the sink feature is only available after KitKat.
+        return VersionUtil.afterKitKat() && builder.sink;
     }
 
     public static class Builder {

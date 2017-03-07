@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
+import io.mindjet.jetdemo.activity.CircularRevealActivity;
 import io.mindjet.jetdemo.activity.CoordinatorCollapseLayoutActivity;
 import io.mindjet.jetdemo.activity.CoordinatorLayoutActivity;
 import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.coordinator_layout);
         textResList.add(R.string.coordinator_collapse_layout);
         textResList.add(R.string.swipe_view);
+        textResList.add(R.string.circular_reveal);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(CoordinatorLayoutActivity.intentFor(this));
         intentList.add(CoordinatorCollapseLayoutActivity.intentFor(this));
         intentList.add(SwipeLayoutActivity.intentFor(this));
+        intentList.add(CircularRevealActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="data"
+            type="io.mindjet.jetdemo.activity.CircularRevealActivity" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/common_gap">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="@dimen/common_gap">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/common_gap"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test_image" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Center" />
+
+        <Button
+            android:id="@+id/left_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left Top" />
+
+        <Button
+            android:id="@+id/left_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left Bottom" />
+
+        <Button
+            android:id="@+id/right_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right Top" />
+
+        <Button
+            android:id="@+id/right_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right Bottom" />
+
+    </LinearLayout>
+
+</layout>

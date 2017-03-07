@@ -27,6 +27,7 @@ public class CoordinatorLayoutDemoViewModel extends CoordinatorLayoutViewModel<A
     @Override
     public void initHeader(ViewGroup container) {
         HeaderViewModel headerViewModel = new HeaderViewModel.Builder()
+                .sink(true)
                 .leftViewModel(new HeaderItemViewModel.TitleItemViewModel("Coordinator Layout"))
                 .withElevation(false)
                 .build();

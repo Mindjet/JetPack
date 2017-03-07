@@ -13,4 +13,5 @@
     <string name="coordinator_layout">Coordinator Layout</string>
     <string name="coordinator_collapse_layout">Coordinator Collapse Layout</string>
     <string name="swipe_view">Swipe View</string>
+    <string name="circular_reveal">Circular Reveal</string>
 </resources>
