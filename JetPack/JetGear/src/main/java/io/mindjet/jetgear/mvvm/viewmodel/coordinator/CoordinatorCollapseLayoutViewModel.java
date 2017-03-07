@@ -1,9 +1,8 @@
 package io.mindjet.jetgear.mvvm.viewmodel.coordinator;
 
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -29,6 +28,7 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
         initCollapsingContent(getSelfView().getBinding().collapsingContent);
         initToolbar(getSelfView().getBinding().toolbar);
         initContent(getSelfView().getBinding().llyContainer);
+        initFab(getSelfView().getBinding().fab);
     }
 
     @Override
@@ -43,6 +43,8 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
     protected abstract void initContent(ViewGroup container);
 
     protected abstract void initToolbar(JToolBar toolbar);
+
+    protected abstract void initFab(FloatingActionButton fab);
 
     public abstract boolean createOptionMenu(Menu menu);
 

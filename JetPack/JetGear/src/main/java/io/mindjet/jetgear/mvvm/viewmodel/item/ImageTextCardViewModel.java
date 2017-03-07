@@ -17,7 +17,7 @@ import rx.functions.Action0;
 public class ImageTextCardViewModel extends BaseViewModel<ViewInterface<ItemImageTextCardviewBinding>> {
 
     private String text = UUID.randomUUID().toString();
-    private String imageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488450197&di=a151ec971c05b732bd97e7a5d836a4e2&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.xiazaizhijia.com%2Fuploads%2Fallimg%2F150926%2F195-15092615352MT.jpg";
+    private String imageUrl = "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2077732093,2100397646&fm=21&gp=0.jpg";
     private Action0 action;
 
     public String getText() {

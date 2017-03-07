@@ -1,6 +1,8 @@
 package io.mindjet.jetdemo.viewmodel;
 
+import android.content.res.ColorStateList;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.Menu;
 import android.view.View;
@@ -14,6 +16,7 @@ import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapsingImageViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextCardViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
+import io.mindjet.jetutil.hint.Toaster;
 import io.mindjet.jetwidget.JToolBar;
 
 /**
@@ -47,6 +50,19 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     protected void initToolbar(JToolBar toolbar) {
         toolbar.setNavIcon(R.drawable.ic_left_arrow);
         toolbar.setNavigationOnClickListener(getNavIconListener());
+    }
+
+    @Override
+    protected void initFab(FloatingActionButton fab) {
+        fab.setSize(FloatingActionButton.SIZE_AUTO);
+        fab.setImageResource(R.drawable.ic_drawer);
+        fab.setBackgroundTintList(ColorStateList.valueOf(getContext().getResources().getColor(R.color.colorPrimary)));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toaster.toast(getContext(), "Floating action button clicked!");
+            }
+        });
     }
 
     @Override
