@@ -97,11 +97,11 @@ public abstract class CoordinatorLayoutViewModel<V extends ViewInterface<Include
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fabAction();
+                onFabClick();
             }
         };
     }
 
-    protected abstract void fabAction();
+    protected abstract void onFabClick();
 
 }

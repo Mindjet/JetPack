@@ -12,6 +12,7 @@ import io.mindjet.jetdemo.activity.BannerActivity;
 import io.mindjet.jetdemo.activity.CircularRevealActivity;
 import io.mindjet.jetdemo.activity.CoordinatorCollapseLayoutActivity;
 import io.mindjet.jetdemo.activity.CoordinatorLayoutActivity;
+import io.mindjet.jetdemo.activity.DrawerCoordinatorLayoutActivity;
 import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.native_drawer_layout);
         textResList.add(R.string.coordinator_layout);
         textResList.add(R.string.coordinator_collapse_layout);
+        textResList.add(R.string.drawer_coordinator_layout);
         textResList.add(R.string.swipe_view);
         textResList.add(R.string.circular_reveal);
         textResList.add(R.string.transition_activity);
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(NativeDrawerLayoutActivity.intentFor(this));
         intentList.add(CoordinatorLayoutActivity.intentFor(this));
         intentList.add(CoordinatorCollapseLayoutActivity.intentFor(this));
+        intentList.add(DrawerCoordinatorLayoutActivity.intentFor(this));
         intentList.add(SwipeLayoutActivity.intentFor(this));
         intentList.add(CircularRevealActivity.intentFor(this));
         intentList.add(TransitionActivity1.intentFor(this));

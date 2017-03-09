@@ -58,7 +58,7 @@ public class CoordinatorLayoutDemoViewModel extends CoordinatorLayoutViewModel<A
     }
 
     @Override
-    public void fabAction() {
+    public void onFabClick() {
         Toaster.toast(getContext(), "Fab is clicked.");
     }
 

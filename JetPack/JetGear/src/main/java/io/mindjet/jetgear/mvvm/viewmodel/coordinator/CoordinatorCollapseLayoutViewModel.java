@@ -4,7 +4,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,12 +17,13 @@ import io.mindjet.jetwidget.JToolBar;
  * Created by Jet on 3/2/17.
  */
 
-public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface<IncludeCoordinatorCollapseLayoutBinding>> extends BaseViewModel<V> implements AppBarLayout.OnOffsetChangedListener {
+public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface<IncludeCoordinatorCollapseLayoutBinding>> extends BaseViewModel<V> implements AppBarLayout.OnOffsetChangedListener, Toolbar.OnMenuItemClickListener {
 
     @Override
     public void onViewAttached(View view) {
         getSelfView().getBinding().appBarLayout.addOnOffsetChangedListener(this);
         afterViewAttached();
+        initListener();
         initCollapsingToolbar(getSelfView().getBinding().collapsingToolBar);
         initCollapsingContent(getSelfView().getBinding().collapsingContent);
         initToolbar(getSelfView().getBinding().toolbar);
@@ -48,10 +48,32 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
 
     protected abstract void afterViewAttached();
 
-    protected abstract void onNavIconClick(View view);
+    protected abstract void onNavigationIconClick();
+
+    protected abstract void onFabClick();
+
+    private void initListener() {
+        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNavigationIconClick();
+            }
+        });
+        getToolbar().setOnMenuItemClickListener(this);
+        getFab().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFabClick();
+            }
+        });
+    }
 
     protected Toolbar getToolbar() {
         return getSelfView().getBinding().toolbar;
+    }
+
+    protected FloatingActionButton getFab() {
+        return getSelfView().getBinding().fab;
     }
 
     protected CollapsingToolbarLayout getCollapsingToolbarLayout() {
@@ -61,15 +83,6 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 //        jLogger.e(verticalOffset);
-    }
-
-    protected View.OnClickListener getNavIconListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onNavIconClick(v);
-            }
-        };
     }
 
 }

@@ -4,10 +4,8 @@ import android.content.res.ColorStateList;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
@@ -25,7 +23,7 @@ import io.mindjet.jetwidget.JToolBar;
  * Created by Jet on 3/6/17.
  */
 
-public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseLayoutViewModel<ActivityCompatInterface<IncludeCoordinatorCollapseLayoutBinding>> implements Toolbar.OnMenuItemClickListener {
+public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseLayoutViewModel<ActivityCompatInterface<IncludeCoordinatorCollapseLayoutBinding>> {
 
     @Override
     protected void afterViewAttached() {
@@ -51,8 +49,6 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     @Override
     protected void initToolbar(JToolBar toolbar) {
         toolbar.setNavIcon(R.drawable.ic_left_arrow);
-        toolbar.setNavigationOnClickListener(getNavIconListener());
-        toolbar.setOnMenuItemClickListener(this);
     }
 
     @Override
@@ -60,12 +56,6 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
         fab.setSize(FloatingActionButton.SIZE_AUTO);
         fab.setImageResource(R.drawable.ic_drawer);
         fab.setBackgroundTintList(ColorStateList.valueOf(getContext().getResources().getColor(R.color.colorPrimary)));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toaster.toast(getContext(), "Floating action button clicked!");
-            }
-        });
     }
 
     @Override
@@ -84,19 +74,24 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     }
 
     @Override
+    protected void onNavigationIconClick() {
+        getSelfView().getCompatActivity().finish();
+    }
+
+    @Override
+    protected void onFabClick() {
+        Toaster.toast(getContext(), "Floating action button clicked!");
+    }
+
+    @Override
     public boolean onCreateOptionMenu(Menu menu) {
         getSelfView().getCompatActivity().getMenuInflater().inflate(R.menu.menu_option, menu);
         return true;
     }
 
     @Override
-    protected void onNavIconClick(View view) {
-        getSelfView().getCompatActivity().finish();
-    }
-
-    @Override
     public boolean onMenuItemClick(MenuItem item) {
-        Toaster.toast(getContext(), item.getTitle().toString() + "item clicked");
+        Toaster.toast(getContext(), item.getTitle().toString() + " item clicked");
         return true;
     }
 }

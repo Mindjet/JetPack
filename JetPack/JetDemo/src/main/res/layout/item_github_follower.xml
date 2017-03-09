@@ -8,33 +8,42 @@
             type="io.mindjet.jetdemo.viewmodel.GithubFollowerViewModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/ripple_white"
-        android:clickable="true"
-        android:onClick="@{data.clickListener}"
-        android:orientation="horizontal"
-        app:elevation="@{true}">
+        android:layout_margin="@dimen/common_gap_small"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
 
-        <ImageView
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="5dp"
-            app:circle="@{data.avatarUrl}"
-            app:placeHolder="@{0}" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:padding="5dp"
-            android:text="@{data.name}"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:background="@drawable/ripple_default"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:onClick="@{data.clickListener}"
+            android:orientation="vertical"
+            android:padding="@dimen/common_gap_small">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:transitionName="@string/transition_name_image"
+                app:circle="@{data.avatarUrl}"
+                app:placeHolder="@{0}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@{data.name}"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </layout>

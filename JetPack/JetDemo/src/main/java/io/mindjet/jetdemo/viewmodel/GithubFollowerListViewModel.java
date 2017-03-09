@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.mindjet.jetdemo.R;
+import io.mindjet.jetdemo.listener.IFollowerListener;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.databinding.ItemImageTextBinding;
@@ -23,23 +24,36 @@ import rx.schedulers.Schedulers;
 
 public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageTextBinding> {
 
+    private String userName;
     private GithubService service;
     private int page = 1;
     private Subscription followerSub;
 
+    private IFollowerListener iFollowerListener;
+
     public GithubFollowerListViewModel() {
+        this("JakeWharton");
+    }
+
+    public GithubFollowerListViewModel(String userName) {
+        this.userName = userName;
         service = ServiceGen.create(GithubService.class);
+    }
+
+    public GithubFollowerListViewModel callback(IFollowerListener iFollowerListener) {
+        this.iFollowerListener = iFollowerListener;
+        return this;
     }
 
     @Override
     protected void initRecyclerView() {
-        getRecyclerView().setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        getRecyclerView().setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         getRecyclerView().setBackground(getContext().getResources().getDrawable(R.color.rcv_gray_light));
     }
 
     @Override
     public void onLoadMore() {
-        followerSub = service.follower("JakeWharton", page, 10)
+        followerSub = service.follower(userName, page, 10)
                 .throttleLast(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -50,7 +64,7 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
                             getAdapter().finishLoadMore(false);
                         } else {
                             for (Follower follower : followers) {
-                                GithubFollowerViewModel vm = new GithubFollowerViewModel(follower);
+                                GithubFollowerViewModel vm = new GithubFollowerViewModel(follower).callback(iFollowerListener);
                                 getAdapter().add(vm);
                             }
                             getAdapter().updateAndContinue();

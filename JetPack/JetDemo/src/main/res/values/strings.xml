@@ -8,4 +8,8 @@
     <string name="save_photo_high_quality">Save Photo by High Quality</string>
     <string name="save_photo_low_quality">Save Photo by Low Quality</string>
     <string name="goto_directory">Go to Directory</string>
+
+    <string name="open_drawer">open drawer</string>
+    <string name="close_drawer">close_drawer</string>
+
 </resources>
