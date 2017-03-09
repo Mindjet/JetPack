@@ -58,6 +58,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
         <activity android:name=".activity.FollowerDetailActivity" />
+        <activity
+            android:name=".activity.ZhihuDemoActivity"
+            android:theme="@style/AppTheme.NoTitle" />
     </application>
 
 </manifest>

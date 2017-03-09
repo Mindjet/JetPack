@@ -19,8 +19,8 @@ import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.SwipeLayoutActivity;
-import io.mindjet.jetdemo.activity.TransitionActivity1;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
+import io.mindjet.jetdemo.activity.ZhihuDemoActivity;
 import io.mindjet.jetgear.databinding.ItemButtonBinding;
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
@@ -32,9 +32,9 @@ import rx.functions.Action0;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private List<Intent> intentList = new ArrayList<>();
 
     private List<Integer> textResList = new ArrayList<>();
-    private List<Intent> intentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(DrawerCoordinatorLayoutActivity.intentFor(this));
         intentList.add(SwipeLayoutActivity.intentFor(this));
         intentList.add(CircularRevealActivity.intentFor(this));
-        intentList.add(TransitionActivity1.intentFor(this));
+//        intentList.add(TransitionActivity1.intentFor(this));
+        intentList.add(new Intent(this, ZhihuDemoActivity.class));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);
