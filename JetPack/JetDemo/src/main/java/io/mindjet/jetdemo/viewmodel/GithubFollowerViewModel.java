@@ -46,7 +46,6 @@ public class GithubFollowerViewModel extends BaseViewModel<AdapterInterface<Item
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toaster.toast(getContext(), name.get());
                 if (iFollowerListener != null)
                     iFollowerListener.onFollowerClick(getSelfView().getViewHolder().getLayoutPosition(), GithubFollowerViewModel.this);
             }

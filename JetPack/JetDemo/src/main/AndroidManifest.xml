@@ -57,6 +57,7 @@
             android:name=".activity.DrawerCoordinatorLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
+        <activity android:name=".activity.FollowerDetailActivity" />
     </application>
 
 </manifest>

@@ -18,7 +18,7 @@ public class ViewModelActivityDemo extends ViewModelActivity<GithubFollowerListV
 
     @Override
     public GithubFollowerListViewModel giveMeViewModel() {
-        return new GithubFollowerListViewModel();
+        return new GithubFollowerListViewModel("Mindjet");
     }
 
     @Override
