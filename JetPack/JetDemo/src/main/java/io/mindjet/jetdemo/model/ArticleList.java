@@ -8,12 +8,12 @@ import java.util.List;
  * Created by Mindjet on 2017/3/9.
  */
 
-public class ZZ {
+public class ArticleList {
 
     @SerializedName("date")
     private String date;
     @SerializedName("stories")
-    private List<ZZItem> stories;
+    private List<ArticleItem> stories;
 
     public String getDate() {
         return date;
@@ -23,11 +23,11 @@ public class ZZ {
         this.date = date;
     }
 
-    public List<ZZItem> getStories() {
+    public List<ArticleItem> getStories() {
         return stories;
     }
 
-    public void setStories(List<ZZItem> stories) {
+    public void setStories(List<ArticleItem> stories) {
         this.stories = stories;
     }
 }

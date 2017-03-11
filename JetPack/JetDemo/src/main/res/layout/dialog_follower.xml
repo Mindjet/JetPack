@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="io.mindjet.jetdemo.dialog.FollowerDialog" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:elevation="@{true}">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_gap_small"
+            android:background="@color/colorAccent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_gap">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/avatar_width"
+                android:layout_height="@dimen/avatar_height"
+                app:circle="@{data._follower.avatarUrl}" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_gap_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_large"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <include layout="@layout/include_divider" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_sent_gray"
+            android:drawablePadding="@dimen/common_gap_medium"
+            android:paddingBottom="@dimen/common_gap_small"
+            android:paddingLeft="@dimen/common_gap"
+            android:paddingRight="@dimen/common_gap_small"
+            android:paddingTop="@dimen/common_gap_small"
+            android:text="@{data._follower.email}"
+            android:textColor="@color/black"
+            android:visibility="@{data._follower.email!=null}" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/common_gap_medium"
+            android:paddingBottom="@dimen/common_gap_small"
+            android:paddingLeft="@dimen/common_gap"
+            android:paddingRight="@dimen/common_gap_small"
+            android:paddingTop="@dimen/common_gap_small"
+            android:text="@{data._follower.location}"
+            android:textColor="@color/black"
+            android:visibility="@{data._follower.location!=null}" />
+
+        <TextView
+            android:id="@+id/repo_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/common_gap_medium"
+            android:paddingBottom="@dimen/common_gap_small"
+            android:paddingLeft="@dimen/common_gap"
+            android:paddingRight="@dimen/common_gap_small"
+            android:paddingTop="@dimen/common_gap_small"
+            android:text="@{data._follower.publicRepos}"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/follower_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/common_gap_medium"
+            android:paddingBottom="@dimen/common_gap_small"
+            android:paddingLeft="@dimen/common_gap"
+            android:paddingRight="@dimen/common_gap_small"
+            android:paddingTop="@dimen/common_gap_small"
+            android:text="@{data._follower.followers}"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</layout>

@@ -18,9 +18,10 @@ import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
+import io.mindjet.jetdemo.activity.ReaderDemoActivity;
 import io.mindjet.jetdemo.activity.SwipeLayoutActivity;
+import io.mindjet.jetdemo.activity.TransitionActivity1;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
-import io.mindjet.jetdemo.activity.ZhihuDemoActivity;
 import io.mindjet.jetgear.databinding.ItemButtonBinding;
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.swipe_view);
         textResList.add(R.string.circular_reveal);
         textResList.add(R.string.transition_activity);
+        textResList.add(R.string.open_api);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -75,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(DrawerCoordinatorLayoutActivity.intentFor(this));
         intentList.add(SwipeLayoutActivity.intentFor(this));
         intentList.add(CircularRevealActivity.intentFor(this));
-//        intentList.add(TransitionActivity1.intentFor(this));
-        intentList.add(new Intent(this, ZhihuDemoActivity.class));
+        intentList.add(TransitionActivity1.intentFor(this));
+        intentList.add(ReaderDemoActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);
@@ -88,9 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).build());
         }
-
         adapter.notifyDataSetChanged();
-
     }
 
 }

@@ -3,7 +3,7 @@ package io.mindjet.jetdemo.viewmodel;
 import android.support.v7.widget.GridLayoutManager;
 
 import io.mindjet.jetdemo.databinding.ItemMovieBinding;
-import io.mindjet.jetdemo.model.Movie;
+import io.mindjet.jetdemo.model.MovieList;
 import io.mindjet.jetdemo.model.MovieItem;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
@@ -34,10 +34,10 @@ public class MovieListViewModel extends RecyclerViewModel<ItemMovieBinding> {
         service.getMovie()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Movie>() {
+                .subscribe(new Action1<MovieList>() {
                     @Override
-                    public void call(Movie movie) {
-                        for (MovieItem item : movie.getData()) {
+                    public void call(MovieList movieList) {
+                        for (MovieItem item : movieList.getData()) {
                             getAdapter().add(new MovieItemViewModel(item));
                         }
                         getAdapter().notifyDataSetChanged();

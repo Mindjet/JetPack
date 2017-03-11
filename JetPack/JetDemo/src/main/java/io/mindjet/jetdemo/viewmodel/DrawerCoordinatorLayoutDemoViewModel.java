@@ -1,18 +1,14 @@
 package io.mindjet.jetdemo.viewmodel;
 
-import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.mindjet.jetdemo.Constant;
 import io.mindjet.jetdemo.R;
-import io.mindjet.jetdemo.activity.FollowerDetailActivity;
+import io.mindjet.jetdemo.dialog.FollowerDialog;
 import io.mindjet.jetdemo.listener.IFollowerListener;
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.databinding.IncludeDrawerCoordinatorLayoutBinding;
@@ -82,10 +78,10 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
                         .content("DRAWER COORDINATOR")
                         .icon("https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg")
                         .build())
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_draft))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_sent))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_starred))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_inbox))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_draft_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_sent_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_starred_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_inbox_gray))
                 .build();
         ViewModelBinder.bind(container, viewModel);
     }
@@ -112,13 +108,7 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
 
     @Override
     public void onFollowerClick(int position, GithubFollowerViewModel item) {
-        Pair<View, String> pairImage = new Pair<>((View) item.getSelfView().getBinding().ivAvatar, getContext().getResources().getString(R.string.transition_name_image));
-        Pair<View, String> pairText = new Pair<>((View) item.getSelfView().getBinding().tvName, getContext().getResources().getString(R.string.transition_name_text));
-        ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(getSelfView().getActivity(), pairImage, pairText);
-        Intent intent = FollowerDetailActivity.intentFor(getContext());
-        intent.putExtra(Constant.INTENT_AVATAR, item.avatarUrl.get());
-        intent.putExtra(Constant.INTENT_NAME, item.name.get());
-        getSelfView().getActivity().startActivity(intent, option.toBundle());
+        new FollowerDialog(getContext(), item.name.get()).show();
     }
 
     private class Adapter extends ViewPagerAdapter<GithubFollowerListViewModel> {
@@ -128,5 +118,5 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
             return binding.getRoot();
         }
     }
-
+    
 }

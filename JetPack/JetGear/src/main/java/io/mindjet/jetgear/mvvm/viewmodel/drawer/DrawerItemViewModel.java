@@ -1,6 +1,5 @@
 package io.mindjet.jetgear.mvvm.viewmodel.drawer;
 
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.view.View;
 
@@ -16,7 +15,7 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 public class DrawerItemViewModel extends BaseViewModel<ViewInterface<ItemDrawerBinding>> {
 
     private String content = "...";
-    private int icon = R.drawable.ic_inbox;
+    private int icon = R.drawable.ic_inbox_gray;
 
     @Override
     public void onViewAttached(View view) {

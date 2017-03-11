@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Mindjet on 2017/3/9.
  */
 
-public class ZZItem {
+public class ArticleItem {
 
     @SerializedName("images")
     private List<String> images;

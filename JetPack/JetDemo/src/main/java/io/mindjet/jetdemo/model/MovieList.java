@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Mindjet on 2017/3/9.
  */
 
-public class Movie {
+public class MovieList {
 
     @SerializedName("date")
     private String date;

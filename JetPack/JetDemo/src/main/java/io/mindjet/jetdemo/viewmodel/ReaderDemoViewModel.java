@@ -26,7 +26,7 @@ import io.mindjet.jetgear.mvvm.viewmodel.integrated.DrawerCoordinatorLayoutViewM
  * Created by Mindjet on 2017/3/9.
  */
 
-public class ZhihuDemoViewModel extends DrawerCoordinatorLayoutViewModel<ActivityInterface<IncludeDrawerCoordinatorLayoutBinding>> {
+public class ReaderDemoViewModel extends DrawerCoordinatorLayoutViewModel<ActivityInterface<IncludeDrawerCoordinatorLayoutBinding>> {
 
     @Override
     protected void afterViewAttached(IncludeDrawerCoordinatorLayoutBinding binding) {
@@ -78,10 +78,10 @@ public class ZhihuDemoViewModel extends DrawerCoordinatorLayoutViewModel<Activit
                         .content("DRAWER COORDINATOR")
                         .icon("https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg")
                         .build())
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_draft))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_sent))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_starred))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_inbox))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_draft_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_sent_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_starred_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_inbox_gray))
                 .build();
         ViewModelBinder.bind(container, viewModel);
     }
@@ -95,7 +95,7 @@ public class ZhihuDemoViewModel extends DrawerCoordinatorLayoutViewModel<Activit
     protected void initViewPager(ViewPager viewPager) {
         ZZAdapter adapter = new ZZAdapter();
         viewPager.setAdapter(adapter);
-        adapter.addWithTitle(new ZZListViewModel(), "知乎日报");
+        adapter.addWithTitle(new ArticleListViewModel(), "知乎日报");
         adapter.addWithTitle(new MovieListViewModel(), "最新影片");
     }
 

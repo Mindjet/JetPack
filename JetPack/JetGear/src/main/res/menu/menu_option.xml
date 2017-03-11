@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/option_item_sent"
-        android:icon="@drawable/ic_sent"
+        android:icon="@drawable/ic_sent_gray"
         android:orderInCategory="0"
         android:title="sent"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/option_item_star"
-        android:icon="@drawable/ic_starred"
+        android:icon="@drawable/ic_starred_gray"
         android:orderInCategory="1"
         android:title="star"
         app:showAsAction="always" />

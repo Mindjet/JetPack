@@ -59,7 +59,7 @@
             android:theme="@style/AppTheme.NoTitle" />
         <activity android:name=".activity.FollowerDetailActivity" />
         <activity
-            android:name=".activity.ZhihuDemoActivity"
+            android:name=".activity.ReaderDemoActivity"
             android:theme="@style/AppTheme.NoTitle" />
     </application>
 

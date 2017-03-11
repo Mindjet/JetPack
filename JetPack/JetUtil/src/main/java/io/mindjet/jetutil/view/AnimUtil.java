@@ -2,6 +2,7 @@ package io.mindjet.jetutil.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 
@@ -17,7 +18,7 @@ public class AnimUtil {
     private static JLogger jLogger = JLogger.get("AnimUtil");
     private final static String REVEAL_WARNING = "Your version is too old to support reveal animation. Please update to Lollipop or later.";
 
-    public static void reveal(final View view, final int duration, final int centerX, final int centerY, final float startRadius, final float endRadius) {
+    private static void reveal(final View view, final int duration, final int centerX, final int centerY, final float startRadius, final float endRadius) {
         versionCheck(new Runnable() {
             @Override
             public void run() {
@@ -29,7 +30,7 @@ public class AnimUtil {
         }, REVEAL_WARNING);
     }
 
-    public static void conceal(final View view, final int duration, final int centerX, final int centerY, final float startRadius, final float endRadius) {
+    private static void conceal(final View view, final int duration, final int centerX, final int centerY, final float startRadius, final float endRadius) {
         versionCheck(new Runnable() {
             @Override
             public void run() {

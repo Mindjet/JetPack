@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
@@ -17,6 +18,8 @@ import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutVi
 import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextCardViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetutil.hint.Toaster;
+import io.mindjet.jetutil.task.Task;
+import io.mindjet.jetutil.view.AnimUtil;
 import io.mindjet.jetwidget.JToolBar;
 
 /**
@@ -53,9 +56,17 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
 
     @Override
     protected void initFab(FloatingActionButton fab) {
+        fab.setVisibility(View.INVISIBLE);
         fab.setSize(FloatingActionButton.SIZE_AUTO);
         fab.setImageResource(R.drawable.ic_drawer);
         fab.setBackgroundTintList(ColorStateList.valueOf(getContext().getResources().getColor(R.color.colorPrimary)));
+        //Need to wrap in a runnable as the view is not attached right now.
+        Task.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AnimUtil.revealCenter(getFab(), 600);
+            }
+        });
     }
 
     @Override
@@ -94,4 +105,5 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
         Toaster.toast(getContext(), item.getTitle().toString() + " item clicked");
         return true;
     }
+
 }

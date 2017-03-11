@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.viewmodel.ZZItemViewModel" />
+            type="io.mindjet.jetdemo.viewmodel.ArticleItemViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

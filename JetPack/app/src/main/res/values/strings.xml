@@ -16,4 +16,5 @@
     <string name="swipe_view">Swipe View</string>
     <string name="circular_reveal">Circular Reveal</string>
     <string name="transition_activity">Transition Activity</string>
+    <string name="open_api">Open Api</string>
 </resources>
