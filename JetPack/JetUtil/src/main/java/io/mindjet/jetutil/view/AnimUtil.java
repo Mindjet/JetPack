@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 
+import io.mindjet.jetutil.R;
 import io.mindjet.jetutil.logger.JLogger;
 import io.mindjet.jetutil.version.VersionUtil;
 
@@ -15,6 +16,7 @@ import io.mindjet.jetutil.version.VersionUtil;
 
 public class AnimUtil {
 
+    private static boolean takeEffect = VersionUtil.afterLollipop();
     private static JLogger jLogger = JLogger.get("AnimUtil");
     private final static String REVEAL_WARNING = "Your version is too old to support reveal animation. Please update to Lollipop or later.";
 
@@ -96,10 +98,47 @@ public class AnimUtil {
     }
 
     private static void versionCheck(Runnable runnable, String message) {
-        if (VersionUtil.afterLollipop()) {
+        if (takeEffect) {
             runnable.run();
         } else {
             jLogger.w(message);
+        }
+    }
+
+    public static void revealActivity(final Activity activity, final int duration, final int centerX, final int centerY) {
+        versionCheck(new Runnable() {
+            @Override
+            public void run() {
+                final View rootView = activity.findViewById(android.R.id.content);
+                rootView.setVisibility(View.INVISIBLE);
+                rootView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                    @Override
+                    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                        int newX = centerX - left;
+                        int newY = centerY - top;
+                        rootView.removeOnLayoutChangeListener(this);
+                        reveal(rootView, duration, newX, newY, 0, getMaxRadius(rootView) * 2);
+                    }
+                });
+            }
+        }, REVEAL_WARNING);
+    }
+
+    public static void concealActivity(final Activity activity, final int duration, final int centerX, int centerY) {
+        if (takeEffect) {
+            final View rootView = activity.findViewById(android.R.id.content);
+            Animator animator = ViewAnimationUtils.createCircularReveal(rootView, centerX, centerY, getMaxRadius(rootView) * 2, 0);
+            animator.setDuration(duration);
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    rootView.setVisibility(View.GONE);
+                    activity.finish();
+                }
+            });
+            animator.start();
+        } else {
+            activity.finish();
         }
     }
 

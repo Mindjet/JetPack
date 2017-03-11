@@ -31,6 +31,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     @Override
     protected void afterViewAttached() {
         getSelfView().getCompatActivity().setSupportActionBar(getSelfView().getBinding().toolbar);
+        AnimUtil.revealActivity(getSelfView().getCompatActivity(), 500, 100, 100);
     }
 
     @Override

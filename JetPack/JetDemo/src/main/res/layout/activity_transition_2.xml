@@ -13,8 +13,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@color/gray_translucent"
-        android:orientation="vertical"
-        app:enable_changeAnim="@{true}">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/image"

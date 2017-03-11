@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 
 import io.mindjet.jetdemo.Constant;
 import io.mindjet.jetdemo.R;
@@ -44,27 +43,15 @@ public class TransitionActivity1 extends BaseDemoActivity {
                         .startActivity(intent);
             }
         });
-//        binding.target2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = TransitionActivity2.intentFor(TransitionActivity1.this);
-//                intent.putExtra(Constant.INTENT_AVATAR, imageUrl);
-//                TransManager.get()
-//                        .with(binding.image2)
-//                        .startActivity(intent);
-//            }
-//        });
         binding.target2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     Intent intent = TransitionActivity2.intentFor(TransitionActivity1.this);
                     intent.putExtra(Constant.INTENT_AVATAR, imageUrl);
-                    jLogger.e(event.getRawY());
-                    TransManager.get()
-                            .with(binding.image2)
-                            .pivot(((int) event.getRawX()), ((int) event.getRawY()))
-                            .startActivity(intent);
+                    intent.putExtra(Constant.INTENT_CENTERX, event.getRawX());
+                    intent.putExtra(Constant.INTENT_CENTERY, event.getRawY());
+                    startActivity(intent);
                 }
                 return true;
             }
