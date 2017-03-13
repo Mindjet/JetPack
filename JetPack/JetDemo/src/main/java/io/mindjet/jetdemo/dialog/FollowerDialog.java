@@ -11,6 +11,7 @@ import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.BaseDialog;
 import io.mindjet.jetgear.network.ServiceGen;
+import io.mindjet.jetutil.anim.RevealUtil;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -38,8 +39,9 @@ public class FollowerDialog extends BaseDialog {
     @Override
     protected void beforeInitView() {
         binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_follower, null, true);
-        binding.setData(this);
         setContentView(binding.getRoot());
+        binding.setData(this);
+        RevealUtil.revealDialog(this, 800);
     }
 
     @Override

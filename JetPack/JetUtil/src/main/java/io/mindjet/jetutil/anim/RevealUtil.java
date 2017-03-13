@@ -3,6 +3,7 @@ package io.mindjet.jetutil.anim;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.app.Dialog;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 
@@ -162,4 +163,20 @@ public class RevealUtil {
         }
     }
 
+    public static void revealDialog(final Dialog dialog, final int duration) {
+        versionCheck(new Runnable() {
+            @Override
+            public void run() {
+                final View rootView = dialog.findViewById(android.R.id.content);
+                rootView.setVisibility(View.INVISIBLE);
+                rootView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+                    @Override
+                    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                        rootView.removeOnLayoutChangeListener(this);
+                        revealRightBottom(rootView, duration);
+                    }
+                });
+            }
+        }, REVEAL_WARNING);
+    }
 }

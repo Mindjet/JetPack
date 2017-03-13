@@ -47,6 +47,8 @@ public class TransitionActivity2 extends BaseDemoActivity {
 
     @Override
     public void onBackPressed() {
-        RevealUtil.concealActivity(this, 500, centerX, centerY);
+        if (getIntent().getFloatExtra(Constant.INTENT_CENTERX, 0) != 0)
+            RevealUtil.concealActivity(this, 500, centerX, centerY);
+        else super.onBackPressed();
     }
 }
