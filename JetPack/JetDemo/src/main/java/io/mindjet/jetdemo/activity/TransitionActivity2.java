@@ -7,7 +7,7 @@ import android.databinding.DataBindingUtil;
 import io.mindjet.jetdemo.Constant;
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityTransition2Binding;
-import io.mindjet.jetutil.view.AnimUtil;
+import io.mindjet.jetutil.anim.RevealUtil;
 
 /**
  * Created by Jet on 3/7/17.
@@ -31,7 +31,7 @@ public class TransitionActivity2 extends BaseDemoActivity {
         if (getIntent().getFloatExtra(Constant.INTENT_CENTERX, 0) != 0) {
             centerX = (int) getIntent().getFloatExtra(Constant.INTENT_CENTERX, 0);
             centerY = (int) getIntent().getFloatExtra(Constant.INTENT_CENTERY, 0);
-            AnimUtil.revealActivity(this, 500, centerX, centerY);
+            RevealUtil.revealActivity(this, 500, centerX, centerY);
         }
     }
 
@@ -47,6 +47,6 @@ public class TransitionActivity2 extends BaseDemoActivity {
 
     @Override
     public void onBackPressed() {
-        AnimUtil.concealActivity(this, 500, centerX, centerY);
+        RevealUtil.concealActivity(this, 500, centerX, centerY);
     }
 }

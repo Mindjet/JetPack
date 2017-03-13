@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityCircularRevealBinding;
-import io.mindjet.jetutil.view.AnimUtil;
+import io.mindjet.jetutil.anim.RevealUtil;
 
 /**
  * Created by Jet on 3/7/17.
@@ -35,9 +35,9 @@ public class CircularRevealActivity extends BaseDemoActivity {
             @Override
             public void onClick(View v) {
                 if (imageView.getVisibility() == View.VISIBLE) {
-                    AnimUtil.concealCenter(imageView, 1000);
+                    RevealUtil.concealCenter(imageView, 1000);
                 } else {
-                    AnimUtil.revealCenter(imageView, 1000);
+                    RevealUtil.revealCenter(imageView, 1000);
                 }
             }
         });
@@ -45,9 +45,9 @@ public class CircularRevealActivity extends BaseDemoActivity {
             @Override
             public void onClick(View v) {
                 if (imageView.getVisibility() == View.VISIBLE) {
-                    AnimUtil.concealLeftTop(imageView, 1000);
+                    RevealUtil.concealLeftTop(imageView, 1000);
                 } else {
-                    AnimUtil.revealLeftTop(imageView, 1000);
+                    RevealUtil.revealLeftTop(imageView, 1000);
                 }
             }
         });
@@ -55,9 +55,9 @@ public class CircularRevealActivity extends BaseDemoActivity {
             @Override
             public void onClick(View v) {
                 if (imageView.getVisibility() == View.VISIBLE) {
-                    AnimUtil.concealLeftBottom(imageView, 1000);
+                    RevealUtil.concealLeftBottom(imageView, 1000);
                 } else {
-                    AnimUtil.revealLeftBottom(imageView, 1000);
+                    RevealUtil.revealLeftBottom(imageView, 1000);
                 }
             }
         });
@@ -65,9 +65,9 @@ public class CircularRevealActivity extends BaseDemoActivity {
             @Override
             public void onClick(View v) {
                 if (imageView.getVisibility() == View.VISIBLE) {
-                    AnimUtil.concealRightTop(imageView, 1000);
+                    RevealUtil.concealRightTop(imageView, 1000);
                 } else {
-                    AnimUtil.revealRightTop(imageView, 1000);
+                    RevealUtil.revealRightTop(imageView, 1000);
                 }
             }
         });
@@ -75,9 +75,9 @@ public class CircularRevealActivity extends BaseDemoActivity {
             @Override
             public void onClick(View v) {
                 if (imageView.getVisibility() == View.VISIBLE) {
-                    AnimUtil.concealRightBottom(imageView, 1000);
+                    RevealUtil.concealRightBottom(imageView, 1000);
                 } else {
-                    AnimUtil.revealRightBottom(imageView, 1000);
+                    RevealUtil.revealRightBottom(imageView, 1000);
                 }
             }
         });
