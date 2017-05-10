@@ -5,11 +5,12 @@ import android.databinding.ViewDataBinding;
 
 import io.mindjet.jetgear.mvvm.base.BaseViewHolder;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
-import io.mindjet.jetgear.mvvm.listener.LoadMoreListener;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**
- * Created by Jet on 2/17/17.
+ * Adapter for RecyclerView for binding View Model.
+ * <p>
+ * Created by Mindjet on 2/17/17.
  */
 
 public class ViewModelAdapter<V extends ViewDataBinding> extends LoadMoreAdapter<BaseViewModel, V> {
@@ -29,10 +30,6 @@ public class ViewModelAdapter<V extends ViewDataBinding> extends LoadMoreAdapter
     @Override
     public int getItemLayoutId(int position) {
         return get(position).getLayoutId();
-    }
-
-    public void setLoadMoreListener(LoadMoreListener loadMoreListener) {
-        this.loadMoreListener = loadMoreListener;
     }
 
     public Context getContext() {

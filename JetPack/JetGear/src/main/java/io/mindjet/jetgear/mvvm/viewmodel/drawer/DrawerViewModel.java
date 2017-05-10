@@ -12,11 +12,13 @@ import io.mindjet.jetgear.R;
 import io.mindjet.jetgear.databinding.IncludeDrawerBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
-import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
+import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 
 /**
- * Created by Jet on 2/24/17.
+ * Drawer view model.
+ * <p>
+ * Created by Mindjet on 2/24/17.
  */
 
 public class DrawerViewModel extends BaseViewModel<ViewInterface<IncludeDrawerBinding>> {
@@ -32,7 +34,7 @@ public class DrawerViewModel extends BaseViewModel<ViewInterface<IncludeDrawerBi
     public void onViewAttached(View view) {
         recyclerViewModel = new RecyclerViewModel();
         ViewModelBinder.bind(getSelfView().getBinding().llyContent, recyclerViewModel);
-        recyclerViewModel.getAdapter().disableLoadMore();
+        recyclerViewModel.disableLoadMore();
         recyclerViewModel.getAdapter().addAll(builder.vmList);
     }
 

@@ -17,7 +17,9 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import rx.functions.Action0;
 
 /**
- * Created by Jet on 3/2/17.
+ * Common Button view model.
+ * <p>
+ * Created by Mindjet on 3/2/17.
  */
 
 public class ButtonViewModel extends BaseViewModel<ViewInterface<ItemButtonBinding>> {
@@ -148,7 +150,7 @@ public class ButtonViewModel extends BaseViewModel<ViewInterface<ItemButtonBindi
                     .textColor(R.color.black)
                     .withElevation(true)
                     .textSize(R.dimen.common_text_size)
-                    .padding(R.dimen.common_gap);
+                    .padding(R.dimen.common_gap_medium);
         }
 
         public Builder margin(@DimenRes int left, @DimenRes int top, @DimenRes int right, @DimenRes int bottom) {

@@ -9,8 +9,9 @@ import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.DialogFollowerBinding;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
-import io.mindjet.jetgear.BaseDialog;
+import io.mindjet.jetgear.base.BaseDialog;
 import io.mindjet.jetgear.network.ServiceGen;
+import io.mindjet.jetgear.reactivex.rxbus.RxBus;
 import io.mindjet.jetutil.anim.RevealUtil;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -50,11 +51,6 @@ public class FollowerDialog extends BaseDialog {
     }
 
     @Override
-    protected void initListener() {
-
-    }
-
-    @Override
     protected void initData() {
         userDetailSub = service.getUserDetail(userName)
                 .subscribeOn(Schedulers.io())
@@ -74,7 +70,6 @@ public class FollowerDialog extends BaseDialog {
 
     @Override
     public void onDetachedFromWindow() {
-        if (userDetailSub != null && userDetailSub.isUnsubscribed())
-            userDetailSub.unsubscribe();
+        RxBus.unSubscribe(userDetailSub);
     }
 }

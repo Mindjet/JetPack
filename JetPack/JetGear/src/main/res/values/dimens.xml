@@ -15,11 +15,16 @@
     <dimen name="view_pager_small_height">200dp</dimen>
     <dimen name="view_pager_height">400dp</dimen>
     <dimen name="view_pager_dot_space">5dp</dimen>
+    <dimen name="view_pager_dot_space_small">2dp</dimen>
     <dimen name="view_pager_dot_large_space">8dp</dimen>
+    <dimen name="view_pager_dot_area_height">30dp</dimen>
+    <dimen name="view_pager_dot_area_height_small">20dp</dimen>
 
     <!--Drawer-->
     <dimen name="drawer_width_normal">200dp</dimen>
+    <dimen name="drawer_width_large">250dp</dimen>
     <dimen name="drawer_header_height">100dp</dimen>
+    <dimen name="drawer_header_height_medium">150dp</dimen>
     <dimen name="drawer_header_height_large">200dp</dimen>
 
     <!--Tab Layout-->

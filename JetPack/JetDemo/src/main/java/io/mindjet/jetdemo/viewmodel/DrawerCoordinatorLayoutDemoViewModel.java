@@ -80,7 +80,7 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
                         .build())
                 .item(new DrawerItemViewModel().icon(R.drawable.ic_draft_gray))
                 .item(new DrawerItemViewModel().icon(R.drawable.ic_sent_gray))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_starred_gray))
+                .item(new DrawerItemViewModel().icon(R.drawable.ic_star_gray))
                 .item(new DrawerItemViewModel().icon(R.drawable.ic_inbox_gray))
                 .build();
         ViewModelBinder.bind(container, viewModel);

@@ -14,7 +14,6 @@ import io.mindjet.jetgear.mvvm.viewinterface.ActivityCompatInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapsingImageViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.item.ImageTextCardViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetutil.anim.RevealUtil;
 import io.mindjet.jetutil.hint.Toaster;
@@ -49,8 +48,8 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
     }
 
     @Override
-    protected void initToolbar(JToolBar toolbar) {
-        toolbar.setNavIcon(R.drawable.ic_left_arrow);
+    protected void setNavIcon(JToolBar toolbar) {
+        toolbar.setNavIcon(R.drawable.ic_arrow_left);
     }
 
     @Override
@@ -65,18 +64,23 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
         RecyclerViewModel recyclerViewModel = new RecyclerViewModel();
         ViewModelBinder.bind(container, recyclerViewModel);
         recyclerViewModel.getRecyclerView().setLayoutManager(new GridLayoutManager(getContext(), 2));
-        recyclerViewModel.getAdapter().disableLoadMore();
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().disableLoadMore(); // TODO: 5/10/17 API更新
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
     }
 
     @Override
-    protected void onNavigationIconClick() {
+    protected void setSupportActionBar(JToolBar toolBar) {
+        getSelfView().getCompatActivity().setSupportActionBar(toolBar);
+    }
+
+    @Override
+    protected void onNavIconClick() {
         getSelfView().getCompatActivity().finish();
     }
 

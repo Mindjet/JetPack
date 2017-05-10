@@ -5,22 +5,22 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
-import io.mindjet.jetgear.mvvm.listener.RcvItemClickListener;
 import io.mindjet.jetutil.logger.JLogger;
 
 /**
- * Created by Jet on 2/10/17.
+ * Base adapter for RecyclerView.
+ * <p>
+ * Created by Mindjet on 2/10/17.
  */
 
-public abstract class BaseAdapter<T, V extends ViewDataBinding> extends RecyclerView.Adapter<BaseViewHolder<V>> implements List<T>, RcvItemClickListener, View.OnClickListener, View.OnLongClickListener {
+public abstract class BaseAdapter<T, V extends ViewDataBinding> extends RecyclerView.Adapter<BaseViewHolder<V>> implements List<T> {
 
-    private LayoutInflater inflater;
     protected JLogger jLogger = JLogger.get(getClass().getSimpleName());
+    private LayoutInflater inflater;
 
     public BaseAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
@@ -29,9 +29,7 @@ public abstract class BaseAdapter<T, V extends ViewDataBinding> extends Recycler
     @Override
     public BaseViewHolder<V> onCreateViewHolder(ViewGroup parent, int viewType) {
         V binding = DataBindingUtil.inflate(inflater, viewType, parent, false);
-        binding.getRoot().setOnClickListener(this);
-        binding.getRoot().setOnLongClickListener(this);
-        return new BaseViewHolder<V>(binding);
+        return new BaseViewHolder<>(binding);
     }
 
     @Override
@@ -54,16 +52,4 @@ public abstract class BaseAdapter<T, V extends ViewDataBinding> extends Recycler
         return inflater;
     }
 
-    @Override
-    public void onClick(View v) {
-        BaseViewHolder holder = ((BaseViewHolder) v.getTag());
-        onItemClick(holder.getBinding(), holder.getLayoutPosition());
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        BaseViewHolder holder = ((BaseViewHolder) v.getTag());
-        onItemLongClick(holder.getBinding(), holder.getLayoutPosition());
-        return true;
-    }
 }

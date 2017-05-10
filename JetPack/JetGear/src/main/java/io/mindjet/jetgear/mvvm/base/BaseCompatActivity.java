@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import io.mindjet.jetutil.manager.ActivityManager;
 
 /**
- * Created by Jet on 2/28/17.
+ * Base AppCompatActivity pushed to the ActivityManager when created and pulled out when destroyed.
+ * <p>
+ * Created by Mindjet on 2/28/17.
  */
 
 public class BaseCompatActivity extends AppCompatActivity {

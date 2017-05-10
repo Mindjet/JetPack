@@ -19,7 +19,9 @@ import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetutil.hint.Toaster;
 
 /**
- * Created by Jet on 2/28/17.
+ * Native Drawer view model.
+ * <p>
+ * Created by Mindjet on 2/28/17.
  */
 
 public abstract class NativeDrawerLayoutViewModel<V extends ViewInterface<IncludeNativeDrawerLayoutBinding>> extends BaseViewModel<V> implements DrawerLayout.DrawerListener, NavigationView.OnNavigationItemSelectedListener {

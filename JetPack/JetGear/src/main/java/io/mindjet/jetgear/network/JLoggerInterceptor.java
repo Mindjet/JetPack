@@ -22,7 +22,11 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 /**
- * Created by Jet on 2/21/17.
+ * An interceptor for OkHttp to log information of http requests and responses.
+ * <p>
+ * Log level can be changed with {@link #logLevel(int)}.
+ * <p>
+ * Created by Mindjet on 2/21/17.
  */
 
 public class JLoggerInterceptor implements Interceptor {

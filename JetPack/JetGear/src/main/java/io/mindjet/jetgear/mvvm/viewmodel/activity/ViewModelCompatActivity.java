@@ -10,6 +10,8 @@ import io.mindjet.jetgear.mvvm.listener.ViewAttachedListener;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**
+ * AppCompatActivity which acts as an View in MVVM framework.
+ * <p>
  * Created by Jet on 2/28/17.
  */
 

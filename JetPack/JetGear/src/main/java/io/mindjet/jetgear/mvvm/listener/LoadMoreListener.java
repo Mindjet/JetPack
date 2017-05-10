@@ -1,7 +1,9 @@
 package io.mindjet.jetgear.mvvm.listener;
 
 /**
- * Created by Jet on 2/16/17.
+ * Load more listener.
+ * <p>
+ * Created by Mindjet on 2/16/17.
  */
 
 public interface LoadMoreListener {

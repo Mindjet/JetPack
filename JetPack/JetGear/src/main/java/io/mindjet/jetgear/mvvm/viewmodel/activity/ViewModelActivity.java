@@ -10,7 +10,9 @@ import io.mindjet.jetgear.mvvm.listener.ViewAttachedListener;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 
 /**
- * Created by Jet on 2/22/17.
+ * Activity which acts as an View in MVVM framework.
+ * <p>
+ * Created by Mindjet on 2/22/17.
  */
 
 public abstract class ViewModelActivity<T extends BaseViewModel> extends BaseActivity implements ViewAttachedListener<T> {

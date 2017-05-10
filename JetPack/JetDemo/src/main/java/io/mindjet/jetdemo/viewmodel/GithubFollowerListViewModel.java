@@ -61,20 +61,20 @@ public class GithubFollowerListViewModel extends RecyclerViewModel<ItemImageText
                     @Override
                     public void call(List<Follower> followers) {
                         if (followers.size() == 0) {
-                            getAdapter().finishLoadMore(false);
+//                            getAdapter().finishLoadMore(false); TODO API更新
                         } else {
                             for (Follower follower : followers) {
                                 GithubFollowerViewModel vm = new GithubFollowerViewModel(follower).callback(iFollowerListener);
                                 getAdapter().add(vm);
                             }
-                            getAdapter().updateAndContinue();
+//                            getAdapter().updateAndContinue(); // TODO: 5/10/17 API更新
                             page++;
                         }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        getAdapter().finishLoadMore(true);
+//                        getAdapter().finishLoadMore(true);// TODO: 5/10/17 API更新
                         Toaster.toast(getContext(), throwable.getMessage());
                     }
                 });

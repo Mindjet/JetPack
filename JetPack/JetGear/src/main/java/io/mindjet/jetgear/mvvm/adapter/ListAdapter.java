@@ -13,7 +13,9 @@ import java.util.ListIterator;
 import io.mindjet.jetgear.mvvm.base.BaseAdapter;
 
 /**
- * Created by Jet on 2/15/17.
+ * List adapter for RecyclerView.
+ * <p>
+ * Created by Mindjet on 2/15/17.
  */
 
 public abstract class ListAdapter<T, V extends ViewDataBinding> extends BaseAdapter<T, V> {
@@ -23,6 +25,10 @@ public abstract class ListAdapter<T, V extends ViewDataBinding> extends BaseAdap
     public ListAdapter(Context context) {
         super(context);
         list = new ArrayList<>();
+    }
+
+    public List<T> getList() {
+        return list;
     }
 
     @Override

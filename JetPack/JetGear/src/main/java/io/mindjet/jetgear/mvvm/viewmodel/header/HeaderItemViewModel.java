@@ -1,6 +1,7 @@
 package io.mindjet.jetgear.mvvm.viewmodel.header;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
@@ -14,7 +15,9 @@ import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 /**
- * Created by Jet on 2/21/17.
+ * Header item view model, provides 2 simple view model {@link TitleItemViewModel} and {@link BackItemViewModel}.
+ * <p>
+ * Created by Mindjet on 2/21/17.
  */
 
 public class HeaderItemViewModel extends BaseViewModel<ViewInterface<ItemHeaderBinding>> {
@@ -28,6 +31,7 @@ public class HeaderItemViewModel extends BaseViewModel<ViewInterface<ItemHeaderB
     private String text;
     private IHeaderItemCallback callback;
     private boolean clickable = true;
+    private String font;
 
     @Override
     public void onViewAttached(View view) {
@@ -63,6 +67,10 @@ public class HeaderItemViewModel extends BaseViewModel<ViewInterface<ItemHeaderB
         };
     }
 
+    public Typeface getTypeFace() {
+        return font == null ? Typeface.DEFAULT : Typeface.createFromAsset(getContext().getAssets(), "fonts/" + this.font);
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.item_header;
@@ -70,6 +78,11 @@ public class HeaderItemViewModel extends BaseViewModel<ViewInterface<ItemHeaderB
 
     public HeaderItemViewModel icon(@DrawableRes int icon) {
         this.icon = icon;
+        return this;
+    }
+
+    public HeaderItemViewModel font(String font) {
+        this.font = font;
         return this;
     }
 

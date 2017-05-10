@@ -8,7 +8,9 @@ import io.mindjet.jetgear.BR;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 
 /**
- * Created by Jet on 2/10/17.
+ * Base ViewHolder for RecyclerView.
+ * <p>
+ * Created by Mindjet on 2/10/17.
  */
 
 public class BaseViewHolder<V extends ViewDataBinding> extends RecyclerView.ViewHolder {

@@ -11,14 +11,16 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetimage.loader.ImageLoader;
 
 /**
- * Created by Jet on 3/6/17.
+ * Image view model for {@link android.support.design.widget.CoordinatorLayout}.
+ * <p>
+ * Created by Mindjet on 3/6/17.
  */
 
 public class CollapsingImageViewModel extends BaseViewModel<ViewInterface<IncludeCollapsingImageBinding>> {
 
     @DrawableRes
     private int drawableRes;
-    private String imageUrl;
+    private String imageUrl = "";
 
     public CollapsingImageViewModel(@DrawableRes int drawableRes) {
         this.drawableRes = drawableRes;

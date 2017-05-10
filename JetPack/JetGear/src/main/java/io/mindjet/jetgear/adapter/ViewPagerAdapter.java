@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Adapter for ViewPager.
+ * <p>
  * Created by Jet on 3/1/17.
  */
 
 public abstract class ViewPagerAdapter<T> extends PagerAdapter {
 
-    List<T> list = new ArrayList<>();
-    List<String> titles = new ArrayList<>();
+    private List<T> list = new ArrayList<>();
+    private List<String> titles = new ArrayList<>();
 
     public void add(T item) {
         addWithTitle(item, "");
@@ -30,6 +32,11 @@ public abstract class ViewPagerAdapter<T> extends PagerAdapter {
         list.add(item);
         titles.add(title);
         notifyDataSetChanged();
+    }
+
+    public void clear() {
+        list.clear();
+        titles.clear();
     }
 
     public void addAllWithTitles(List<T> items, List<String> titles) {

@@ -1,5 +1,6 @@
 package io.mindjet.jetgear.mvvm.viewmodel.drawer;
 
+import android.graphics.Typeface;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
@@ -13,7 +14,9 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetimage.loader.ImageLoader;
 
 /**
- * Created by Jet on 2/28/17.
+ * A Header view model for DrawerViewModel.
+ * <p>
+ * Created by Mindjet on 2/28/17.
  */
 
 public class DrawerHeaderViewModel extends BaseViewModel<ViewInterface<IncludeDrawerHeaderBinding>> {
@@ -47,6 +50,10 @@ public class DrawerHeaderViewModel extends BaseViewModel<ViewInterface<IncludeDr
 
     public int getHeight() {
         return (int) getContext().getResources().getDimension(builder.height);
+    }
+
+    public Typeface getTypeface() {
+        return builder.font == null ? Typeface.DEFAULT : Typeface.createFromAsset(getContext().getAssets(), "fonts/" + builder.font);
     }
 
     public String getContent() {
@@ -91,9 +98,15 @@ public class DrawerHeaderViewModel extends BaseViewModel<ViewInterface<IncludeDr
         private String background = "";
         private String icon = "";
         private String content = "";
+        private String font;
 
         public Builder height(@DimenRes int height) {
             this.height = height;
+            return this;
+        }
+
+        public Builder font(String font) {
+            this.font = font;
             return this;
         }
 

@@ -12,14 +12,16 @@ import io.mindjet.jetgear.mvvm.listener.LoadMoreListener;
 import io.mindjet.jetutil.task.Task;
 
 /**
- * Created by Jet on 2/16/17.
+ * Load more adapter for RecyclerView.
+ * <p>
+ * Created by Mindjet on 2/16/17.
  */
 
 public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends ListAdapter<T, V> {
 
-    private boolean loadMore = true;
-    private ItemProgressBinding progressBinding;
     public LoadMoreListener loadMoreListener;
+    private boolean loadMore = false;
+    private ItemProgressBinding progressBinding;
 
     public LoadMoreAdapter(Context context) {
         super(context);
@@ -65,16 +67,17 @@ public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends List
         loadMore = false;
     }
 
-    public void finishLoadMore(boolean lastPage) {
+    public void onFinishLoadMore(boolean lastPage) {
         progressBinding.getRoot().setVisibility(View.GONE);
-        if (lastPage) loadMore = false;
-    }
-
-    /**
-     * This method is used to refresh the new-added items and continue loading more (Basically it triggers the method {@link #onBindViewHolder(BaseViewHolder, int)}).
-     */
-    public void updateAndContinue() {
-        notifyItemInserted(size());
+        if (lastPage) {
+            if (loadMore) {
+                disableLoadMore();
+                notifyItemRemoved(getItemCount());
+            }
+        } else {
+            enableLoadMore();
+            notifyItemChanged(getItemCount());
+        }
     }
 
     private void loadMore() {
@@ -86,16 +89,6 @@ public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends List
                 }
             }, 500);
         }
-    }
-
-    @Override
-    public void onItemClick(ViewDataBinding binding, int position) {
-        //TODO do something to response item click.
-    }
-
-    @Override
-    public void onItemLongClick(ViewDataBinding binding, int position) {
-        //TODO do something to response item long click.
     }
 
 }

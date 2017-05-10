@@ -12,14 +12,16 @@ import io.mindjet.jetgear.R;
 import io.mindjet.jetutil.logger.JLogger;
 
 /**
- * Created by Jet on 2/20/17.
+ * {@link BindingAdapter} for base view.
+ * <p>
+ * Created by Mindjet on 2/20/17.
  */
 
 public class BaseBindingAdapter {
 
     private static JLogger jLogger = JLogger.get(BaseBindingAdapter.class.getSimpleName());
 
-    @BindingAdapter("app:layout_height")
+    @BindingAdapter("layout_height")
     public static void height(View view, int height) {      //height=0 => MATCH_PARENT, height=-1 => WRAP_CONTENT
         if (height == -1) {
             view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -33,7 +35,7 @@ public class BaseBindingAdapter {
         }
     }
 
-    @BindingAdapter("app:layout_width")
+    @BindingAdapter("layout_width")
     public static void width(View view, int width) {
         if (width == -1) {
             view.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -47,7 +49,7 @@ public class BaseBindingAdapter {
         }
     }
 
-    @BindingAdapter("app:elevation")
+    @BindingAdapter("elevation")
     public static void elevation(View view, float elevation) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             view.setElevation(elevation);
@@ -56,7 +58,7 @@ public class BaseBindingAdapter {
         }
     }
 
-    @BindingAdapter("app:elevation")
+    @BindingAdapter("elevation")
     public static void elevationBoolean(View view, boolean elevation) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && elevation) {
             view.setElevation(view.getContext().getResources().getInteger(R.integer.common_elevation));
@@ -65,14 +67,14 @@ public class BaseBindingAdapter {
         }
     }
 
-    @BindingAdapter("app:margin")
+    @BindingAdapter("margin")
     public static void margin(View view, List<Integer> margins) {
         ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(view.getLayoutParams());
         lp.setMargins(margins.get(0), margins.get(1), margins.get(2), margins.get(3));
         view.setLayoutParams(lp);
     }
 
-    @BindingAdapter("app:enable_changeAnim")
+    @BindingAdapter("enable_changeAnim")
     public static void enableLayoutChangeAnim(ViewGroup viewGroup, boolean enable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             viewGroup.setLayoutTransition(enable ? new LayoutTransition() : null);

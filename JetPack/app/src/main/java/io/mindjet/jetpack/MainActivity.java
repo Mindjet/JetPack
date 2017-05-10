@@ -18,7 +18,6 @@ import io.mindjet.jetdemo.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
-import io.mindjet.jetdemo.activity.ReaderDemoActivity;
 import io.mindjet.jetdemo.activity.SwipeLayoutActivity;
 import io.mindjet.jetdemo.activity.TransitionActivity1;
 import io.mindjet.jetdemo.activity.ViewModelActivityDemo;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerViewModel<ItemButtonBinding> recyclerViewModel = new RecyclerViewModel<>();
         ViewModelBinder.bind(binding.llyContainer, recyclerViewModel);
         ViewModelAdapter<ItemButtonBinding> adapter = recyclerViewModel.getAdapter();
-        adapter.disableLoadMore();
+//        adapter.disableLoadMore(); // TODO: 5/10/17 API更新
 
         textResList.add(R.string.image_picker);
         textResList.add(R.string.image_saver);
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.swipe_view);
         textResList.add(R.string.circular_reveal);
         textResList.add(R.string.transition_activity);
-        textResList.add(R.string.open_api);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(SwipeLayoutActivity.intentFor(this));
         intentList.add(CircularRevealActivity.intentFor(this));
         intentList.add(TransitionActivity1.intentFor(this));
-        intentList.add(ReaderDemoActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);

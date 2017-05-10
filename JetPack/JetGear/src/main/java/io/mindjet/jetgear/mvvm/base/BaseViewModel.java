@@ -3,6 +3,7 @@ package io.mindjet.jetgear.mvvm.base;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
@@ -15,7 +16,9 @@ import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetutil.logger.JLogger;
 
 /**
- * Created by Jet on 2/15/17.
+ * Base View Model acts as Model in MVVM framework.
+ * <p>
+ * Created by Mindjet on 2/15/17.
  */
 
 public abstract class BaseViewModel<V extends ViewInterface> extends BaseObservable implements ILayoutId, LifeCycleListener {
@@ -81,6 +84,10 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
 
     public Context getContext() {
         return getSelfView().getContext();
+    }
+
+    protected String getString(@StringRes int stringRes) {
+        return getContext().getResources().getString(stringRes);
     }
 
     @Override

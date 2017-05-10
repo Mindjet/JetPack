@@ -35,26 +35,26 @@ android {
     }
 
     productFlavors {
-        inhouse {
-            applicationId "io.mindjet.jetpack.inhouse"
+        stage {
+            applicationId "io.mindjet.jetpack.stage"
             manifestPlaceholders = [
-                    appLabel: "@strings/app_name_inhouse"
+                    appLabel: "@strings/app_name_stage"
             ]
-            buildConfigField "boolean", "inhouse", "true"
+            buildConfigField "boolean", "stage", "true"
             buildConfigField "String", "BASE_URL", '"https://api.github.com"'
             buildConfigField "String", "DATA_PATH", '"JetPack"'
         }
 
-        open {}
+        production {}
     }
 
     productFlavors.all { flavor ->
-        if (flavor.name != "inhouse") {
+        if (flavor.name != "stage") {
             flavor.applicationId "io.mindjet.jetpack"
             flavor.manifestPlaceholders = [
                     appLabel: "@strings/app_name"
             ]
-            flavor.buildConfigField "boolean", "inhouse", "false"
+            flavor.buildConfigField "boolean", "stage", "false"
             flavor.buildConfigField "String", "BASE_URL", '"https://api.github.com"'
             flavor.buildConfigField "String", "DATA_PATH", '"JetPack"'
         }
