@@ -1,7 +1,10 @@
 package io.mindjet.jetgear.reactivex;
 
+import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetutil.logger.JLogger;
+import rx.functions.Action0;
 import rx.functions.Action1;
+import rx.functions.Actions;
 
 /**
  * Simple actions for RxJava.
@@ -20,6 +23,18 @@ public class RxActions {
                 jLogger.e(throwable);
             }
         };
+    }
+
+    public static <T> Action1<T> clear(final ViewModelAdapter adapter, final boolean clear) {
+        return Actions.toAction1(new Action0() {
+            @Override
+            public void call() {
+                if (clear) {
+                    adapter.clear();
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
 }

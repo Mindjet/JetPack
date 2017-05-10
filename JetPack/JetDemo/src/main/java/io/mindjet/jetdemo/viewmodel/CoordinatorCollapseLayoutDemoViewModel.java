@@ -14,6 +14,7 @@ import io.mindjet.jetgear.mvvm.viewinterface.ActivityCompatInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapsingImageViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetutil.anim.RevealUtil;
 import io.mindjet.jetutil.hint.Toaster;
@@ -43,8 +44,7 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
 
     @Override
     protected void initCollapsingContent(ViewGroup container) {
-        CollapsingImageViewModel vm = new CollapsingImageViewModel("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2077732093,2100397646&fm=21&gp=0.jpg");
-        ViewModelBinder.bind(container, vm);
+        ViewModelBinder.bind(container, new CollapsingImageViewModel());
     }
 
     @Override
@@ -64,14 +64,10 @@ public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseL
         RecyclerViewModel recyclerViewModel = new RecyclerViewModel();
         ViewModelBinder.bind(container, recyclerViewModel);
         recyclerViewModel.getRecyclerView().setLayoutManager(new GridLayoutManager(getContext(), 2));
-//        recyclerViewModel.getAdapter().disableLoadMore(); // TODO: 5/10/17 API更新
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextCardViewModel());
+        for (int i = 0; i < 5; i++) {
+            recyclerViewModel.getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
+        }
+        recyclerViewModel.getAdapter().notifyItemRangeInserted(0, 5);
     }
 
     @Override

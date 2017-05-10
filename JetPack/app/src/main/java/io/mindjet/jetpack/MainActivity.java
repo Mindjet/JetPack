@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerViewModel<ItemButtonBinding> recyclerViewModel = new RecyclerViewModel<>();
         ViewModelBinder.bind(binding.llyContainer, recyclerViewModel);
         ViewModelAdapter<ItemButtonBinding> adapter = recyclerViewModel.getAdapter();
-//        adapter.disableLoadMore(); // TODO: 5/10/17 API更新
 
         textResList.add(R.string.image_picker);
         textResList.add(R.string.image_saver);
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).build());
         }
-        adapter.notifyDataSetChanged();
+        adapter.notifyItemRangeInserted(0, adapter.size());
     }
 
 }

@@ -63,7 +63,6 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
             initRecyclerView();
             hasLayoutManager = true;
             afterViewAttached();
-//            initLoadMoreFeature();
         }
     }
 
@@ -76,14 +75,6 @@ public class RecyclerViewModel<V extends ViewDataBinding> extends BaseViewModel<
 
     protected void afterViewAttached() {
 
-    }
-
-    public void disableLoadMore() {
-        this.enableLoadMore = false;
-    }
-
-    public void enableLoadMore() {
-        this.enableLoadMore = true;
     }
 
     /**

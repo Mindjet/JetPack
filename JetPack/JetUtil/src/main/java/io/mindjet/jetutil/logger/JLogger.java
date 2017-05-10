@@ -32,7 +32,7 @@ public class JLogger {
     private String tag() {
         Throwable t = new Throwable();
         String method = t.getStackTrace()[2].getMethodName();
-        return TAG + "#" + method;
+        return "JLogger: " + TAG + "#" + method;
     }
 
     public void e(Object o) {

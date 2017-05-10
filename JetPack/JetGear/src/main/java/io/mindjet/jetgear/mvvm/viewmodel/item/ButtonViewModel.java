@@ -111,9 +111,9 @@ public class ButtonViewModel extends BaseViewModel<ViewInterface<ItemButtonBindi
 
     public static class Builder {
         @DimenRes
-        private int padding;
+        private int padding = R.dimen.common_gap_small;
         @DimenRes
-        private int textSize;
+        private int textSize = R.dimen.common_text_size;
         @DimenRes
         private int width;
         @DimenRes
@@ -123,9 +123,9 @@ public class ButtonViewModel extends BaseViewModel<ViewInterface<ItemButtonBindi
         @DrawableRes
         private int backgroundDrawable;
         @ColorRes
-        private int textColor;
+        private int textColor = R.color.black;
         @StringRes
-        private int textRes;
+        private int textRes = R.string.app_name;
         private boolean withElevation;
         private Action0 action;
         private String text = "";

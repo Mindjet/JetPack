@@ -4,8 +4,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetgear.databinding.IncludeSwipeRecyclerViewBinding;
-import io.mindjet.jetgear.databinding.ItemImageTextBinding;
+import io.mindjet.jetgear.databinding.ItemButtonBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.SwipeRecyclerViewModel;
 import io.mindjet.jetutil.task.Task;
 
@@ -13,7 +14,7 @@ import io.mindjet.jetutil.task.Task;
  * Created by Jet on 3/2/17.
  */
 
-public class SwipeRecyclerDemoViewModel extends SwipeRecyclerViewModel<ItemImageTextBinding, ActivityInterface<IncludeSwipeRecyclerViewBinding>> {
+public class SwipeRecyclerDemoViewModel extends SwipeRecyclerViewModel<ItemButtonBinding, ActivityInterface<IncludeSwipeRecyclerViewBinding>> {
 
     @Override
     public void onRefresh() {
@@ -21,8 +22,8 @@ public class SwipeRecyclerDemoViewModel extends SwipeRecyclerViewModel<ItemImage
             @Override
             public void run() {
                 getAdapter().clear();
-//                getAdapter().add(new ImageTextViewModel());
-//                getAdapter().add(new ImageTextViewModel());
+                getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
+                getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
                 getAdapter().notifyDataSetChanged();
                 hideRefreshing();
             }
@@ -36,7 +37,6 @@ public class SwipeRecyclerDemoViewModel extends SwipeRecyclerViewModel<ItemImage
 
     @Override
     protected void afterViewAttached() {
-//        getAdapter().disableLoadMore(); // TODO: 5/10/17 API更新
         changePbColor(R.color.colorPrimary, R.color.colorAccent);
         getSwipeLayout().setSize(SwipeRefreshLayout.DEFAULT);
     }

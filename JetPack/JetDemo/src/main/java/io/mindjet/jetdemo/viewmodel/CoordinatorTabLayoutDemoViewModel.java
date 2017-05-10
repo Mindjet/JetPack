@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
+import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.databinding.IncludeCoordinatorTabLayoutBinding;
+import io.mindjet.jetgear.databinding.ItemButtonBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorTabLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
 import io.mindjet.jetutil.hint.Toaster;
 
 /**
@@ -44,13 +47,16 @@ public class CoordinatorTabLayoutDemoViewModel extends CoordinatorTabLayoutViewM
 
     @Override
     public void initViewPager(ViewPager viewPager) {
-//        TabViewPagerAdapter adapter = new TabViewPagerAdapter();
-//        viewPager.setAdapter(adapter);
-////        adapter.addWithTitle(new ImageTextViewModel(), "AAA");
-////        adapter.addWithTitle(new ImageTextViewModel(), "AAAB");
-////        adapter.addWithTitle(new ImageTextViewModel(), "AAABB");
-////        adapter.addWithTitle(new ImageTextViewModel(), "AAABBB");
-////        adapter.addWithTitle(new ImageTextViewModel(), "AAABBBC");
+        ViewPagerAdapter<ButtonViewModel> adapter = new ViewPagerAdapter<ButtonViewModel>() {
+            @Override
+            protected Object initItem(ViewGroup container, ButtonViewModel item, String title, int position) {
+                return ViewModelBinder.bind(container, item).getRoot();
+            }
+        };
+        viewPager.setAdapter(adapter);
+        for (int i = 0; i < 5; i++) {
+            adapter.addWithTitle(new ButtonViewModel.Builder().simpleAttr().build(), getString(R.string.app_name));
+        }
     }
 
     @Override

@@ -12,7 +12,6 @@ import io.mindjet.jetdemo.dialog.FollowerDialog;
 import io.mindjet.jetdemo.listener.IFollowerListener;
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.databinding.IncludeDrawerCoordinatorLayoutBinding;
-import io.mindjet.jetgear.databinding.IncludeRecyclerViewBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerHeaderViewModel;
@@ -93,12 +92,17 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
 
     @Override
     protected void initViewPager(ViewPager viewPager) {
-        Adapter adapter = new Adapter();
+        ViewPagerAdapter<GithubFollowerListViewModel> adapter = new ViewPagerAdapter<GithubFollowerListViewModel>() {
+            @Override
+            protected Object initItem(ViewGroup container, GithubFollowerListViewModel item, String title, int position) {
+                return ViewModelBinder.bind(container, item).getRoot();
+            }
+        };
         viewPager.setAdapter(adapter);
         adapter.addWithTitle(new GithubFollowerListViewModel("liuny05").callback(this), "Jake Wharton");
         adapter.addWithTitle(new GithubFollowerListViewModel("Mindjet").callback(this), "Mindjet");
         adapter.addWithTitle(new GithubFollowerListViewModel("Gringe920").callback(this), "Gringe");
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(3);
     }
 
     @Override
@@ -111,12 +115,4 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
         new FollowerDialog(getContext(), item.name.get()).show();
     }
 
-    private class Adapter extends ViewPagerAdapter<GithubFollowerListViewModel> {
-        @Override
-        protected Object initItem(ViewGroup container, GithubFollowerListViewModel item, String title, int position) {
-            IncludeRecyclerViewBinding binding = ViewModelBinder.bind(container, item);
-            return binding.getRoot();
-        }
-    }
-    
 }

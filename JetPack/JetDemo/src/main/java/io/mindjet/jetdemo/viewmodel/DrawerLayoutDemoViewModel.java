@@ -11,6 +11,7 @@ import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.IHeaderItemCallback;
+import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 
 /**
@@ -47,11 +48,10 @@ public class DrawerLayoutDemoViewModel extends DrawerLayoutViewModel<ActivityInt
     public void initContent(ViewGroup container) {
         RecyclerViewModel recyclerViewModel = new RecyclerViewModel();
         ViewModelBinder.bind(container, recyclerViewModel);
-//        recyclerViewModel.getAdapter().disableLoadMore(); // TODO: 5/10/17 API更新
-//        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
-//        recyclerViewModel.getAdapter().add(new ImageTextViewModel());
+        for (int i = 0; i < 5; i++) {
+            recyclerViewModel.getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
+        }
+        recyclerViewModel.getAdapter().notifyItemRangeInserted(0, 5);
     }
 
     @Override

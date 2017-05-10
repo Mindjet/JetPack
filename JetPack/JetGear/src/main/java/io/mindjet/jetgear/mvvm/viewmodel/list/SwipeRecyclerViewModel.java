@@ -52,8 +52,6 @@ public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInt
     private void initRecyclerView() {
         recyclerViewModel = new RecyclerViewModel(true);
         recyclerViewModel.setLoadMoreListener(this);
-        //一开始不允许load more，虽然进入时不会load more，但是当refresh失败时，如果触碰屏幕就会自动load more，所以应该在refresh成功后才允许load more
-        recyclerViewModel.disableLoadMore();
         ViewModelBinder.bind(swipeLayout, recyclerViewModel);
     }
 
@@ -95,21 +93,6 @@ public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInt
 
     }
 
-    /**
-     * @see RecyclerViewModel#setIsLoadingMore(boolean)
-     */
-    public void setIsLoadingMore(boolean isLoadingMore) {
-        recyclerViewModel.setIsLoadingMore(isLoadingMore);
-    }
-
-    public void disableLoadMore() {
-        recyclerViewModel.disableLoadMore();
-    }
-
-    public void enableLoadMore() {
-        recyclerViewModel.enableLoadMore();
-    }
-
     @Override
     public int getLayoutId() {
         return R.layout.include_swipe_recycler_view;
@@ -123,10 +106,20 @@ public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInt
         swipeLayout.setRefreshing(true);
     }
 
+    /**
+     * Change the progress color in progress bar.
+     *
+     * @param draggingColor progress color.
+     */
     public void changePbColor(@ColorRes int... draggingColor) {
         swipeLayout.setColorSchemeResources(draggingColor);
     }
 
+    /**
+     * Change the background color of the progress bar.
+     *
+     * @param background color resource.
+     */
     public void changePbBackground(@ColorRes int background) {
         swipeLayout.setProgressBackgroundColorSchemeResource(background);
     }

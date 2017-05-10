@@ -22,6 +22,10 @@ public class CollapsingImageViewModel extends BaseViewModel<ViewInterface<Includ
     private int drawableRes;
     private String imageUrl = "";
 
+    public CollapsingImageViewModel() {
+        imageUrl = "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2077732093,2100397646&fm=21&gp=0.jpg";
+    }
+
     public CollapsingImageViewModel(@DrawableRes int drawableRes) {
         this.drawableRes = drawableRes;
     }
