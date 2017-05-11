@@ -12,4 +12,16 @@
     <string name="open_drawer">open drawer</string>
     <string name="close_drawer">close_drawer</string>
 
+    <string name="image_picker">Image Picker</string>
+    <string name="image_saver">Image Saver</string>
+    <string name="image_loader">Image Loader</string>
+    <string name="pretty_banner">Pretty Banner</string>
+    <string name="circular_reveal">Circular Reveal</string>
+    <string name="drawer_layout">Drawer Layout</string>
+    <string name="native_drawer_layout">Native Drawer Layout</string>
+    <string name="collapse_tab_layout">Tab Layout (collapse)</string>
+    <string name="collapse_toolbar_layout">Toolbar Layout (collapse)</string>
+    <string name="drawer_collapse_tab_layout">Drawer Tab Layout (collapse)</string>
+    <string name="refresh_loadmore">Refresh Loadmore</string>
+
 </resources>

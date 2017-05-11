@@ -54,7 +54,7 @@ public class GithubFollowerListViewModel extends SwipeRecyclerViewModel {
         onClick = new Action1<Follower>() {
             @Override
             public void call(Follower follower) {
-                new FollowerDialog(getContext()).userName(follower.name).show();
+                new FollowerDialog(getContext(), follower.name).show();
             }
         };
     }

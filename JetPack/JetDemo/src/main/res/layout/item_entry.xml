@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="io.mindjet.jetdemo.viewmodel.item.EntryItemViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_gap_small"
+        android:background="@color/white"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        app:cardElevation="@dimen/cardview_default_elevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_default"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="@{() -> data.onClick()}"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_gap">
+
+            <ImageView
+                android:id="@+id/iv_point"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@drawable/shape_point" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_gap_medium"
+                android:text="@{data.name}"
+                android:textColor="@color/font_46"
+                android:textSize="@dimen/common_text_size" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

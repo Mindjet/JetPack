@@ -3,6 +3,7 @@ package io.mindjet.jetgear.base;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
@@ -26,7 +27,6 @@ public abstract class BaseViewModelDialog<V extends ViewDataBinding> extends App
     public BaseViewModelDialog(@NonNull Context context) {
         super(context);
         beforeInitView();
-        afterViewAttached(binding);
     }
 
     private void beforeInitView() {
@@ -35,6 +35,12 @@ public abstract class BaseViewModelDialog<V extends ViewDataBinding> extends App
         setContentView(binding.getRoot());
         binding.setVariable(BR.data, this);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        afterViewAttached(binding);
     }
 
     @LayoutRes

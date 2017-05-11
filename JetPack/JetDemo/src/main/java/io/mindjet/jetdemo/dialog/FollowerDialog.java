@@ -1,6 +1,7 @@
 package io.mindjet.jetdemo.dialog;
 
 import android.content.Context;
+import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 
 import io.mindjet.jetdemo.R;
@@ -23,37 +24,17 @@ import rx.schedulers.Schedulers;
 public class FollowerDialog extends BaseViewModelDialog<DialogFollowerBinding> {
 
     private String userName;
-
     private Subscription userDetailSub;
-    private Follower mFollower;
 
-    public FollowerDialog(@NonNull Context context) {
+    public ObservableField<String> avatar = new ObservableField<>("");
+    public ObservableField<String> email = new ObservableField<>("");
+    public ObservableField<String> location = new ObservableField<>("");
+    public ObservableField<String> publicRepos = new ObservableField<>("");
+    public ObservableField<String> followers = new ObservableField<>("");
+
+    public FollowerDialog(@NonNull Context context, String userName) {
         super(context);
-    }
-
-    public FollowerDialog userName(String userName) {
         this.userName = userName;
-        return this;
-    }
-
-    public String getAvatar() {
-        return mFollower == null ? "" : mFollower.avatarUrl;
-    }
-
-    public String getEmail() {
-        return mFollower == null ? "" : mFollower.email;
-    }
-
-    public String getLocation() {
-        return mFollower == null ? "" : mFollower.location;
-    }
-
-    public String getPublicRepos() {
-        return mFollower == null ? "" : mFollower.publicRepos;
-    }
-
-    public String getFollowers() {
-        return mFollower == null ? "" : mFollower.followers;
     }
 
     @Override
@@ -70,7 +51,11 @@ public class FollowerDialog extends BaseViewModelDialog<DialogFollowerBinding> {
                 .subscribe(new Action1<Follower>() {
                     @Override
                     public void call(Follower follower) {
-                        mFollower = follower;
+                        avatar.set(follower.avatarUrl);
+                        email.set(follower.email);
+                        location.set(follower.location);
+                        publicRepos.set(follower.publicRepos);
+                        followers.set(follower.followers);
                     }
                 }, RxActions.onError());
     }
@@ -79,4 +64,5 @@ public class FollowerDialog extends BaseViewModelDialog<DialogFollowerBinding> {
     public void onDetachedFromWindow() {
         RxBus.unSubscribe(userDetailSub);
     }
+
 }
