@@ -23,5 +23,6 @@
     <string name="collapse_toolbar_layout">Toolbar Layout (collapse)</string>
     <string name="drawer_collapse_tab_layout">Drawer Tab Layout (collapse)</string>
     <string name="refresh_loadmore">Refresh Loadmore</string>
+    <string name="drawable_dyer">Drawable Dyer</string>
 
 </resources>

@@ -51,6 +51,9 @@
             android:name=".activity.DrawerCollapseTabLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
+        <activity
+            android:name=".activity.DrawableDyerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

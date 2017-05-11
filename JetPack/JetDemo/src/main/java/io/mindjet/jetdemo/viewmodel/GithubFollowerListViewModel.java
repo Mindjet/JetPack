@@ -85,12 +85,7 @@ public class GithubFollowerListViewModel extends SwipeRecyclerViewModel {
                 })
                 .toList()
                 .unsubscribeOn(AndroidSchedulers.mainThread())
-                .doOnUnsubscribe(new Action0() {
-                    @Override
-                    public void call() {
-                        hideRefreshing();
-                    }
-                })
+                .doOnUnsubscribe(RxActions.hideRefreshing(getSwipeLayout()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<List<GithubFollowerViewModel>>() {
                     @Override

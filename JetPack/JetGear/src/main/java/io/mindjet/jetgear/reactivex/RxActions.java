@@ -1,5 +1,7 @@
 package io.mindjet.jetgear.reactivex;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+
 import java.util.List;
 
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
@@ -39,11 +41,11 @@ public class RxActions {
         };
     }
 
-    public static Action0 hideRefreshing(final SwipeRecyclerViewModel swipe) {
+    public static Action0 hideRefreshing(final SwipeRefreshLayout swipe) {
         return new Action0() {
             @Override
             public void call() {
-                swipe.hideRefreshing();
+                swipe.setRefreshing(false);
             }
         };
     }

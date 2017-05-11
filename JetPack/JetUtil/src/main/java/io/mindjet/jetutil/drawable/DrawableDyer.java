@@ -27,12 +27,22 @@ public class DrawableDyer {
     private static Drawable commonDye(Drawable drawable, int color) {
         drawable.mutate();
         Drawable output = DrawableCompat.wrap(drawable);
+        removeDye(drawable);
         if (VersionUtil.afterAPI(21)) {
+            output.setTintMode(PorterDuff.Mode.MULTIPLY);
             output.setTint(color);
         } else {
-            output.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            output.setColorFilter(color, PorterDuff.Mode.MULTIPLY);
         }
         return output;
+    }
+
+    public static void removeDye(Drawable drawable) {
+        if (VersionUtil.afterAPI(21)) {
+            drawable.setTintList(null);
+        } else {
+            drawable.clearColorFilter();
+        }
     }
 
 }

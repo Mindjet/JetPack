@@ -13,6 +13,7 @@ import io.mindjet.jetdemo.activity.BannerActivity;
 import io.mindjet.jetdemo.activity.CircularRevealActivity;
 import io.mindjet.jetdemo.activity.CollapseTabLayoutActivity;
 import io.mindjet.jetdemo.activity.CollapseToolbarLayoutActivity;
+import io.mindjet.jetdemo.activity.DrawableDyerActivity;
 import io.mindjet.jetdemo.activity.DrawerCollapseTabLayoutActivity;
 import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
 import io.mindjet.jetdemo.activity.ImageLoaderActivity;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(io.mindjet.jetdemo.R.string.collapse_toolbar_layout);
         textResList.add(io.mindjet.jetdemo.R.string.drawer_collapse_tab_layout);
         textResList.add(io.mindjet.jetdemo.R.string.refresh_loadmore);
+        textResList.add(io.mindjet.jetdemo.R.string.drawable_dyer);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(CollapseToolbarLayoutActivity.intentFor(this));
         intentList.add(DrawerCollapseTabLayoutActivity.intentFor(this));
         intentList.add(SwipeRecyclerDemoActivity.intentFor(this));
+        intentList.add(DrawableDyerActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);
