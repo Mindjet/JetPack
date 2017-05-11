@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.view.View;
 
+import java.util.Random;
+
 import io.mindjet.jetutil.logger.JLogger;
 
 /**
@@ -30,6 +32,11 @@ public class ColorUtil extends View {
         colors[1] = normalColor;
 
         return new ColorStateList(states, colors);
+    }
+
+    public static int randomColor() {
+        Random random = new Random();
+        return 0xff000000 | random.nextInt(0x00ffffff);
     }
 
 }

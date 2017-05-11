@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private void initData() {
         RecyclerViewModel<ItemButtonBinding> recyclerViewModel = new RecyclerViewModel<>();
         ViewModelBinder.bind(binding.llyContainer, recyclerViewModel);
+        recyclerViewModel.getRecyclerView().setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         ViewModelAdapter<ItemButtonBinding> adapter = recyclerViewModel.getAdapter();
 
         textResList.add(io.mindjet.jetdemo.R.string.image_picker);
