@@ -1,10 +1,14 @@
 package io.mindjet.jetgear.reactivex;
 
+import java.util.List;
+
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
 import io.mindjet.jetutil.logger.JLogger;
+import rx.Observable;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Actions;
+import rx.functions.Func1;
 
 /**
  * Simple actions for RxJava.
@@ -25,7 +29,16 @@ public class RxActions {
         };
     }
 
-    public static <T> Action1<T> clear(final ViewModelAdapter adapter, final boolean clear) {
+    public static <T> Func1<List<T>, Observable<T>> flatMap() {
+        return new Func1<List<T>, Observable<T>>() {
+            @Override
+            public Observable<T> call(List<T> t) {
+                return Observable.from(t);
+            }
+        };
+    }
+
+    public static <T> Action1<T> clearAdapter(final ViewModelAdapter adapter, final boolean clear) {
         return Actions.toAction1(new Action0() {
             @Override
             public void call() {

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
-import io.mindjet.jetgear.databinding.IncludeCoordinatorTabLayoutBinding;
+import io.mindjet.jetgear.databinding.IncludeCollapseTabLayoutBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetutil.version.VersionUtil;
@@ -20,7 +20,7 @@ import io.mindjet.jetutil.version.VersionUtil;
  * Created by Mindjet on 3/1/17.
  */
 
-public abstract class CoordinatorTabLayoutViewModel<V extends ViewInterface<IncludeCoordinatorTabLayoutBinding>> extends BaseViewModel<V> implements TabLayout.OnTabSelectedListener {
+public abstract class CollapseTabLayoutViewModel<V extends ViewInterface<IncludeCollapseTabLayoutBinding>> extends BaseViewModel<V> implements TabLayout.OnTabSelectedListener {
 
     private FloatingActionButton fab;
     private TabLayout tabLayout;
@@ -42,7 +42,7 @@ public abstract class CoordinatorTabLayoutViewModel<V extends ViewInterface<Incl
 
     @Override
     public int getLayoutId() {
-        return R.layout.include_coordinator_tab_layout;
+        return R.layout.include_collapse_tab_layout;
     }
 
     /**

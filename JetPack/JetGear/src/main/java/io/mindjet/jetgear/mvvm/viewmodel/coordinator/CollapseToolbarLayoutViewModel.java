@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
-import io.mindjet.jetgear.databinding.IncludeCoordinatorCollapseLayoutBinding;
+import io.mindjet.jetgear.databinding.IncludeCollapseToolbarLayoutBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetwidget.JToolBar;
@@ -20,7 +20,7 @@ import io.mindjet.jetwidget.JToolBar;
  * Created by Mindjet on 3/2/17.
  */
 
-public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface<IncludeCoordinatorCollapseLayoutBinding>> extends BaseViewModel<V> implements AppBarLayout.OnOffsetChangedListener, Toolbar.OnMenuItemClickListener {
+public abstract class CollapseToolbarLayoutViewModel<V extends ViewInterface<IncludeCollapseToolbarLayoutBinding>> extends BaseViewModel<V> implements AppBarLayout.OnOffsetChangedListener, Toolbar.OnMenuItemClickListener {
 
     @Override
     public void onViewAttached(View view) {
@@ -37,7 +37,7 @@ public abstract class CoordinatorCollapseLayoutViewModel<V extends ViewInterface
 
     @Override
     public int getLayoutId() {
-        return R.layout.include_coordinator_collapse_layout;
+        return R.layout.include_collapse_toolbar_layout;
     }
 
     protected abstract void afterViewAttached();

@@ -1,4 +1,4 @@
-package io.mindjet.jetdemo;
+package io.mindjet.jetdemo.entity;
 
 /**
  * Created by Jet on 3/9/17.

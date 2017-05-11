@@ -8,28 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
-import io.mindjet.jetdemo.dialog.FollowerDialog;
-import io.mindjet.jetdemo.listener.IFollowerListener;
+import io.mindjet.jetdemo.util.DrawerViewModelGen;
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
-import io.mindjet.jetgear.databinding.IncludeDrawerCoordinatorLayoutBinding;
+import io.mindjet.jetgear.databinding.IncludeDrawerCollapseTabLayoutBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
-import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerHeaderViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerItemViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.drawer.DrawerViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderItemViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.HeaderViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.header.IHeaderItemCallback;
-import io.mindjet.jetgear.mvvm.viewmodel.integrated.DrawerCoordinatorLayoutViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.integrated.DrawerCollapseTabLayoutViewModel;
 
 /**
  * Created by Jet on 3/9/17.
  */
 
-public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayoutViewModel<ActivityInterface<IncludeDrawerCoordinatorLayoutBinding>> implements IFollowerListener {
+public class DrawerCollapseTabLayoutDemoViewModel extends DrawerCollapseTabLayoutViewModel<ActivityInterface<IncludeDrawerCollapseTabLayoutBinding>> {
 
     @Override
-    protected void afterViewAttached(IncludeDrawerCoordinatorLayoutBinding binding) {
+    protected void afterViewAttached(IncludeDrawerCollapseTabLayoutBinding binding) {
 
     }
 
@@ -55,7 +51,7 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
                             }
                         }))
                 .background(R.color.colorPrimary)
-                .sink(false)
+                .expendToStatusBar(false)
                 .withElevation(false)
                 .build();
         ViewModelBinder.bind(container, vm);
@@ -70,19 +66,7 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
 
     @Override
     protected void initDrawer(ViewGroup container) {
-        DrawerViewModel viewModel = new DrawerViewModel.Builder()
-                .width(R.dimen.drawer_width_normal)
-                .background(R.color.white)
-                .item(new DrawerHeaderViewModel.Builder()
-                        .content("DRAWER COORDINATOR")
-                        .icon("https://imgsa.baidu.com/forum/w%3D580/sign=9a8f6a0f9545d688a302b2ac94c27dab/ca67d5a20cf431ad929de0054c36acaf2fdd988b.jpg")
-                        .build())
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_draft_gray))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_sent_gray))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_star_gray))
-                .item(new DrawerItemViewModel().icon(R.drawable.ic_inbox_gray))
-                .build();
-        ViewModelBinder.bind(container, viewModel);
+        ViewModelBinder.bind(container, DrawerViewModelGen.create());
     }
 
     @Override
@@ -99,20 +83,15 @@ public class DrawerCoordinatorLayoutDemoViewModel extends DrawerCoordinatorLayou
             }
         };
         viewPager.setAdapter(adapter);
-        adapter.addWithTitle(new GithubFollowerListViewModel("liuny05").callback(this), "Jake Wharton");
-        adapter.addWithTitle(new GithubFollowerListViewModel("Mindjet").callback(this), "Mindjet");
-        adapter.addWithTitle(new GithubFollowerListViewModel("Gringe920").callback(this), "Gringe");
+        adapter.addWithTitle(new GithubFollowerListViewModel("Jake Wharton"), "Jake Wharton");
+        adapter.addWithTitle(new GithubFollowerListViewModel("Mindjet"), "Mindjet");
+        adapter.addWithTitle(new GithubFollowerListViewModel("Gringe920"), "Gringe");
         viewPager.setOffscreenPageLimit(3);
     }
 
     @Override
     protected void onFabClick() {
 
-    }
-
-    @Override
-    public void onFollowerClick(int position, GithubFollowerViewModel item) {
-        new FollowerDialog(getContext(), item.name.get()).show();
     }
 
 }

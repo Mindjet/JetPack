@@ -20,10 +20,6 @@
             android:label="JetImage - Loader"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ViewModelActivityDemo"
-            android:label="JetGear - ViewModelActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.BannerActivity"
             android:label="JetWidget - Banner"
             android:screenOrientation="portrait" />
@@ -36,15 +32,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
         <activity
-            android:name=".activity.CoordinatorLayoutActivity"
+            android:name=".activity.CollapseTabLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
         <activity
-            android:name=".activity.CoordinatorCollapseLayoutActivity"
+            android:name=".activity.CollapseToolbarLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
         <activity
-            android:name=".activity.SwipeLayoutActivity"
+            android:name=".activity.SwipeRecyclerDemoActivity"
             android:label="JetGear - SwipeLayout"
             android:screenOrientation="portrait" />
         <activity
@@ -52,14 +48,9 @@
             android:label="Circular Reveal"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.TransitionActivity2"
-            android:theme="@style/AppTheme.NoTitle" />
-        <activity android:name=".activity.TransitionActivity1" />
-        <activity
-            android:name=".activity.DrawerCoordinatorLayoutActivity"
+            android:name=".activity.DrawerCollapseTabLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle" />
-        <activity android:name=".activity.FollowerDetailActivity" />
     </application>
 
 </manifest>

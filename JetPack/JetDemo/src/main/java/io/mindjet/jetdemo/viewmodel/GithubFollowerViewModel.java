@@ -1,14 +1,13 @@
 package io.mindjet.jetdemo.viewmodel;
 
-import android.databinding.ObservableField;
 import android.view.View;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ItemGithubFollowerBinding;
-import io.mindjet.jetdemo.listener.IFollowerListener;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.AdapterInterface;
+import rx.functions.Action1;
 
 /**
  * Created by Jet on 2/20/17.
@@ -16,19 +15,17 @@ import io.mindjet.jetgear.mvvm.viewinterface.AdapterInterface;
 
 public class GithubFollowerViewModel extends BaseViewModel<AdapterInterface<ItemGithubFollowerBinding>> {
 
-    public ObservableField<String> avatarUrl;
-    public ObservableField<String> name;
+    private Follower follower;
 
-    private IFollowerListener iFollowerListener;
+    private Action1<Follower> onClick;
 
-    public GithubFollowerViewModel(Follower follower) {
-        avatarUrl = new ObservableField<>(follower.avatarUrl);
-        name = new ObservableField<>(follower.name);
+    public GithubFollowerViewModel(Follower follower, Action1<Follower> onClick) {
+        this.follower = follower;
+        this.onClick = onClick;
     }
 
-    public GithubFollowerViewModel callback(IFollowerListener iFollowerListener) {
-        this.iFollowerListener = iFollowerListener;
-        return this;
+    public Follower getFollower() {
+        return follower;
     }
 
     @Override
@@ -41,14 +38,8 @@ public class GithubFollowerViewModel extends BaseViewModel<AdapterInterface<Item
         return R.layout.item_github_follower;
     }
 
-    public View.OnClickListener getClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (iFollowerListener != null)
-                    iFollowerListener.onFollowerClick(getSelfView().getViewHolder().getLayoutPosition(), GithubFollowerViewModel.this);
-            }
-        };
+    public void onClick() {
+        if (onClick != null) onClick.call(follower);
     }
 
 }

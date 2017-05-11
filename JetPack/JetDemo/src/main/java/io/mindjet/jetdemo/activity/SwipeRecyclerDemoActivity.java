@@ -10,10 +10,10 @@ import io.mindjet.jetgear.mvvm.viewmodel.activity.ViewModelCompatActivity;
  * Created by Jet on 3/2/17.
  */
 
-public class SwipeLayoutActivity extends ViewModelCompatActivity<SwipeRecyclerDemoViewModel> {
+public class SwipeRecyclerDemoActivity extends ViewModelCompatActivity<SwipeRecyclerDemoViewModel> {
 
     public static Intent intentFor(Context context) {
-        return new Intent(context, SwipeLayoutActivity.class);
+        return new Intent(context, SwipeRecyclerDemoActivity.class);
     }
 
     @Override

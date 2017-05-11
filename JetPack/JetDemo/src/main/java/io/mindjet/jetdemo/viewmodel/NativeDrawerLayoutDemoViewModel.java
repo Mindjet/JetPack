@@ -34,7 +34,7 @@ public class NativeDrawerLayoutDemoViewModel extends NativeDrawerLayoutViewModel
     @Override
     public void initHeader(ViewGroup container) {
         HeaderViewModel headerViewModel = new HeaderViewModel.Builder()
-                .sink(true)
+                .expendToStatusBar(true)
                 .leftViewModel(new HeaderItemViewModel()
                         .icon(io.mindjet.jetgear.R.drawable.ic_drawer)
                         .clickable(true)

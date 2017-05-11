@@ -3,17 +3,15 @@ package io.mindjet.jetdemo.viewmodel;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.mindjet.jetdemo.R;
-import io.mindjet.jetdemo.listener.IFollowerListener;
+import io.mindjet.jetdemo.dialog.FollowerDialog;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.mvvm.viewmodel.list.SwipeRecyclerViewModel;
 import io.mindjet.jetgear.network.ServiceGen;
 import io.mindjet.jetgear.reactivex.RxActions;
 import io.mindjet.jetgear.reactivex.rxbus.RxBus;
-import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
@@ -22,17 +20,21 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
+ * Github follower list view model based on {@link SwipeRecyclerViewModel}.
+ * <p>
  * Created by Jet on 2/20/17.
  */
 
 public class GithubFollowerListViewModel extends SwipeRecyclerViewModel {
 
     private String userName;
+
     private GithubService service;
     private int page = 1;
+
     private Subscription followerSub;
 
-    private IFollowerListener iFollowerListener;
+    private Action1<Follower> onClick;
 
     public GithubFollowerListViewModel() {
         this("JakeWharton");
@@ -43,16 +45,18 @@ public class GithubFollowerListViewModel extends SwipeRecyclerViewModel {
         service = ServiceGen.create(GithubService.class);
     }
 
-    public GithubFollowerListViewModel callback(IFollowerListener iFollowerListener) {
-        this.iFollowerListener = iFollowerListener;
-        return this;
-    }
-
     @Override
     protected void afterComponentsBound() {
         getRecyclerView().setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         getRecyclerView().setBackground(getContext().getResources().getDrawable(R.color.rcv_gray_light));
         changePbColor(R.color.colorPrimary);
+
+        onClick = new Action1<Follower>() {
+            @Override
+            public void call(Follower follower) {
+                new FollowerDialog(getContext()).userName(follower.name).show();
+            }
+        };
     }
 
     @Override
@@ -68,20 +72,15 @@ public class GithubFollowerListViewModel extends SwipeRecyclerViewModel {
 
     private void getFollowerList() {
         followerSub = service.follower(userName, page, 10)
-                .throttleLast(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(RxActions.clear(getAdapter(), page == 1))
-                .flatMap(new Func1<List<Follower>, Observable<Follower>>() {
-                    @Override
-                    public Observable<Follower> call(List<Follower> followers) {
-                        return Observable.from(followers);
-                    }
-                })
+                .doOnNext(RxActions.clearAdapter(getAdapter(), page == 1))
+                .observeOn(Schedulers.io())
+                .flatMap(RxActions.<Follower>flatMap())
                 .map(new Func1<Follower, GithubFollowerViewModel>() {
                     @Override
                     public GithubFollowerViewModel call(Follower follower) {
-                        return new GithubFollowerViewModel(follower).callback(iFollowerListener);
+                        return new GithubFollowerViewModel(follower, onClick);
                     }
                 })
                 .toList()
@@ -92,6 +91,7 @@ public class GithubFollowerListViewModel extends SwipeRecyclerViewModel {
                         hideRefreshing();
                     }
                 })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<List<GithubFollowerViewModel>>() {
                     @Override
                     public void call(List<GithubFollowerViewModel> list) {

@@ -26,6 +26,7 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
     protected JLogger jLogger = JLogger.get(getClass().getSimpleName());
     private V selfView;
     private ViewAttachedListener viewAttachedListener;
+    private boolean attached = false;
 
     /**
      * This method is called after the view has been attached to the container.
@@ -36,6 +37,7 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
     public void onAttach(V selfView) {
         this.selfView = selfView;
         attachData(selfView.getBinding());
+        this.attached = true;
         onViewAttached();                                       //notify anything listens to it.
         onViewAttached(selfView.getBinding().getRoot());        //notify the ViewModel itself.
     }
@@ -80,6 +82,13 @@ public abstract class BaseViewModel<V extends ViewInterface> extends BaseObserva
      */
     public void setViewAttachedListener(ViewAttachedListener viewAttachedListener) {
         this.viewAttachedListener = viewAttachedListener;
+    }
+
+    /**
+     * @return whether the view model is attached or not.
+     */
+    public boolean isAttached() {
+        return attached;
     }
 
     public Context getContext() {

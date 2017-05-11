@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.mindjet.jetgear.R;
-import io.mindjet.jetgear.databinding.IncludeDrawerCoordinatorLayoutBinding;
+import io.mindjet.jetgear.databinding.IncludeDrawerCollapseTabLayoutBinding;
 import io.mindjet.jetgear.mvvm.base.BaseViewModel;
 import io.mindjet.jetgear.mvvm.viewinterface.ViewInterface;
 import io.mindjet.jetutil.version.VersionUtil;
@@ -23,11 +23,11 @@ import io.mindjet.jetutil.version.VersionUtil;
  * Created by Jet on 3/9/17.
  */
 
-public abstract class DrawerCoordinatorLayoutViewModel<V extends ViewInterface<IncludeDrawerCoordinatorLayoutBinding>> extends BaseViewModel<V> implements AppBarLayout.OnOffsetChangedListener, DrawerLayout.DrawerListener {
+public abstract class DrawerCollapseTabLayoutViewModel<V extends ViewInterface<IncludeDrawerCollapseTabLayoutBinding>> extends BaseViewModel<V> implements AppBarLayout.OnOffsetChangedListener, DrawerLayout.DrawerListener {
 
     @Override
     public int getLayoutId() {
-        return R.layout.include_drawer_coordinator_layout;
+        return R.layout.include_drawer_collapse_tab_layout;
     }
 
     @Override
@@ -74,7 +74,7 @@ public abstract class DrawerCoordinatorLayoutViewModel<V extends ViewInterface<I
         return getSelfView().getBinding().drawerLayout;
     }
 
-    protected abstract void afterViewAttached(IncludeDrawerCoordinatorLayoutBinding binding);
+    protected abstract void afterViewAttached(IncludeDrawerCollapseTabLayoutBinding binding);
 
     /**
      * To have a better user interface, we adopt the Theme called AppTheme.NoTitle, and if your version is before API 21, this no-title feature won't take effect, which means that you still have your original status bar.

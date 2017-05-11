@@ -31,13 +31,13 @@
                 android:id="@+id/iv_avatar"
                 android:layout_width="@dimen/avatar_width"
                 android:layout_height="@dimen/avatar_height"
-                app:circle="@{data._follower.avatarUrl}" />
+                app:circle="@{data.avatar}" />
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_gap_medium"
+                android:layout_marginStart="@dimen/common_gap_medium"
                 android:textColor="@color/black"
                 android:textSize="@dimen/common_text_size_large"
                 android:textStyle="bold" />
@@ -50,15 +50,15 @@
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_sent_gray"
             android:drawablePadding="@dimen/common_gap_medium"
+            android:drawableStart="@drawable/ic_sent_gray"
             android:paddingBottom="@dimen/common_gap_small"
-            android:paddingLeft="@dimen/common_gap"
-            android:paddingRight="@dimen/common_gap_small"
+            android:paddingEnd="@dimen/common_gap_small"
+            android:paddingStart="@dimen/common_gap"
             android:paddingTop="@dimen/common_gap_small"
-            android:text="@{data._follower.email}"
+            android:text="@{data.email}"
             android:textColor="@color/black"
-            android:visibility="@{data._follower.email!=null}" />
+            android:visibility="@{data.email!=null}" />
 
         <TextView
             android:id="@+id/tv_location"
@@ -66,12 +66,12 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/common_gap_medium"
             android:paddingBottom="@dimen/common_gap_small"
-            android:paddingLeft="@dimen/common_gap"
-            android:paddingRight="@dimen/common_gap_small"
+            android:paddingEnd="@dimen/common_gap_small"
+            android:paddingStart="@dimen/common_gap"
             android:paddingTop="@dimen/common_gap_small"
-            android:text="@{data._follower.location}"
+            android:text="@{data.location}"
             android:textColor="@color/black"
-            android:visibility="@{data._follower.location!=null}" />
+            android:visibility="@{data.location!=null}" />
 
         <TextView
             android:id="@+id/repo_num"
@@ -79,10 +79,10 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/common_gap_medium"
             android:paddingBottom="@dimen/common_gap_small"
-            android:paddingLeft="@dimen/common_gap"
-            android:paddingRight="@dimen/common_gap_small"
+            android:paddingEnd="@dimen/common_gap_small"
+            android:paddingStart="@dimen/common_gap"
             android:paddingTop="@dimen/common_gap_small"
-            android:text="@{data._follower.publicRepos}"
+            android:text="@{data.publicRepos}"
             android:textColor="@color/black" />
 
         <TextView
@@ -91,10 +91,10 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/common_gap_medium"
             android:paddingBottom="@dimen/common_gap_small"
-            android:paddingLeft="@dimen/common_gap"
-            android:paddingRight="@dimen/common_gap_small"
+            android:paddingEnd="@dimen/common_gap_small"
+            android:paddingStart="@dimen/common_gap"
             android:paddingTop="@dimen/common_gap_small"
-            android:text="@{data._follower.followers}"
+            android:text="@{data.followers}"
             android:textColor="@color/black" />
 
     </LinearLayout>

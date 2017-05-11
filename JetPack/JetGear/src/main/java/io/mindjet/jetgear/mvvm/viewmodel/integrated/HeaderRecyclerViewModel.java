@@ -32,6 +32,7 @@ public abstract class HeaderRecyclerViewModel<V extends ViewInterface<IncludeHea
         afterViewAttached();
         initHeader(getSelfView().getBinding().llyContainer);
         initRecyclerView(getSelfView().getBinding().llyContainer);
+        getAdapter().setLoadMoreListener(this);
         afterComponentBound();
     }
 
@@ -44,7 +45,6 @@ public abstract class HeaderRecyclerViewModel<V extends ViewInterface<IncludeHea
     private void initRecyclerView(ViewGroup container) {
         recyclerViewModel = new RecyclerViewModel(true);
         ViewModelBinder.bind(container, recyclerViewModel);
-        recyclerViewModel.setLoadMoreListener(this);
     }
 
     protected void afterComponentBound() {

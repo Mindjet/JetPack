@@ -34,7 +34,6 @@ public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends List
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (loadMore && viewType == R.layout.item_progress) {
-            jLogger.e("on create loading view holder");
             progressBinding = ItemProgressBinding.inflate(getInflater(), parent, false);
             return new BaseViewHolder<>(progressBinding);
         }
@@ -44,7 +43,6 @@ public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends List
     @Override
     public void onBindViewHolder(BaseViewHolder<V> holder, int position) {
         if (loadMore && position == size()) {
-            jLogger.e("on bind view holder load more");
             holder.getBinding().getRoot().setVisibility(View.VISIBLE);
             loadMore();
         } else {
@@ -58,6 +56,10 @@ public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends List
             return R.layout.item_progress;
         }
         return super.getItemViewType(position);
+    }
+
+    public void setLoadMoreListener(LoadMoreListener loadMoreListener) {
+        this.loadMoreListener = loadMoreListener;
     }
 
     public void enableLoadMore() {
@@ -77,15 +79,13 @@ public abstract class LoadMoreAdapter<T, V extends ViewDataBinding> extends List
                 notifyItemRemoved(getItemCount());
             }
         } else {
-            jLogger.e("on finish load more");
             enableLoadMore();
-            notifyItemInserted(getItemCount());
+            notifyItemChanged(getItemCount() - 1);
         }
     }
 
     private void loadMore() {
         if (loadMoreListener != null) {
-            jLogger.e("inside load more method");
             loadMoreListener.onLoadMore();
         }
     }

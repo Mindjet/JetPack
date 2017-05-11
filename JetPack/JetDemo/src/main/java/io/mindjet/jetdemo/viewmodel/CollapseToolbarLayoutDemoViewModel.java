@@ -9,11 +9,11 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
-import io.mindjet.jetgear.databinding.IncludeCoordinatorCollapseLayoutBinding;
+import io.mindjet.jetgear.databinding.IncludeCollapseToolbarLayoutBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityCompatInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
+import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapseToolbarLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapsingImageViewModel;
-import io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorCollapseLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 import io.mindjet.jetutil.anim.RevealUtil;
@@ -24,7 +24,7 @@ import io.mindjet.jetwidget.JToolBar;
  * Created by Jet on 3/6/17.
  */
 
-public class CoordinatorCollapseLayoutDemoViewModel extends CoordinatorCollapseLayoutViewModel<ActivityCompatInterface<IncludeCoordinatorCollapseLayoutBinding>> {
+public class CollapseToolbarLayoutDemoViewModel extends CollapseToolbarLayoutViewModel<ActivityCompatInterface<IncludeCollapseToolbarLayoutBinding>> {
 
     @Override
     protected void afterViewAttached() {

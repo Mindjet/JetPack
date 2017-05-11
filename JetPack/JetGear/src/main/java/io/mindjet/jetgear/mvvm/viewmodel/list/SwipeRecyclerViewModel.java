@@ -41,7 +41,7 @@ public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInt
             public void run() {
                 onRefresh();
             }
-        }, 1000);
+        }, 600);
     }
 
     private void initSwipeLayout() {
@@ -51,8 +51,8 @@ public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInt
     @SuppressWarnings("unchecked")
     private void initRecyclerView() {
         recyclerViewModel = new RecyclerViewModel(true);
-        recyclerViewModel.setLoadMoreListener(this);
         ViewModelBinder.bind(swipeLayout, recyclerViewModel);
+        getAdapter().setLoadMoreListener(this);
     }
 
     /**
@@ -79,7 +79,11 @@ public class SwipeRecyclerViewModel<S extends ViewDataBinding, V extends ViewInt
      * @return adapter of the RecyclerView.
      */
     public ViewModelAdapter<S> getAdapter() {
-        return recyclerViewModel.getAdapter();
+        if (recyclerViewModel != null) {
+            return recyclerViewModel.getAdapter();
+        } else {
+            throw new NullPointerException("The RecyclerViewModel is NULL");
+        }
     }
 
     protected void afterViewAttached() {

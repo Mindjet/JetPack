@@ -16,23 +16,37 @@ import io.mindjet.jetutil.task.Task;
 
 public class SwipeRecyclerDemoViewModel extends SwipeRecyclerViewModel<ItemButtonBinding, ActivityInterface<IncludeSwipeRecyclerViewBinding>> {
 
+    private int count = 2;
+
     @Override
     public void onRefresh() {
         Task.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 getAdapter().clear();
-                getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
-                getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
                 getAdapter().notifyDataSetChanged();
+                for (int i = 0; i < count; i++) {
+                    getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
+                }
+                getAdapter().notifyItemRangeInserted(0, count);
+                getAdapter().onFinishLoadMore(false);
                 hideRefreshing();
+                count++;
             }
-        }, 3000);
+        }, 1000);
     }
 
     @Override
     public void onLoadMore() {
-
+        Task.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
+                getAdapter().add(new ButtonViewModel.Builder().simpleAttr().build());
+                getAdapter().notifyItemRangeInserted(getAdapter().size() - 2, 2);
+                getAdapter().onFinishLoadMore(getAdapter().size() >= 20);
+            }
+        }, 1000);
     }
 
     @Override

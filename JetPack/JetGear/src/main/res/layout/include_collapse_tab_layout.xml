@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetgear.mvvm.viewmodel.coordinator.CoordinatorTabLayoutViewModel" />
+            type="io.mindjet.jetgear.mvvm.viewmodel.coordinator.CollapseTabLayoutViewModel" />
     </data>
 
     <LinearLayout
@@ -40,11 +40,7 @@
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:tabBackground="@color/colorPrimary"
-                    app:tabIndicatorColor="@color/white"
-                    app:tabMode="scrollable"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabTextColor="@color/white" />
+                    app:tabMode="scrollable" />
 
             </android.support.design.widget.AppBarLayout>
 

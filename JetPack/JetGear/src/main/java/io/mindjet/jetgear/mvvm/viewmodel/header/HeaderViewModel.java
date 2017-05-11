@@ -67,16 +67,16 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
         return getContext().getResources().getColor(builder.background);
     }
 
-    public boolean isSink() {
-        //the sink feature is only available after KitKat.
-        return VersionUtil.afterKitKat() && builder.sink;
+    public boolean isExpend() {
+        //the expendToStatusBar feature is only available after KitKat.
+        return VersionUtil.afterKitKat() && builder.expendToStatusBar;
     }
 
     public static class Builder {
         @ColorRes
         private int background = R.color.colorPrimary;
         private boolean withElevation = true;
-        private boolean sink = false;
+        private boolean expendToStatusBar = false;
 
         private List<HeaderItemViewModel> leftViewModels = new ArrayList<>();
         private List<HeaderItemViewModel> centerViewModels = new ArrayList<>();
@@ -111,11 +111,11 @@ public class HeaderViewModel extends BaseViewModel<ViewInterface<IncludeHeaderBi
          * If you want to expand the whole view to the status bar, you need to set it true.
          * Meanwhile you are supposed to use a theme called <i>AppTheme.NoTitle</i> to style the activity.
          *
-         * @param sink whether to expend the view to the status bar or not.
+         * @param expendToStatusBar whether to expend the view to the status bar or not.
          * @return Builder
          */
-        public Builder sink(boolean sink) {
-            this.sink = sink;
+        public Builder expendToStatusBar(boolean expendToStatusBar) {
+            this.expendToStatusBar = expendToStatusBar;
             return this;
         }
 

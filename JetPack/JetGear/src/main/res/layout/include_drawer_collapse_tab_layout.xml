@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetgear.mvvm.viewmodel.integrated.DrawerCoordinatorLayoutViewModel" />
+            type="io.mindjet.jetgear.mvvm.viewmodel.integrated.DrawerCollapseTabLayoutViewModel" />
 
     </data>
 

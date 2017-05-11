@@ -21,7 +21,7 @@
             android:background="@drawable/ripple_default"
             android:clickable="true"
             android:gravity="center_horizontal"
-            android:onClick="@{data.clickListener}"
+            android:onClick="@{() -> data.onClick()}"
             android:orientation="vertical"
             android:padding="@dimen/common_gap_small">
 
@@ -30,8 +30,8 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:transitionName="@string/transition_name_image"
-                app:circle="@{data.avatarUrl}"
-                app:placeHolder="@{0}" />
+                app:circle="@{data.follower.avatarUrl}"
+                app:placeHolder="@{@drawable/ic_placeholder}" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="@{data.name}"
+                android:text="@{data.follower.name}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:transitionName="@string/transition_name_text" />
