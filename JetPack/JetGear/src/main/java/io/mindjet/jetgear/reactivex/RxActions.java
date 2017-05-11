@@ -3,6 +3,7 @@ package io.mindjet.jetgear.reactivex;
 import java.util.List;
 
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
+import io.mindjet.jetgear.mvvm.viewmodel.list.SwipeRecyclerViewModel;
 import io.mindjet.jetutil.logger.JLogger;
 import rx.Observable;
 import rx.functions.Action0;
@@ -34,6 +35,15 @@ public class RxActions {
             @Override
             public Observable<T> call(List<T> t) {
                 return Observable.from(t);
+            }
+        };
+    }
+
+    public static Action0 hideRefreshing(final SwipeRecyclerViewModel swipe) {
+        return new Action0() {
+            @Override
+            public void call() {
+                swipe.hideRefreshing();
             }
         };
     }
