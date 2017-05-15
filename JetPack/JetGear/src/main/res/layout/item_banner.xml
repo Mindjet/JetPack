@@ -4,29 +4,23 @@
     <data>
 
         <variable
-            name="url"
-            type="java.lang.String" />
+            name="data"
+            type="io.mindjet.jetgear.mvvm.viewmodel.item.BannerItemViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
+        android:onClick="@{() -> data.onClick()}"
         android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:placeHolder="@{@drawable/ic_placeholder}"
-                app:url="@{url}" />
-
-        </LinearLayout>
-
+            android:scaleType="centerCrop"
+            app:placeHolder="@{@drawable/ic_placeholder}"
+            app:url="@{data.url}" />
 
     </LinearLayout>
 

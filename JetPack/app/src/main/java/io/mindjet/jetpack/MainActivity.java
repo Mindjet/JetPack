@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.mindjet.jetdemo.activity.BannerActivity;
+import io.mindjet.jetdemo.activity.BannerViewActivity;
 import io.mindjet.jetdemo.activity.CircularRevealActivity;
 import io.mindjet.jetdemo.activity.CollapseTabLayoutActivity;
 import io.mindjet.jetdemo.activity.CollapseToolbarLayoutActivity;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
         intentList.add(ImageLoaderActivity.intentFor(this));
-        intentList.add(BannerActivity.intentFor(this));
+        intentList.add(BannerViewActivity.intentFor(this));
         intentList.add(CircularRevealActivity.intentFor(this));
         intentList.add(DrawerLayoutActivity.intentFor(this));
         intentList.add(NativeDrawerLayoutActivity.intentFor(this));

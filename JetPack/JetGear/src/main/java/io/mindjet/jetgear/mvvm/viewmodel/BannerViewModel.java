@@ -43,7 +43,6 @@ public class BannerViewModel<T extends BaseViewModel> extends BaseViewModel<View
     private BannerPagerAdapter adapter;
     private BannerPagerChangeListener listener;
     private Subscription tiktokSub;
-    private boolean isAttached = false;
 
     private BannerViewModel(Builder builder) {
         this.builder = builder;
@@ -52,12 +51,11 @@ public class BannerViewModel<T extends BaseViewModel> extends BaseViewModel<View
     @Override
     public void onViewAttached(View view) {
         //avoid doing the initialization work when it is rebound by the RecyclerView.
-        if (!isAttached) {
+        if (isAttached()) {
             initPagerAdapter();
             initPagerListener();
             initCursors();
             initTikTok();
-            isAttached = true;
         }
     }
 
@@ -245,7 +243,7 @@ public class BannerViewModel<T extends BaseViewModel> extends BaseViewModel<View
         public Object instantiateItem(ViewGroup container, int position) {
             if (vmList == null) {
                 ItemBannerBinding binding = DataBindingUtil.inflate(inflater, R.layout.item_banner, container, false);
-                binding.setUrl(urlList.get(position));
+//                binding.setUrl(urlList.get(position)); // TODO: 5/15/17 修改默认
                 binding.executePendingBindings();
                 container.addView(binding.getRoot());
                 return binding.getRoot();
