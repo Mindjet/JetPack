@@ -41,18 +41,22 @@ public class DrawableDyerActivity extends BaseDemoActivity {
 
     public void onBlue() {
         target.setImageDrawable(DrawableDyer.dye(target.getDrawable(), Color.BLUE));
+        target.invalidate();
     }
 
     public void onRed() {
         target.setImageDrawable(DrawableDyer.dye(target.getDrawable(), Color.RED));
+        target.invalidate();
     }
 
     public void onGreen() {
         target.setImageDrawable(DrawableDyer.dye(target.getDrawable(), Color.GREEN));
+        target.invalidate();
     }
 
     public void onRandomColor() {
         target.setImageDrawable(DrawableDyer.dyeRandomColor(target.getDrawable()));
+        target.invalidate();
     }
 
 }
