@@ -2,13 +2,19 @@ package io.mindjet.jetdemo.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
+import io.mindjet.jetdemo.databinding.ActivityBannerViewBinding;
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.item.BannerItemViewModel;
+import io.mindjet.jetutil.drawable.DrawableDyer;
 import io.mindjet.jetwidget.banner.BannerView;
+import io.mindjet.jetwidget.banner.indicator.IndicatorInterface;
+import io.mindjet.jetwidget.banner.indicator.IndicatorInterfaceImpl;
 
 /**
  * Created by Mindjet on 5/15/17.
@@ -16,6 +22,7 @@ import io.mindjet.jetwidget.banner.BannerView;
 
 public class BannerViewActivity extends BaseDemoActivity {
 
+    private ActivityBannerViewBinding mBinding;
     private BannerView mBannerView;
     private ViewPagerAdapter<BannerItemViewModel> adapter;
 
@@ -25,8 +32,9 @@ public class BannerViewActivity extends BaseDemoActivity {
 
     @Override
     public void beforeInitView() {
-        setContentView(R.layout.activity_banner_view);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_banner_view);
         mBannerView = (BannerView) findViewById(R.id.banner_view);
+        mBinding.setData(this);
     }
 
     @Override
@@ -48,6 +56,61 @@ public class BannerViewActivity extends BaseDemoActivity {
     @Override
     public void initData() {
 
+    }
+
+    public void onOriginStyle() {
+        mBannerView.setIndicatorStyle(new IndicatorInterfaceImpl(this));
+    }
+
+    public void onSquareStyle() {
+        mBannerView.setIndicatorStyle(new IndicatorInterface() {
+            @Override
+            public Context getContext() {
+                return BannerViewActivity.this;
+            }
+
+            @Override
+            public Drawable getNormalDrawable() {
+                return getContext().getResources().getDrawable(R.drawable.shape_indicator_sqaure);
+            }
+
+            @Override
+            public Drawable getSelectedDrawable() {
+                return DrawableDyer.dye(
+                        getContext().getResources().getDrawable(R.drawable.shape_indicator_sqaure),
+                        getContext().getResources().getColor(R.color.colorPrimary));
+            }
+
+            @Override
+            public int getIndicatorPadding() {
+                return getContext().getResources().getDimensionPixelOffset(R.dimen.common_gap_small);
+            }
+        });
+    }
+
+    public void onBigStyle() {
+        mBannerView.setIndicatorStyle(new IndicatorInterface() {
+            @Override
+            public Context getContext() {
+                return BannerViewActivity.this;
+            }
+
+            @Override
+            public Drawable getNormalDrawable() {
+                return getContext().getResources().getDrawable(R.drawable.shape_indicator_big);
+            }
+
+            @Override
+            public Drawable getSelectedDrawable() {
+                return DrawableDyer.dye(getContext().getResources().getDrawable(R.drawable.shape_indicator_big),
+                        getContext().getResources().getColor(R.color.colorPrimary));
+            }
+
+            @Override
+            public int getIndicatorPadding() {
+                return getContext().getResources().getDimensionPixelOffset(R.dimen.common_gap_medium);
+            }
+        });
     }
 
 }

@@ -9,16 +9,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 
 import java.lang.reflect.Field;
 
 import io.mindjet.jetwidget.R;
+import io.mindjet.jetwidget.banner.indicator.IndicatorInterface;
+import io.mindjet.jetwidget.banner.indicator.IndicatorView;
 
 /**
  * Common banner view.
@@ -32,8 +34,10 @@ public class BannerView extends FrameLayout {
 
     private View mRootView;
     private ViewPager mViewPager;
+    private FrameLayout mIndicatorContainer;
     private Handler mHandler = new Handler(Looper.getMainLooper());
     private AutoScrollTask mScrollTask;
+    private IndicatorView mIndicatorView;
 
     /*Attributes*/
     private boolean autoScroll;
@@ -75,6 +79,10 @@ public class BannerView extends FrameLayout {
     private void initView() {
         mRootView = LayoutInflater.from(getContext()).inflate(R.layout.banner_view, this);
         mViewPager = (ViewPager) mRootView.findViewById(R.id.view_pager);
+        mIndicatorContainer = (FrameLayout) mRootView.findViewById(R.id.indicator_container);
+        mIndicatorView = new IndicatorView(getContext());
+        mIndicatorContainer.addView(mIndicatorView);
+        mViewPager.addOnPageChangeListener(new BannerPageChangeListener());
         setScrollDuration(scrollDuration);
     }
 
@@ -116,11 +124,33 @@ public class BannerView extends FrameLayout {
         if (mScrollTask != null) mScrollTask.stop();
     }
 
+    private void notifyAdapterSizeChanged(int size) {
+        mIndicatorView.onIndicatorSizeChanged(size);
+    }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         if (mScrollTask == null) mScrollTask = new AutoScrollTask();
         startAutoScroll();
+    }
+
+    private class BannerPageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            mIndicatorView.onPageScrolled(position, positionOffset, positionOffsetPixels);
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            mIndicatorView.onPageSelected(position);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
     }
 
     private class AutoScrollTask implements Runnable {
@@ -151,6 +181,11 @@ public class BannerView extends FrameLayout {
 
     public void setAdapter(PagerAdapter adapter) {
         mViewPager.setAdapter(adapter);
+        notifyAdapterSizeChanged(adapter.getCount());
+    }
+
+    public PagerAdapter getAdapter() {
+        return mViewPager.getAdapter();
     }
 
     public void setScrollDuration(int duration) {
@@ -158,7 +193,7 @@ public class BannerView extends FrameLayout {
         try {
             Field field = ViewPager.class.getDeclaredField("mScroller");
             field.setAccessible(true);
-            SpeedScroller scroller = new SpeedScroller(getContext(), new AccelerateInterpolator());
+            SpeedScroller scroller = new SpeedScroller(getContext(), new FastOutSlowInInterpolator());
             scroller.setDuration(duration);
             field.set(mViewPager, scroller);
         } catch (Exception e) {
@@ -170,8 +205,9 @@ public class BannerView extends FrameLayout {
         scrollInterval = interval;
     }
 
-    public void setTransformer(ViewPager.PageTransformer pageTransformer) {
-        mViewPager.setPageTransformer(false, pageTransformer);
+    public void setIndicatorStyle(IndicatorInterface style) {
+        mViewPager.setCurrentItem(0);
+        mIndicatorView.setIndicatorInterface(style);
+        notifyAdapterSizeChanged(getAdapter().getCount());
     }
-
 }

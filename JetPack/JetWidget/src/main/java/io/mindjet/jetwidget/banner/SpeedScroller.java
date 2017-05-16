@@ -5,7 +5,7 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 /**
- * A scroller to override the default scroll in ViewPager to change the default scrolling speed.
+ * A scroller to override the default scroller in ViewPager to change the default scrolling speed.
  * <p>
  * Created by Mindjet on 5/15/17.
  */
