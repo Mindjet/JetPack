@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="BannerView">
-        <attr name="autoScroll" format="boolean" />
-        <attr name="scrollInterval" format="integer" />
-        <attr name="scrollDuration" format="integer" />
+        <attr name="autoScroll" format="boolean"/>
+        <attr name="scrollInterval" format="integer"/>
+        <attr name="scrollDuration" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="QCheckBox">
+        <attr name="borderColor" format="color"/>
+        <attr name="contentColor" format="color"/>
+        <attr name="checkColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="checkWidth" format="dimension"/>
+        <attr name="checked" format="boolean"/>
+        <attr name="shape" format="string"/>
     </declare-styleable>
 </resources>

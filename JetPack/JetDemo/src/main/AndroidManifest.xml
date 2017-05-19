@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.mindjet.jetdemo">
+          package="io.mindjet.jetdemo">
 
     <application
         android:allowBackup="true"
@@ -10,53 +10,56 @@
         <activity
             android:name=".activity.ImagePickerActivity"
             android:label="JetImage - Picker"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ImageSaverActivity"
             android:label="JetUtil - ImageSaver"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ImageLoaderActivity"
             android:label="JetImage - Loader"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.BannerActivity"
             android:label="JetWidget - Banner"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.DrawerLayoutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoTitle" />
+            android:theme="@style/AppTheme.NoTitle"/>
         <activity
             android:name=".activity.NativeDrawerLayoutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoTitle" />
+            android:theme="@style/AppTheme.NoTitle"/>
         <activity
             android:name=".activity.CollapseTabLayoutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoTitle" />
+            android:theme="@style/AppTheme.NoTitle"/>
         <activity
             android:name=".activity.CollapseToolbarLayoutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoTitle" />
+            android:theme="@style/AppTheme.NoTitle"/>
         <activity
             android:name=".activity.SwipeRecyclerDemoActivity"
             android:label="JetGear - SwipeLayout"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.CircularRevealActivity"
             android:label="Circular Reveal"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.DrawerCollapseTabLayoutActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoTitle" />
+            android:theme="@style/AppTheme.NoTitle"/>
         <activity
             android:name=".activity.DrawableDyerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.BannerViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CuteCheckBoxActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,0 +1,254 @@
+package io.mindjet.jetwidget;
+
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.support.annotation.ColorInt;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.Checkable;
+
+/**
+ * A cute CheckBox.
+ * <p>
+ * Created by Mindjet on 5/19/17.
+ */
+
+public class QCheckBox extends View implements Checkable {
+
+    private final String TAG = "QCheckBox";
+
+    private final int DEFAULT_BORDER_WIDTH = 2;              //in dp
+    private final int DEFAULT_CHECK_WIDTH = 2;              //in dp
+    private final int DEFAULT_BORDER_COLOR = Color.BLACK;
+    private final int DEFAULT_CONTENT_COLOR = Color.RED;
+    private final int DEFAULT_CHECK_COLOR = Color.WHITE;
+    private final int DEFAULT_ANIMATION_DURATION = 300;
+
+    private final int DEFAULT_WIDTH = 20;
+    private final int DEFAULT_HEIGHT = 20;
+
+    private boolean mChecked;
+
+    private Paint mBorderPaint;
+    private Paint mContentPaint;
+    private Paint mCheckPaint;
+    private Paint mBgPaint;
+    private Paint mContentEraser;
+    private Paint mCheckEraser;
+
+    private int mWidth;
+    private int mHeight;
+    private int mBorderWidth;       //in pixel
+    private int mCheckWidth;        //in pixel
+
+    private float mProgress;
+
+    private Canvas mCanvas;
+
+    @ColorInt
+    private int mBorderColor, mContentColor, mCheckColor;
+
+    public QCheckBox(Context context) {
+        this(context, null);
+    }
+
+    public QCheckBox(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public QCheckBox(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initAttrs(context, attrs);
+        initPaint();
+        initView();
+    }
+
+    private void initAttrs(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QCheckBox);
+        mBorderColor = typedArray.getColor(R.styleable.QCheckBox_borderColor, DEFAULT_BORDER_COLOR);
+        mContentColor = typedArray.getColor(R.styleable.QCheckBox_contentColor, DEFAULT_CONTENT_COLOR);
+        mCheckColor = typedArray.getColor(R.styleable.QCheckBox_checkColor, DEFAULT_CHECK_COLOR);
+        mBorderWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_borderWidth, dp2px(DEFAULT_BORDER_WIDTH));
+        mCheckWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_checkWidth, dp2px(DEFAULT_CHECK_WIDTH));
+        mChecked = typedArray.getBoolean(R.styleable.QCheckBox_checked, false);
+        mProgress = mChecked ? 1 : 0;
+        typedArray.recycle();
+    }
+
+    private void initPaint() {
+        mBorderPaint = makePaint(mBorderColor);
+        mBorderPaint.setStyle(Paint.Style.STROKE);
+        mBorderPaint.setStrokeWidth(mBorderWidth);
+        mContentPaint = makePaint(mContentColor);
+        mCheckPaint = makePaint(mCheckColor);
+        mCheckPaint.setStrokeWidth(mCheckWidth);
+        mCheckPaint.setStrokeCap(Paint.Cap.ROUND);
+        mBgPaint = makePaint(Color.LTGRAY);
+
+        mContentEraser = makePaint(Color.WHITE);
+//        mCheckEraser = makeEraser();
+    }
+
+    private Paint makePaint(int color) {
+        Paint paint = new Paint();
+        paint.setColor(color);
+        paint.setAntiAlias(true);
+        return paint;
+    }
+
+    private Paint makeEraser(int color) {
+        Paint paint = new Paint();
+        paint.setColor(color);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        return paint;
+    }
+
+    private void initView() {
+        setBackgroundResource(R.drawable.ripple_borderless_default);
+        setClickable(true);
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle();
+            }
+        });
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        resolveMeasureSpec(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(mWidth, mHeight);
+//        printBasicInfo();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        mCanvas = canvas;
+        drawCheckBox();
+    }
+
+    private void drawCheckBox() {
+        if (mChecked) {
+            mCanvas.drawCircle(mWidth / 2, mHeight / 2, mWidth / 2 * mProgress, mContentPaint);
+            float pStartX = mWidth * 2 / 9;
+            float pStartY = mHeight / 2;
+            float pTurnX = mWidth * 2 / 5;
+            float pTurnY = mHeight * 17 / 24;
+            float pEndX = mWidth * 41 / 54;
+            float pEndY = mHeight * 31 / 96;
+            mCanvas.drawLine(pStartX, pStartY, pTurnX, pTurnY, mCheckPaint);
+            mCanvas.drawLine(pTurnX, pTurnY, pEndX, pEndY, mCheckPaint);
+        } else {
+            mCanvas.drawCircle(mWidth / 2, mHeight / 2, (mWidth - mBorderWidth) / 2, mBgPaint);
+            mCanvas.drawCircle(mWidth / 2, mHeight / 2, (mWidth - mBorderWidth) / 2 * (1 - mProgress), mContentEraser);
+            mCanvas.drawCircle(mWidth / 2, mHeight / 2, (mWidth - mBorderWidth) / 2, mBorderPaint);        //the third parameter control the size of the circle.
+        }
+    }
+
+    private void printBasicInfo() {
+        Log.e(TAG, "default width: " + mWidth);
+        Log.e(TAG, "default height: " + mHeight);
+        Log.e(TAG, "getMeasuredWidth: " + getMeasuredWidth());
+        Log.e(TAG, "getMeasuredHeight: " + getMeasuredHeight());
+        Log.e(TAG, "getLeft: " + getLeft());
+        Log.e(TAG, "getTop: " + getTop());
+        Log.e(TAG, "getTranslationX: " + getTranslationX());
+        Log.e(TAG, "getTranslationY: " + getTranslationY());
+    }
+
+    private void startCheckedAnim() {
+        ValueAnimator animator = ValueAnimator.ofFloat(0.5f, 0.3f, 1f);
+        animator.setDuration(DEFAULT_ANIMATION_DURATION);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mProgress = (float) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
+        animator.start();
+    }
+
+    private void startUncheckedAnim() {
+        ValueAnimator animator = ValueAnimator.ofFloat(0.7f, 0.5f, 1f, 0f);
+        animator.setDuration(DEFAULT_ANIMATION_DURATION);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mProgress = (float) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
+        animator.start();
+    }
+
+    /**
+     * Convert dip to pixel.
+     *
+     * @param dp the value to convert.
+     * @return the value of pixel.
+     */
+    private int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getContext().getResources().getDisplayMetrics());
+    }
+
+    /**
+     * Each {@link android.view.View.MeasureSpec} consists of {@code MeasureSpecSize} and {@code MeasureSpecMode}.
+     *
+     * @param widthMeasureSpec  MeasureSpec of width.
+     * @param heightMeasureSpec MeasureSpec of height.
+     */
+    private void resolveMeasureSpec(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        switch (widthMode) {
+            case MeasureSpec.EXACTLY:       //may be match_parent or specific value
+                mWidth = widthSize;
+                break;
+            case MeasureSpec.AT_MOST:       //may be wrap_content
+            case MeasureSpec.UNSPECIFIED:
+                mWidth = dp2px(DEFAULT_WIDTH);
+                break;
+        }
+        switch (heightMode) {
+            case MeasureSpec.EXACTLY:       //may be match_parent or specific value
+                mHeight = heightSize;
+                break;
+            case MeasureSpec.AT_MOST:        //may be wrap_content
+            case MeasureSpec.UNSPECIFIED:
+                mHeight = dp2px(DEFAULT_HEIGHT);
+                break;
+        }
+    }
+
+    @Override
+    public void setChecked(boolean checked) {
+        mChecked = checked;
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+        if (mChecked) {
+            startCheckedAnim();
+        } else {
+            startUncheckedAnim();
+        }
+    }
+}
