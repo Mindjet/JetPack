@@ -125,7 +125,7 @@ public class BannerView extends FrameLayout {
     }
 
     private void notifyAdapterSizeChanged(int size) {
-        mIndicatorView.onIndicatorSizeChanged(size);
+        mIndicatorView.onIndicatorNumChanged(size);
     }
 
     @Override
@@ -207,7 +207,7 @@ public class BannerView extends FrameLayout {
 
     public void setIndicatorStyle(IndicatorInterface style) {
         mViewPager.setCurrentItem(0);
-        mIndicatorView.setIndicatorInterface(style);
+        mIndicatorView.setIndicatorStyle(style);
         notifyAdapterSizeChanged(getAdapter().getCount());
     }
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.activity.BannerViewActivity" />
+            type="io.mindjet.jetdemo.activity.BannerViewActivity"/>
     </data>
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_height="150dp"
             app:autoScroll="true"
             app:scrollDuration="800"
-            app:scrollInterval="2000" />
+            app:scrollInterval="2000"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,19 +32,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> data.onOriginStyle()}"
-                android:text="origin indicator style" />
+                android:text="origin indicator style"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> data.onSquareStyle()}"
-                android:text="square indicator style" />
+                android:text="square indicator style"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> data.onBigStyle()}"
-                android:text="big indicator style" />
+                android:text="big indicator style"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> data.onBigCursorStyle()}"
+                android:text="big cursor style"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> data.onSmallCursorStyle()}"
+                android:text="small cursor style"/>
 
         </LinearLayout>
 
