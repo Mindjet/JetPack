@@ -44,7 +44,8 @@ public class QCheckBox extends View implements Checkable {
     private Paint mContentEraser;
 
     private Point[] mCheckPoints = new Point[3];
-    private float mLeftCheckLength, mRightCheckLength, mDrawnLength;
+    private float mLeftCheckLength;
+    private float mRightCheckLength;
 
     private int mWidth;
     private int mHeight;
@@ -55,6 +56,8 @@ public class QCheckBox extends View implements Checkable {
     private float mCheckProgress;
 
     private Canvas mCanvas;
+
+    private OnCheckedChangedListener onCheckedChangedListener;
 
     @ColorInt
     private int mBorderColor, mContentColor, mCheckColor;
@@ -155,7 +158,7 @@ public class QCheckBox extends View implements Checkable {
     }
 
     private void drawCheck() {
-        mDrawnLength = mCheckProgress * (mLeftCheckLength + mRightCheckLength);
+        float mDrawnLength = mCheckProgress * (mLeftCheckLength + mRightCheckLength);
         float targetX, targetY;
         if (mDrawnLength < mLeftCheckLength) {
             targetX = mCheckPoints[0].x + (mCheckPoints[1].x - mCheckPoints[0].x) * mDrawnLength / mLeftCheckLength;
@@ -259,6 +262,10 @@ public class QCheckBox extends View implements Checkable {
         }
     }
 
+    public void setOnCheckedChangedListener(OnCheckedChangedListener onCheckedChangedListener) {
+        this.onCheckedChangedListener = onCheckedChangedListener;
+    }
+
     @Override
     public boolean isChecked() {
         return mChecked;
@@ -272,10 +279,17 @@ public class QCheckBox extends View implements Checkable {
     @Override
     public void toggle() {
         setChecked(!mChecked);
+        if (onCheckedChangedListener != null)
+            onCheckedChangedListener.onCheckedChanged(this, isChecked());
         if (mChecked) {
             startCheckedAnim();
         } else {
             startUncheckedAnim();
         }
     }
+
+    public interface OnCheckedChangedListener {
+        void onCheckedChanged(QCheckBox checkBox, boolean checked);
+    }
+
 }
