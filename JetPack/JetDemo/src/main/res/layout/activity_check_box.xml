@@ -19,7 +19,7 @@
         <io.mindjet.jetwidget.QCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:borderColor="@color/gray_dark"
+            app:borderColor="@color/black_translucent"
             app:checked="true"
             app:contentColor="@color/colorAccent"/>
 
