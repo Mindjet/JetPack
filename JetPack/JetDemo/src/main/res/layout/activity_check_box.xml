@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.activity.CuteCheckBoxActivity" />
+            type="io.mindjet.jetdemo.activity.CuteCheckBoxActivity"/>
     </data>
 
     <LinearLayout
@@ -17,25 +17,28 @@
         android:padding="@dimen/common_gap">
 
         <io.mindjet.jetwidget.QCheckBox
+            android:id="@+id/checkbox_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_gap_large" />
+            android:layout_marginTop="@dimen/common_gap_large"/>
 
         <io.mindjet.jetwidget.QCheckBox
+            android:id="@+id/checkbox_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_gap_large"
             app:borderColor="@color/black_translucent"
             app:checked="true"
-            app:contentColor="@color/colorAccent" />
+            app:contentColor="@color/colorAccent"/>
 
         <io.mindjet.jetwidget.QCheckBox
+            android:id="@+id/checkbox_3"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="@dimen/common_gap_large"
             app:borderColor="@color/black_translucent"
             app:checked="true"
-            app:contentColor="@color/colorAccent" />
+            app:contentColor="@color/colorAccent"/>
 
 
     </LinearLayout>

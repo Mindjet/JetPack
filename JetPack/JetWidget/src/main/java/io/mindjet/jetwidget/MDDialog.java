@@ -12,21 +12,21 @@ import com.afollestad.materialdialogs.MaterialDialog;
  * Created by Jet on 4/19/17.
  */
 
-public class LoadingView {
+public class MDDialog {
 
-    private static LoadingView loadingView;
+    private static MDDialog sMDDialog;
     private MaterialDialog sMaterialDialog;
 
-    private static LoadingView get() {
-        if (loadingView == null) {
-            synchronized (LoadingView.class) {
-                if (loadingView == null) {
-                    loadingView = new LoadingView();
-                    return loadingView;
+    private static MDDialog get() {
+        if (sMDDialog == null) {
+            synchronized (MDDialog.class) {
+                if (sMDDialog == null) {
+                    sMDDialog = new MDDialog();
+                    return sMDDialog;
                 }
             }
         }
-        return loadingView;
+        return sMDDialog;
     }
 
     public static void show(Context context, @StringRes int stringRes) {

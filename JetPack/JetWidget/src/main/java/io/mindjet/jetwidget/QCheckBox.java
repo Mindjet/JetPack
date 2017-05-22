@@ -11,7 +11,6 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Checkable;
 
@@ -82,8 +81,8 @@ public class QCheckBox extends View implements Checkable {
         mBorderColor = typedArray.getColor(R.styleable.QCheckBox_borderColor, DEFAULT_BORDER_COLOR);
         mContentColor = typedArray.getColor(R.styleable.QCheckBox_contentColor, DEFAULT_CONTENT_COLOR);
         mCheckColor = typedArray.getColor(R.styleable.QCheckBox_checkColor, DEFAULT_CHECK_COLOR);
-        mBorderWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_borderWidth, dp2px(DEFAULT_BORDER_WIDTH));
-        mCheckWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_checkWidth, dp2px(DEFAULT_CHECK_WIDTH));
+        mBorderWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_borderWidth, ViewUtil.dp2px(context, DEFAULT_BORDER_WIDTH));
+        mCheckWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_checkWidth, ViewUtil.dp2px(context, DEFAULT_CHECK_WIDTH));
         mChecked = typedArray.getBoolean(R.styleable.QCheckBox_checked, false);
         mProgress = mChecked ? 1 : 0;
         mCheckProgress = mChecked ? 1 : 0;
@@ -126,7 +125,8 @@ public class QCheckBox extends View implements Checkable {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        resolveMeasureSpec(widthMeasureSpec, heightMeasureSpec);
+        mWidth = ViewUtil.getSizeFromMeasuredSpec(getContext(), widthMeasureSpec, DEFAULT_WIDTH);
+        mHeight = ViewUtil.getSizeFromMeasuredSpec(getContext(), heightMeasureSpec, DEFAULT_HEIGHT);
         setMeasuredDimension(mWidth, mHeight);
         initCheckPoints();
 //        printBasicInfo();
@@ -219,47 +219,6 @@ public class QCheckBox extends View implements Checkable {
             }
         });
         animator.start();
-    }
-
-    /**
-     * Convert dip to pixel.
-     *
-     * @param dp the value to convert.
-     * @return the value of pixel.
-     */
-    private int dp2px(int dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getContext().getResources().getDisplayMetrics());
-    }
-
-    /**
-     * Each {@link android.view.View.MeasureSpec} consists of {@code MeasureSpecSize} and {@code MeasureSpecMode}.
-     *
-     * @param widthMeasureSpec  MeasureSpec of width.
-     * @param heightMeasureSpec MeasureSpec of height.
-     */
-    private void resolveMeasureSpec(int widthMeasureSpec, int heightMeasureSpec) {
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        switch (widthMode) {
-            case MeasureSpec.EXACTLY:       //may be match_parent or specific value
-                mWidth = widthSize;
-                break;
-            case MeasureSpec.AT_MOST:       //may be wrap_content
-            case MeasureSpec.UNSPECIFIED:
-                mWidth = dp2px(DEFAULT_WIDTH);
-                break;
-        }
-        switch (heightMode) {
-            case MeasureSpec.EXACTLY:       //may be match_parent or specific value
-                mHeight = heightSize;
-                break;
-            case MeasureSpec.AT_MOST:        //may be wrap_content
-            case MeasureSpec.UNSPECIFIED:
-                mHeight = dp2px(DEFAULT_HEIGHT);
-                break;
-        }
     }
 
     public void setOnCheckedChangedListener(OnCheckedChangedListener onCheckedChangedListener) {
