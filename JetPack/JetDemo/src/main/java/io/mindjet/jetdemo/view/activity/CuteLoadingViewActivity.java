@@ -1,5 +1,7 @@
-package io.mindjet.jetdemo.activity;
+package io.mindjet.jetdemo.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 
 import io.mindjet.jetdemo.R;
@@ -11,7 +13,11 @@ import io.mindjet.jetdemo.databinding.ActivityLoadingViewBinding;
  * Created by Mindjet on 5/22/17.
  */
 
-public class LoadingViewActivity extends BaseDemoActivity {
+public class CuteLoadingViewActivity extends BaseDemoActivity {
+
+    public static Intent intentFor(Context context) {
+        return new Intent(context, CuteLoadingViewActivity.class);
+    }
 
     private ActivityLoadingViewBinding mBinding;
 

@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.activity.CircularRevealActivity" />
+            type="io.mindjet.jetdemo.view.activity.CircularRevealActivity" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

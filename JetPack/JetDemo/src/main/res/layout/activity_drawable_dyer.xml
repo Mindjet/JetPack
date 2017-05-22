@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.activity.DrawableDyerActivity" />
+            type="io.mindjet.jetdemo.view.activity.DrawableDyerActivity" />
     </data>
 
     <LinearLayout

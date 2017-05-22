@@ -1,4 +1,4 @@
-package io.mindjet.jetdemo.activity;
+package io.mindjet.jetdemo.view.activity;
 
 import android.content.Context;
 import android.content.Intent;

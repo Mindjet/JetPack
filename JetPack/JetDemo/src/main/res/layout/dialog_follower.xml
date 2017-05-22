@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.dialog.FollowerDialog" />
+            type="io.mindjet.jetdemo.view.dialog.FollowerDialog" />
     </data>
 
     <LinearLayout

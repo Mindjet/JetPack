@@ -14,4 +14,8 @@
         <attr name="checked" format="boolean"/>
         <attr name="shape" format="string"/>
     </declare-styleable>
+    <declare-styleable name="QLoadingView">
+        <attr name="ballRadius" format="dimension"/>
+        <attr name="ballColor" format="color"/>
+    </declare-styleable>
 </resources>

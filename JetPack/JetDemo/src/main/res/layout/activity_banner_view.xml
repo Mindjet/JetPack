@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.activity.BannerViewActivity"/>
+            type="io.mindjet.jetdemo.view.activity.BannerViewActivity"/>
     </data>
 
     <LinearLayout

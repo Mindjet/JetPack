@@ -1,10 +1,8 @@
-package io.mindjet.jetdemo.activity;
+package io.mindjet.jetdemo.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityImageLoaderBinding;

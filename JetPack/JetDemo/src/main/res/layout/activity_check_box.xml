@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.activity.CuteCheckBoxActivity"/>
+            type="io.mindjet.jetdemo.view.activity.CuteCheckBoxActivity"/>
     </data>
 
     <LinearLayout

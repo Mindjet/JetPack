@@ -9,19 +9,20 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.mindjet.jetdemo.activity.BannerViewActivity;
-import io.mindjet.jetdemo.activity.CircularRevealActivity;
-import io.mindjet.jetdemo.activity.CollapseTabLayoutActivity;
-import io.mindjet.jetdemo.activity.CollapseToolbarLayoutActivity;
-import io.mindjet.jetdemo.activity.CuteCheckBoxActivity;
-import io.mindjet.jetdemo.activity.DrawableDyerActivity;
-import io.mindjet.jetdemo.activity.DrawerCollapseTabLayoutActivity;
-import io.mindjet.jetdemo.activity.DrawerLayoutActivity;
-import io.mindjet.jetdemo.activity.ImageLoaderActivity;
-import io.mindjet.jetdemo.activity.ImagePickerActivity;
-import io.mindjet.jetdemo.activity.ImageSaverActivity;
-import io.mindjet.jetdemo.activity.NativeDrawerLayoutActivity;
-import io.mindjet.jetdemo.activity.SwipeRecyclerDemoActivity;
+import io.mindjet.jetdemo.view.activity.BannerViewActivity;
+import io.mindjet.jetdemo.view.activity.CircularRevealActivity;
+import io.mindjet.jetdemo.view.activity.CollapseTabLayoutActivity;
+import io.mindjet.jetdemo.view.activity.CollapseToolbarLayoutActivity;
+import io.mindjet.jetdemo.view.activity.CuteCheckBoxActivity;
+import io.mindjet.jetdemo.view.activity.CuteLoadingViewActivity;
+import io.mindjet.jetdemo.view.activity.DrawableDyerActivity;
+import io.mindjet.jetdemo.view.activity.DrawerCollapseTabLayoutActivity;
+import io.mindjet.jetdemo.view.activity.DrawerLayoutActivity;
+import io.mindjet.jetdemo.view.activity.ImageLoaderActivity;
+import io.mindjet.jetdemo.view.activity.ImagePickerActivity;
+import io.mindjet.jetdemo.view.activity.ImageSaverActivity;
+import io.mindjet.jetdemo.view.activity.NativeDrawerLayoutActivity;
+import io.mindjet.jetdemo.view.activity.SwipeRecyclerDemoActivity;
 import io.mindjet.jetdemo.viewmodel.item.EntryItemViewModel;
 import io.mindjet.jetgear.databinding.ItemButtonBinding;
 import io.mindjet.jetgear.mvvm.adapter.ViewModelAdapter;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(io.mindjet.jetdemo.R.string.refresh_loadmore);
         textResList.add(io.mindjet.jetdemo.R.string.drawable_dyer);
         textResList.add(io.mindjet.jetdemo.R.string.cute_check_box);
+        textResList.add(R.string.cute_loading_view);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(SwipeRecyclerDemoActivity.intentFor(this));
         intentList.add(DrawableDyerActivity.intentFor(this));
         intentList.add(CuteCheckBoxActivity.intentFor(this));
+        intentList.add(CuteLoadingViewActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);

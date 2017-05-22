@@ -5,7 +5,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import java.util.List;
 
 import io.mindjet.jetdemo.R;
-import io.mindjet.jetdemo.dialog.FollowerDialog;
+import io.mindjet.jetdemo.view.dialog.FollowerDialog;
 import io.mindjet.jetdemo.model.Follower;
 import io.mindjet.jetdemo.service.GithubService;
 import io.mindjet.jetgear.mvvm.viewmodel.list.SwipeRecyclerViewModel;
@@ -14,7 +14,6 @@ import io.mindjet.jetgear.reactivex.RxActions;
 import io.mindjet.jetgear.reactivex.rxbus.RxBus;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;

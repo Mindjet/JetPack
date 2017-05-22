@@ -1,4 +1,4 @@
-package io.mindjet.jetdemo.dialog;
+package io.mindjet.jetdemo.view.dialog;
 
 import android.content.Context;
 import android.databinding.ObservableField;
