@@ -127,6 +127,8 @@ public class QCheckBox extends View implements Checkable {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         mWidth = ViewUtil.getSizeFromMeasuredSpec(getContext(), widthMeasureSpec, DEFAULT_WIDTH);
         mHeight = ViewUtil.getSizeFromMeasuredSpec(getContext(), heightMeasureSpec, DEFAULT_HEIGHT);
+        mWidth = Math.min(mWidth, mHeight);
+        mHeight = mWidth;                   //make sure the checkbox behave normally.
         setMeasuredDimension(mWidth, mHeight);
         initCheckPoints();
 //        printBasicInfo();
