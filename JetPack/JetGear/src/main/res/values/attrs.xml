@@ -10,5 +10,5 @@
     <declare-styleable name="ViewGroup">
         <attr name="vmList" format="reference" />
     </declare-styleable>
-    <declare-styleable name="View" />
+    <declare-styleable name="View"/>
 </resources>
