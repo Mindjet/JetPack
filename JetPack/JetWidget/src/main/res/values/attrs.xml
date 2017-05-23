@@ -20,4 +20,7 @@
         <attr name="eclipsed" format="boolean"/>
         <attr name="duration" format="integer"/>
     </declare-styleable>
+    <declare-styleable name="CornerLinearLayout">
+        <attr name="cornerRadius" format="dimension"/>
+    </declare-styleable>
 </resources>

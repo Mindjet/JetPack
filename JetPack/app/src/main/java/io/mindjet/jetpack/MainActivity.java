@@ -13,6 +13,7 @@ import io.mindjet.jetdemo.view.activity.BannerViewActivity;
 import io.mindjet.jetdemo.view.activity.CircularRevealActivity;
 import io.mindjet.jetdemo.view.activity.CollapseTabLayoutActivity;
 import io.mindjet.jetdemo.view.activity.CollapseToolbarLayoutActivity;
+import io.mindjet.jetdemo.view.activity.CornerLinearLayoutActivity;
 import io.mindjet.jetdemo.view.activity.CuteCheckBoxActivity;
 import io.mindjet.jetdemo.view.activity.CuteLoadingDialogActivity;
 import io.mindjet.jetdemo.view.activity.CuteLoadingViewActivity;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(io.mindjet.jetdemo.R.string.cute_check_box);
         textResList.add(R.string.cute_loading_view);
         textResList.add(R.string.cute_loading_dialog);
+        textResList.add(R.string.corner_linear_layout);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(CuteCheckBoxActivity.intentFor(this));
         intentList.add(CuteLoadingViewActivity.intentFor(this));
         intentList.add(CuteLoadingDialogActivity.intentFor(this));
+        intentList.add(CornerLinearLayoutActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);

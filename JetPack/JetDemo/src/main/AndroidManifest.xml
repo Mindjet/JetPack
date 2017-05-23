@@ -62,6 +62,9 @@
         <activity
             android:name=".view.activity.CuteLoadingDialogActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.activity.CornerLinearLayoutActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

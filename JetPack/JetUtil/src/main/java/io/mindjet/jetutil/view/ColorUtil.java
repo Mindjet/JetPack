@@ -2,6 +2,9 @@ package io.mindjet.jetutil.view;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import java.util.Random;
@@ -9,7 +12,9 @@ import java.util.Random;
 import io.mindjet.jetutil.logger.JLogger;
 
 /**
- * Created by Jet on 3/2/17.
+ * Utility for color.
+ * <p>
+ * Created by Mindjet on 3/2/17.
  */
 
 public class ColorUtil extends View {
@@ -37,6 +42,16 @@ public class ColorUtil extends View {
     public static int randomColor() {
         Random random = new Random();
         return 0xff000000 | random.nextInt(0x00ffffff);
+    }
+
+    public static int getBackgroundColor(View view) {
+        Drawable background = view.getBackground();
+        if (background instanceof ColorDrawable) {
+            return ((ColorDrawable) background).getColor();
+        } else {
+            jLogger.e("The view has no solid background color, return TRANSPARENT as default");
+            return Color.TRANSPARENT;
+        }
     }
 
 }
