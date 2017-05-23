@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <data>
 
@@ -12,13 +13,91 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/common_gap_large">
 
-        <io.mindjet.jetwidget.QLoadingView
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            app:ballColor="@color/colorAccent"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_gap"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <io.mindjet.jetwidget.QLoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:eclipsed="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_gap_small"
+                android:text="default"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_gap"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <io.mindjet.jetwidget.QLoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ballColor="@color/red"
+                app:eclipsed="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_gap_small"
+                android:text="color"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_gap"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <io.mindjet.jetwidget.QLoadingView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:ballRadius="30dp"
+                app:eclipsed="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_gap_small"
+                android:text="big"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_gap"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <io.mindjet.jetwidget.QLoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:eclipsed="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_gap_small"
+                android:text="eclipsed"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

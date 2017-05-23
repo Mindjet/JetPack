@@ -17,5 +17,7 @@
     <declare-styleable name="QLoadingView">
         <attr name="ballRadius" format="dimension"/>
         <attr name="ballColor" format="color"/>
+        <attr name="eclipsed" format="boolean"/>
+        <attr name="duration" format="integer"/>
     </declare-styleable>
 </resources>
