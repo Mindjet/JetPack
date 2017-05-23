@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Checkable;
 
+import io.mindjet.jetutil.view.MeasureUtil;
+
 /**
  * A cute CheckBox.
  * <p>
@@ -81,8 +83,8 @@ public class QCheckBox extends View implements Checkable {
         mBorderColor = typedArray.getColor(R.styleable.QCheckBox_borderColor, DEFAULT_BORDER_COLOR);
         mContentColor = typedArray.getColor(R.styleable.QCheckBox_contentColor, DEFAULT_CONTENT_COLOR);
         mCheckColor = typedArray.getColor(R.styleable.QCheckBox_checkColor, DEFAULT_CHECK_COLOR);
-        mBorderWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_borderWidth, ViewUtil.dp2px(context, DEFAULT_BORDER_WIDTH));
-        mCheckWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_checkWidth, ViewUtil.dp2px(context, DEFAULT_CHECK_WIDTH));
+        mBorderWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_borderWidth, MeasureUtil.dp2px(context, DEFAULT_BORDER_WIDTH));
+        mCheckWidth = typedArray.getDimensionPixelOffset(R.styleable.QCheckBox_checkWidth, MeasureUtil.dp2px(context, DEFAULT_CHECK_WIDTH));
         mChecked = typedArray.getBoolean(R.styleable.QCheckBox_checked, false);
         mProgress = mChecked ? 1 : 0;
         mCheckProgress = mChecked ? 1 : 0;
@@ -125,8 +127,8 @@ public class QCheckBox extends View implements Checkable {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        mWidth = ViewUtil.getSizeFromMeasuredSpec(getContext(), widthMeasureSpec, DEFAULT_WIDTH);
-        mHeight = ViewUtil.getSizeFromMeasuredSpec(getContext(), heightMeasureSpec, DEFAULT_HEIGHT);
+        mWidth = MeasureUtil.getSizeFromMeasuredSpec(getContext(), widthMeasureSpec, DEFAULT_WIDTH);
+        mHeight = MeasureUtil.getSizeFromMeasuredSpec(getContext(), heightMeasureSpec, DEFAULT_HEIGHT);
         mWidth = Math.min(mWidth, mHeight);
         mHeight = mWidth;                   //make sure the checkbox behave normally.
         setMeasuredDimension(mWidth, mHeight);

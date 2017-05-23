@@ -59,6 +59,9 @@
         <activity
             android:name=".view.activity.CuteLoadingViewActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.activity.CuteLoadingDialogActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

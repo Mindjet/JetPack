@@ -1,4 +1,4 @@
-package io.mindjet.jetwidget;
+package io.mindjet.jetutil.view;
 
 import android.content.Context;
 import android.support.annotation.Px;
@@ -6,12 +6,12 @@ import android.util.TypedValue;
 import android.view.View;
 
 /**
- * Utility for custom views.
+ * Utility for measurement of Views.
  * <p>
  * Created by Mindjet on 5/22/17.
  */
 
-public class ViewUtil {
+public class MeasureUtil {
 
     /**
      * Convert dip to pixel.

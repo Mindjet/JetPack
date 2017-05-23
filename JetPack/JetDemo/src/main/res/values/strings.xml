@@ -26,5 +26,6 @@
     <string name="drawable_dyer">Drawable Dyer</string>
     <string name="cute_check_box">Cute CheckBox</string>
     <string name="cute_loading_view">Cute Loading View</string>
+    <string name="cute_loading_dialog">Cute Loading Dialog</string>
 
 </resources>

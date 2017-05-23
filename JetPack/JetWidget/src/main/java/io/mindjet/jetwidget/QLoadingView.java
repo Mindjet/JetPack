@@ -7,11 +7,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+
+import io.mindjet.jetutil.view.MeasureUtil;
 
 /**
  * A cute loading view.
@@ -64,7 +67,7 @@ public class QLoadingView extends View {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.QLoadingView);
-        mBallRadius = array.getDimensionPixelOffset(R.styleable.QLoadingView_ballRadius, ViewUtil.dp2px(context, DEFAULT_BALL_RADIUS));
+        mBallRadius = array.getDimensionPixelOffset(R.styleable.QLoadingView_ballRadius, MeasureUtil.dp2px(context, DEFAULT_BALL_RADIUS));
         mBallColor = array.getColor(R.styleable.QLoadingView_ballColor, DEFAULT_BALL_COLOR);
         mEclipsed = array.getBoolean(R.styleable.QLoadingView_eclipsed, false);
         mDuration = array.getInteger(R.styleable.QLoadingView_duration, DEFAULT_DURATION);
@@ -87,8 +90,8 @@ public class QLoadingView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        mWidth = ViewUtil.getSizeFromMeasuredSpec(getContext(), widthMeasureSpec, DEFAULT_WIDTH);
-        mHeight = ViewUtil.getSizeFromMeasuredSpec(getContext(), heightMeasureSpec, DEFAULT_HEIGHT);
+        mWidth = MeasureUtil.getSizeFromMeasuredSpec(getContext(), widthMeasureSpec, DEFAULT_WIDTH);
+        mHeight = MeasureUtil.getSizeFromMeasuredSpec(getContext(), heightMeasureSpec, DEFAULT_HEIGHT);
         mWidth = Math.min(mWidth, mHeight);
         mHeight = mWidth;
         setMeasuredDimension(mWidth, mHeight);
@@ -142,6 +145,11 @@ public class QLoadingView extends View {
         mBezierPath.quadTo(leftControlX, mHeight / 2, mWidth / 2 - mBallRadius, mBallRadius + mOffset);
         mBezierPath.close();
         mCanvas.drawPath(mBezierPath, mBezierPaint);
+    }
+
+    public void setBallColor(@ColorInt int ballColor) {
+        mBallPaint.setColor(ballColor);
+        mBezierPaint.setColor(ballColor);
     }
 
 }
