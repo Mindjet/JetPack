@@ -17,8 +17,20 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> data.onDefault()}"
+            android:onClick="@{() -> data.onDefaultDialog()}"
             android:text="default dialog"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> data.onColorDialog()}"
+            android:text="color dialog"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> data.onCornerDialog()}"
+            android:text="corner dialog"/>
 
     </LinearLayout>
 

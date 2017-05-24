@@ -152,4 +152,7 @@ public class QLoadingView extends View {
         mBezierPaint.setColor(ballColor);
     }
 
+    public void setEclipsed(boolean eclipsed) {
+        mEclipsed = eclipsed;
+    }
 }

@@ -6,10 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import io.mindjet.jetutil.logger.JLogger;
 import io.mindjet.jetutil.view.ColorUtil;
 
 /**
@@ -20,7 +24,7 @@ import io.mindjet.jetutil.view.ColorUtil;
 
 public class CornerLinearLayout extends LinearLayout {
 
-    private final String TAG = "CornerLinearLayout";
+    private static JLogger jLogger = JLogger.get(CornerLinearLayout.class.getSimpleName());
 
     private final float DEFAULT_CORNER_RADIUS = 0;
 
@@ -31,8 +35,6 @@ public class CornerLinearLayout extends LinearLayout {
     private Paint mCornerPaint;
     private int mCornerColor;
     private Path mPath;
-
-    private float mShadowOffset = 5;
 
     public CornerLinearLayout(Context context) {
         this(context, null);
@@ -76,10 +78,7 @@ public class CornerLinearLayout extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (mCornerRadius == 0) {
-            return;
-        }
-        setBackgroundColor(Color.TRANSPARENT);
+        super.setBackgroundColor(Color.TRANSPARENT);
         drawCornerRect(canvas);
     }
 
@@ -98,4 +97,36 @@ public class CornerLinearLayout extends LinearLayout {
         canvas.drawPath(mPath, mCornerPaint);
     }
 
+    public void setCornerRadius(float cornerRadius) {
+        mCornerRadius = cornerRadius;
+        invalidate();
+    }
+
+    @Override
+    public void setBackground(Drawable background) {
+        mCornerColor = ColorUtil.extractColor(background);
+        setBackgroundColor(mCornerColor);
+        super.setBackground(background);
+    }
+
+    @Override
+    public void setBackgroundColor(@ColorInt int color) {
+        mCornerColor = color;
+        if (mCornerPaint != null) mCornerPaint.setColor(mCornerColor);
+        invalidate();
+    }
+
+    @Override
+    public Drawable getBackground() {
+        return new ColorDrawable(mCornerColor);
+    }
+
+    @ColorInt
+    public int getBackgroundColor() {
+        return mCornerColor;
+    }
+
+    public float getCornerRadius() {
+        return mCornerRadius;
+    }
 }

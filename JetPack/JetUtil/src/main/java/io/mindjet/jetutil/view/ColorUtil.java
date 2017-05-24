@@ -44,14 +44,17 @@ public class ColorUtil extends View {
         return 0xff000000 | random.nextInt(0x00ffffff);
     }
 
-    public static int getBackgroundColor(View view) {
-        Drawable background = view.getBackground();
-        if (background instanceof ColorDrawable) {
-            return ((ColorDrawable) background).getColor();
+    public static int extractColor(Drawable drawable) {
+        if (drawable instanceof ColorDrawable) {
+            return ((ColorDrawable) drawable).getColor();
         } else {
-            jLogger.e("The view has no solid background color, return TRANSPARENT as default");
             return Color.TRANSPARENT;
         }
+    }
+
+    public static int getBackgroundColor(View view) {
+        Drawable background = view.getBackground();
+        return extractColor(background);
     }
 
 }

@@ -19,6 +19,7 @@
         android:padding="@dimen/common_gap">
 
         <io.mindjet.jetwidget.CornerLinearLayout
+            android:id="@+id/corner_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="@color/purple"
@@ -30,49 +31,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="radius: 10dp"
+                android:text="@{data.statement}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/common_text_size"/>
 
         </io.mindjet.jetwidget.CornerLinearLayout>
 
-        <io.mindjet.jetwidget.CornerLinearLayout
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_gap"
-            android:background="@color/purple"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:cornerRadius="20dp"
-            tools:background="@color/purple">
+            android:onClick="@{() -> data.onChangeColor()}"
+            android:text="change background"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="radius: 20dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/common_text_size"/>
-
-        </io.mindjet.jetwidget.CornerLinearLayout>
-
-        <io.mindjet.jetwidget.CornerLinearLayout
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="@dimen/common_gap"
-            android:background="@color/purple"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:cornerRadius="30dp"
-            tools:background="@color/purple">
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> data.onIncreaseRadius()}"
+            android:text="increase corner radius"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="radius: 30dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/common_text_size"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> data.onDecreaseRadius()}"
+            android:text="decrease corner radius"/>
 
-        </io.mindjet.jetwidget.CornerLinearLayout>
 
     </LinearLayout>
 

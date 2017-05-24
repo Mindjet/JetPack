@@ -9,15 +9,15 @@
              android:orientation="horizontal"
              android:padding="@dimen/common_gap">
 
-    <LinearLayout
+    <io.mindjet.jetwidget.CornerLinearLayout
         android:id="@+id/lly_container"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_corner_white"
         android:gravity="center_vertical"
         android:minHeight="100dp"
         android:orientation="horizontal"
-        android:padding="@dimen/common_gap">
+        android:padding="@dimen/common_gap"
+        tools:background="@color/gray_dark">
 
         <io.mindjet.jetwidget.QLoadingView
             android:id="@+id/loading_view"
@@ -35,6 +35,6 @@
             android:layout_marginStart="@dimen/common_gap"
             tools:text="@string/app_name"/>
 
-    </LinearLayout>
+    </io.mindjet.jetwidget.CornerLinearLayout>
 
 </FrameLayout>

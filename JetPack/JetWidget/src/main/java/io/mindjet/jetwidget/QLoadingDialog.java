@@ -2,7 +2,6 @@ package io.mindjet.jetwidget;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
@@ -10,10 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import io.mindjet.jetutil.drawable.DrawableDyer;
 
 /**
  * A cute dialog.
@@ -23,9 +19,10 @@ import io.mindjet.jetutil.drawable.DrawableDyer;
 
 public class QLoadingDialog extends Dialog {
 
+    private static final String TAG = "QLoadingDialog";
     private QLoadingDialog.Builder mBuilder;
 
-    private LinearLayout mLinearLayout;
+    private CornerLinearLayout mLinearLayout;
     private QLoadingView mLoadingView;
     private TextView mTextView;
 
@@ -37,15 +34,17 @@ public class QLoadingDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.dialog_cute_loading);
-        mLinearLayout = (LinearLayout) findViewById(R.id.lly_container);
+        mLinearLayout = (CornerLinearLayout) findViewById(R.id.lly_container);
         mLoadingView = ((QLoadingView) findViewById(R.id.loading_view));
         mTextView = ((TextView) findViewById(R.id.text_view));
 
         //dye the background of container.
-        Drawable output = DrawableDyer.dye(mLinearLayout.getBackground(), getContext().getResources().getColor(mBuilder.backgroundColorRes));
-        mLinearLayout.setBackground(output);
+        mLinearLayout.setBackgroundColor(getContext().getResources().getColor(mBuilder.backgroundColorRes));
+        mLinearLayout.setCornerRadius(mBuilder.cornerRadius == 0 ? 0 : getContext().getResources().getDimension(mBuilder.cornerRadius));
 
         mLoadingView.setBallColor(getContext().getResources().getColor(mBuilder.loadingViewColorRes));
+        mLoadingView.setEclipsed(mBuilder.loadingBallsEclipsed);
+
         mTextView.setText(mBuilder.contentRes == 0 ? mBuilder.content : getContext().getResources().getString(mBuilder.contentRes));
         mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getContext().getResources().getDimension(mBuilder.textSize));
         mTextView.setTextColor(getContext().getResources().getColor(mBuilder.contentColorRes));
@@ -65,11 +64,14 @@ public class QLoadingDialog extends Dialog {
         private int contentColorRes = R.color.black;
         @DimenRes
         private int textSize = R.dimen.common_text_size;
+        @DimenRes
+        private int cornerRadius = 0;
         @StringRes
         private int contentRes;
-        private String content = "";
+        private String content = TAG;
         private int gravity = Gravity.START;
         private boolean cancelable = true;
+        private boolean loadingBallsEclipsed = false;
 
         public Builder(Context context) {
             this.context = context;
@@ -95,6 +97,11 @@ public class QLoadingDialog extends Dialog {
             return this;
         }
 
+        public QLoadingDialog.Builder cornerRadius(@DimenRes int cornerRadius) {
+            this.cornerRadius = cornerRadius;
+            return this;
+        }
+
         public QLoadingDialog.Builder content(@StringRes int contentRes) {
             this.contentRes = contentRes;
             return this;
@@ -112,6 +119,11 @@ public class QLoadingDialog extends Dialog {
 
         public QLoadingDialog.Builder cancelable(boolean cancelable) {
             this.cancelable = cancelable;
+            return this;
+        }
+
+        public QLoadingDialog.Builder loadingBallsEclipsed(boolean loadingBallsEclipsed) {
+            this.loadingBallsEclipsed = loadingBallsEclipsed;
             return this;
         }
 

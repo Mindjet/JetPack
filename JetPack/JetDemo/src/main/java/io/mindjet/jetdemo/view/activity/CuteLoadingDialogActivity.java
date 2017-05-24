@@ -3,7 +3,6 @@ package io.mindjet.jetdemo.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.view.Gravity;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityCuteLoadingDialogBinding;
@@ -39,16 +38,31 @@ public class CuteLoadingDialogActivity extends BaseDemoActivity {
 
     }
 
-    public void onDefault() {
+    public void onDefaultDialog() {
         new QLoadingDialog.Builder(this)
-                .content(R.string.app_name)
-                .backgroundColorRes(R.color.purple)
-                .loadingViewColorRes(R.color.white)
-                .contentColorRes(R.color.white)
-                .textSize(R.dimen.common_text_size)
-                .gravity(Gravity.CENTER)
-                .cancelable(true)
                 .build()
                 .show();
     }
+
+    public void onColorDialog() {
+        new QLoadingDialog.Builder(this)
+                .backgroundColorRes(R.color.purple)
+                .contentColorRes(R.color.white)
+                .loadingViewColorRes(R.color.white)
+                .loadingBallsEclipsed(true)
+                .build()
+                .show();
+    }
+
+    public void onCornerDialog() {
+        new QLoadingDialog.Builder(this)
+                .backgroundColorRes(R.color.purple)
+                .contentColorRes(R.color.white)
+                .loadingViewColorRes(R.color.white)
+                .cornerRadius(R.dimen.common_gap_medium)
+                .loadingBallsEclipsed(true)
+                .build()
+                .show();
+    }
+
 }
