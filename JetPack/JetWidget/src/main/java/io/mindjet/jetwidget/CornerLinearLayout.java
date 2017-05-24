@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
@@ -32,6 +31,8 @@ public class CornerLinearLayout extends LinearLayout {
     private Paint mCornerPaint;
     private int mCornerColor;
     private Path mPath;
+
+    private float mShadowOffset = 5;
 
     public CornerLinearLayout(Context context) {
         this(context, null);
@@ -79,33 +80,20 @@ public class CornerLinearLayout extends LinearLayout {
             return;
         }
         setBackgroundColor(Color.TRANSPARENT);
-        drawContent(canvas);
-        drawCorners(canvas);
+        drawCornerRect(canvas);
     }
 
-    private void drawCorners(Canvas canvas) {
-        //draw arcs counterclockwise.
-        canvas.drawArc(0, 0, mCornerRadius * 2, mCornerRadius * 2, 180, 90, true, mCornerPaint);
-        canvas.drawArc(0, mHeight - mCornerRadius * 2, mCornerRadius * 2, mHeight, 90, 90, true, mCornerPaint);
-        canvas.drawArc(mWidth - mCornerRadius * 2, mHeight - mCornerRadius * 2, mWidth, mHeight, 0, 90, true, mCornerPaint);
-        canvas.drawArc(mWidth - mCornerRadius * 2, 0, mWidth, mCornerRadius * 2, 270, 90, true, mCornerPaint);
-    }
-
-    private void drawContent(Canvas canvas) {
+    private void drawCornerRect(Canvas canvas) {
         mPath.reset();
         mPath.moveTo(mCornerRadius, 0);
         mPath.lineTo(mWidth - mCornerRadius, 0);
-        mPath.lineTo(mWidth - mCornerRadius, mCornerRadius);
-        mPath.lineTo(mWidth, mCornerRadius);
+        mPath.quadTo(mWidth, 0, mWidth, mCornerRadius);
         mPath.lineTo(mWidth, mHeight - mCornerRadius);
-        mPath.lineTo(mWidth - mCornerRadius, mHeight - mCornerRadius);
-        mPath.lineTo(mWidth - mCornerRadius, mHeight);
+        mPath.quadTo(mWidth, mHeight, mWidth - mCornerRadius, mHeight);
         mPath.lineTo(mCornerRadius, mHeight);
-        mPath.lineTo(mCornerRadius, mHeight - mCornerRadius);
-        mPath.lineTo(0, mHeight - mCornerRadius);
+        mPath.quadTo(0, mHeight, 0, mHeight - mCornerRadius);
         mPath.lineTo(0, mCornerRadius);
-        mPath.lineTo(mCornerRadius, mCornerRadius);
-        mPath.lineTo(mCornerRadius, 0);
+        mPath.quadTo(0, 0, mCornerRadius, 0);
         mPath.close();
         canvas.drawPath(mPath, mCornerPaint);
     }

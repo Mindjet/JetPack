@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="data"
-            type="io.mindjet.jetdemo.view.activity.CornerLinearLayoutActivity" />
+            type="io.mindjet.jetdemo.view.activity.CornerLinearLayoutActivity"/>
     </data>
 
     <LinearLayout
@@ -21,10 +21,58 @@
         <io.mindjet.jetwidget.CornerLinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@color/black_translucent"
+            android:background="@color/purple"
+            android:gravity="center"
+            android:orientation="vertical"
             app:cornerRadius="10dp"
-            app:elevation="@{true}"
-            tools:background="@color/gray_translucent" />
+            tools:background="@color/purple">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="radius: 10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_text_size"/>
+
+        </io.mindjet.jetwidget.CornerLinearLayout>
+
+        <io.mindjet.jetwidget.CornerLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/common_gap"
+            android:background="@color/purple"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:cornerRadius="20dp"
+            tools:background="@color/purple">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="radius: 20dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_text_size"/>
+
+        </io.mindjet.jetwidget.CornerLinearLayout>
+
+        <io.mindjet.jetwidget.CornerLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/common_gap"
+            android:background="@color/purple"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:cornerRadius="30dp"
+            tools:background="@color/purple">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="radius: 30dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_text_size"/>
+
+        </io.mindjet.jetwidget.CornerLinearLayout>
 
     </LinearLayout>
 
