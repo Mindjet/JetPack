@@ -67,7 +67,8 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".view.activity.BehaviorViewActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle"/>
     </application>
 
 </manifest>
