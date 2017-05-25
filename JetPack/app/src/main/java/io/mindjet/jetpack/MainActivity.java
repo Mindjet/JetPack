@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.mindjet.jetdemo.view.activity.BannerViewActivity;
+import io.mindjet.jetdemo.view.activity.BehaviorViewActivity;
 import io.mindjet.jetdemo.view.activity.CircularRevealActivity;
 import io.mindjet.jetdemo.view.activity.CollapseTabLayoutActivity;
 import io.mindjet.jetdemo.view.activity.CollapseToolbarLayoutActivity;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(R.string.cute_loading_view);
         textResList.add(R.string.cute_loading_dialog);
         textResList.add(R.string.corner_linear_layout);
+        textResList.add(io.mindjet.jetdemo.R.string.behavior_view);
 
         intentList.add(ImagePickerActivity.intentFor(this));
         intentList.add(ImageSaverActivity.intentFor(this));
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         intentList.add(CuteLoadingViewActivity.intentFor(this));
         intentList.add(CuteLoadingDialogActivity.intentFor(this));
         intentList.add(CornerLinearLayoutActivity.intentFor(this));
+        intentList.add(BehaviorViewActivity.intentFor(this));
 
         for (int i = 0; i < textResList.size(); i++) {
             final Intent intent = intentList.get(i);

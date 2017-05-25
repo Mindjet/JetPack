@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityPhotoSaverBinding;
+import io.mindjet.jetdemo.view.activity.base.BaseDemoActivity;
 import io.mindjet.jetutil.file.FileUtil;
 import io.mindjet.jetutil.hint.Toaster;
 

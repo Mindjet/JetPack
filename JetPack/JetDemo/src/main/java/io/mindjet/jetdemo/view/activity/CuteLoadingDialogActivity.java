@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityCuteLoadingDialogBinding;
+import io.mindjet.jetdemo.view.activity.base.BaseDemoActivity;
 import io.mindjet.jetwidget.QLoadingDialog;
 
 /**

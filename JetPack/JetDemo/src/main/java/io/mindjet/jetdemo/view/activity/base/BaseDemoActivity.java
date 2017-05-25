@@ -1,4 +1,4 @@
-package io.mindjet.jetdemo.view.activity;
+package io.mindjet.jetdemo.view.activity.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

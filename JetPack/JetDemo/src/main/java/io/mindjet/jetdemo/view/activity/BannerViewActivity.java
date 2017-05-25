@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityBannerViewBinding;
+import io.mindjet.jetdemo.view.activity.base.BaseDemoActivity;
 import io.mindjet.jetgear.adapter.ViewPagerAdapter;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
 import io.mindjet.jetgear.mvvm.viewmodel.item.BannerItemViewModel;

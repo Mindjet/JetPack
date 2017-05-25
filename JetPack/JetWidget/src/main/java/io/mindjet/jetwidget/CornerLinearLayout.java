@@ -2,6 +2,7 @@ package io.mindjet.jetwidget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -34,6 +35,10 @@ public class CornerLinearLayout extends LinearLayout {
     private float mCornerRadius;
     private Paint mCornerPaint;
     private int mCornerColor;
+
+    private float mShadowOffset = 20;
+    private Paint mShadowPaint;
+
     private Path mPath;
 
     public CornerLinearLayout(Context context) {
@@ -62,6 +67,12 @@ public class CornerLinearLayout extends LinearLayout {
         mCornerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCornerPaint.setColor(mCornerColor);
         mCornerPaint.setStyle(Paint.Style.FILL);
+//        mCornerPaint.setMaskFilter(new BlurMaskFilter(5, BlurMaskFilter.Blur.SOLID));
+
+        mShadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mShadowPaint.setColor(Color.LTGRAY);
+        mShadowPaint.setStyle(Paint.Style.FILL);
+        mShadowPaint.setMaskFilter(new BlurMaskFilter(mShadowOffset, BlurMaskFilter.Blur.SOLID));
     }
 
     private void initPath() {
@@ -73,6 +84,7 @@ public class CornerLinearLayout extends LinearLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mWidth = getMeasuredWidth();
         mHeight = getMeasuredHeight();
+//        setMeasuredDimension((int) (mWidth + mShadowOffset), (int) (mHeight + mShadowOffset));
     }
 
     @Override

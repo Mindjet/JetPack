@@ -7,6 +7,7 @@ import android.databinding.ObservableField;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityCornerLinearLayoutBinding;
+import io.mindjet.jetdemo.view.activity.base.BaseDemoActivity;
 import io.mindjet.jetutil.view.ColorUtil;
 import io.mindjet.jetwidget.CornerLinearLayout;
 

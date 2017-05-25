@@ -10,6 +10,7 @@ import java.io.File;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityImagePickerBinding;
+import io.mindjet.jetdemo.view.activity.base.BaseDemoActivity;
 import io.mindjet.jetimage.picker.ImagePicker;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;

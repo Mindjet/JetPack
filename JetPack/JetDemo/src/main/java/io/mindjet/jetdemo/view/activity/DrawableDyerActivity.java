@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import io.mindjet.jetdemo.R;
 import io.mindjet.jetdemo.databinding.ActivityDrawableDyerBinding;
+import io.mindjet.jetdemo.view.activity.base.BaseDemoActivity;
 import io.mindjet.jetutil.drawable.DrawableDyer;
 
 /**
