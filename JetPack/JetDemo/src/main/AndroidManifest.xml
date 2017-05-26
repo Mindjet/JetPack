@@ -66,9 +66,8 @@
             android:name=".view.activity.CornerLinearLayoutActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".view.activity.BehaviorViewActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoTitle"/>
+            android:name=".view.activity.BottomSheetBehaviorActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
