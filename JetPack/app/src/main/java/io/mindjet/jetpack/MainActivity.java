@@ -25,6 +25,7 @@ import io.mindjet.jetdemo.view.activity.ImageLoaderActivity;
 import io.mindjet.jetdemo.view.activity.ImagePickerActivity;
 import io.mindjet.jetdemo.view.activity.ImageSaverActivity;
 import io.mindjet.jetdemo.view.activity.NativeDrawerLayoutActivity;
+import io.mindjet.jetdemo.view.activity.SandwichLayoutActivity;
 import io.mindjet.jetdemo.view.activity.SwipeRecyclerDemoActivity;
 import io.mindjet.jetdemo.viewmodel.item.EntryItemViewModel;
 import io.mindjet.jetgear.databinding.ItemButtonBinding;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewModel.getRecyclerView().setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         ViewModelAdapter<ItemButtonBinding> adapter = recyclerViewModel.getAdapter();
 
-
+        textResList.add(io.mindjet.jetdemo.R.string.sandwich_layout);
         textResList.add(io.mindjet.jetdemo.R.string.bottom_sheet_behavior_demo);
         textResList.add(R.string.corner_linear_layout);
         textResList.add(R.string.cute_loading_dialog);
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         textResList.add(io.mindjet.jetdemo.R.string.refresh_loadmore);
         textResList.add(io.mindjet.jetdemo.R.string.drawable_dyer);
 
+        intentList.add(SandwichLayoutActivity.intentFor(this));
         intentList.add(BottomSheetBehaviorActivity.intentFor(this));
         intentList.add(CornerLinearLayoutActivity.intentFor(this));
         intentList.add(CuteLoadingDialogActivity.intentFor(this));

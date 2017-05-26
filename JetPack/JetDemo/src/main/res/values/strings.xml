@@ -32,7 +32,6 @@
     <string name="cute_loading_dialog">Cute Loading Dialog</string>
     <string name="corner_linear_layout">Corner Linear Layout</string>
     <string name="bottom_sheet_behavior_demo">Bottom Sheet Behavior</string>
-
-    <string name="gringe_behavior">io.mindjet.jetdemo.view.behavior.GringeBehavior</string>
+    <string name="sandwich_layout">Sandwich Layout</string>
 
 </resources>

@@ -68,6 +68,10 @@
         <activity
             android:name=".view.activity.BottomSheetBehaviorActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.activity.SandwichLayoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle"/>
     </application>
 
 </manifest>

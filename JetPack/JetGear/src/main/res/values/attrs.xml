@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ImageView">
-        <attr name="url" format="string" />
-        <attr name="circle" format="string" />
-        <attr name="placeHolder" format="reference" />
-        <attr name="dye_color" format="integer" />
-        <attr name="dye_random" format="boolean" />
+        <attr name="url" format="string"/>
+        <attr name="circle" format="string"/>
+        <attr name="placeHolder" format="reference"/>
+        <attr name="dye_color" format="integer"/>
+        <attr name="dye_random" format="boolean"/>
     </declare-styleable>
     <declare-styleable name="ViewGroup">
-        <attr name="vmList" format="reference" />
+        <attr name="vmList" format="reference"/>
     </declare-styleable>
-    <declare-styleable name="View"/>
+    <declare-styleable name="View">
+        <attr name="layout_height" format="integer"/>
+    </declare-styleable>
 </resources>
