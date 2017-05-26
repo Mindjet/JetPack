@@ -72,6 +72,10 @@
             android:name=".view.activity.SandwichLayoutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle"/>
+        <activity
+            android:name=".view.activity.SandwichWebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitle"/>
     </application>
 
 </manifest>

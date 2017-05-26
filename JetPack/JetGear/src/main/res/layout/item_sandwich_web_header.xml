@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="io.mindjet.jetgear.mvvm.viewmodel.sandwich.SandwichWebHeaderViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/common_gap_small"
+        android:paddingLeft="@dimen/common_gap"
+        android:paddingRight="@dimen/common_gap_medium"
+        android:paddingTop="@dimen/common_gap_small"
+        tools:background="@color/gray_dark">
+
+        <io.mindjet.jetwidget.CornerLinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#cccccc"
+            android:padding="@dimen/common_gap_small"
+            app:cornerRadius="@dimen/common_gap_small">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="true"
+                android:ellipsize="end"
+                android:lines="1"
+                tools:text="http://mindjet.github.io"/>
+
+        </io.mindjet.jetwidget.CornerLinearLayout>
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/common_gap_medium"
+            android:background="@drawable/ripple_borderless_default"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_refresh"/>
+
+    </LinearLayout>
+
+</layout>

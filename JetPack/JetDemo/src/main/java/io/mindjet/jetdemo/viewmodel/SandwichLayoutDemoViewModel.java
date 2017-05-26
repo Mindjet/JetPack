@@ -8,7 +8,7 @@ import io.mindjet.jetdemo.viewmodel.item.SimpleViewModel;
 import io.mindjet.jetgear.databinding.IncludeSandwichLayoutBinding;
 import io.mindjet.jetgear.mvvm.viewinterface.ActivityCompatInterface;
 import io.mindjet.jetgear.mvvm.viewmodel.ViewModelBinder;
-import io.mindjet.jetgear.mvvm.viewmodel.coordinator.SandwichLayoutViewModel;
+import io.mindjet.jetgear.mvvm.viewmodel.sandwich.SandwichLayoutViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.item.ButtonViewModel;
 import io.mindjet.jetgear.mvvm.viewmodel.list.RecyclerViewModel;
 

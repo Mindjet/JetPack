@@ -6,7 +6,7 @@
 
         <variable
             name="data"
-            type="io.mindjet.jetgear.mvvm.viewmodel.coordinator.SandwichLayoutViewModel"/>
+            type="io.mindjet.jetgear.mvvm.viewmodel.sandwich.SandwichLayoutViewModel"/>
 
     </data>
 

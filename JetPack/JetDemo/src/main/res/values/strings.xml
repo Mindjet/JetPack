@@ -33,5 +33,6 @@
     <string name="corner_linear_layout">Corner Linear Layout</string>
     <string name="bottom_sheet_behavior_demo">Bottom Sheet Behavior</string>
     <string name="sandwich_layout">Sandwich Layout</string>
+    <string name="sandwich_web_view">Sandwich Web View</string>
 
 </resources>

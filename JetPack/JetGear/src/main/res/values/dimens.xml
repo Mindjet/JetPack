@@ -40,4 +40,7 @@
     <dimen name="avatar_width">60dp</dimen>
     <dimen name="avatar_height">60dp</dimen>
 
+    <!--Sandwich-->
+    <dimen name="sandwich_web_header_height">30dp</dimen>
+
 </resources>

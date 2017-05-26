@@ -1,4 +1,4 @@
-package io.mindjet.jetgear.mvvm.viewmodel.coordinator;
+package io.mindjet.jetgear.mvvm.viewmodel.sandwich;
 
 import android.view.View;
 import android.view.ViewGroup;
