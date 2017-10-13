@@ -1,5 +1,27 @@
 ## CoordinatorLayout 及其控件属性
 
+### 基本结构
+
+```xml
+<CoordinatorLayout>
+  
+    <AppbarLayout>
+
+        <CollapsingToolbarLayout>
+  
+            <!--可自定义的expendedView，一般用FrameLayout包裹-->
+            <FrameLayout/>
+            <Toolbar/>
+
+        </CollapsingToolbarLayout>
+
+    </AppbarLayout>
+
+    <ScrollView/>
+  
+</CoordinatorLayout>
+```
+
 ### layout_scrollFlags
 
 `layout_scrollFlags` 控制 `AppBarLayout` 下子 View 的行为。
