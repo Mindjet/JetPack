@@ -9,7 +9,7 @@
 
         <CollapsingToolbarLayout>
   
-            <!--可自定义的expendedView，一般用FrameLayout包裹-->
+            <!--可自定义的expendedView，一般用FrameLayout包裹，需要设置固定高度-->
             <FrameLayout/>
             <Toolbar/>
 
@@ -45,8 +45,6 @@
 
 * `enterAlways`, `enterAlwaysCollapsed` 和 `exitUntilCollapsed` 都需要配合 `scroll` 使用，不然跟静态显示没有区别
 
-  ​
-
 ### layout_collapseMode
 
 `layout_collapseMode` 控制 `CollapsingToolbarLayout` 下 View 的行为。`CollapsingToolbarLayout` 一般放两个 View，一个 `Toolbar` 和一个 View。
@@ -58,8 +56,6 @@
 
 故 `Toolbar` 设置 `pin` 而 View 作为 expended view 设置 `parallax`。
 
-
-
 ### title
 
 一些需要注意的点：
@@ -67,3 +63,12 @@
 * `CollapsingToolbarLayout` 和 `Toolbar` 均有 `title` 属性，但若同时设置前者的会覆盖后者的
 * 若要使 `Toolbar` 均有 `title` 属性生效，需要 `CollapsingToolbarLayout` 的 `titleEnabled` 设为 **false**
 * `CollapsingToolbarLayout` 的 title 有收缩和位移特性（可定制），而 `Toolbar` 的则只会一直停留在 `Toolbar` 上
+
+### CollapsingToolbarLayout 的动态定制
+
+以下以 `CTL` 代替 `CollapsingToolbarLayout`。
+
+* `CTL.setContentScrimResource()` 来设置折叠后的背景颜色
+* `CTL.setTitle()` 来设置有时差效果的 title
+
+`Toolbar` 需要将 `layout_height` 设置为 `?attr/actionBarSize`
